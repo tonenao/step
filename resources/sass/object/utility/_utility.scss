@@ -1,0 +1,56 @@
+.ff1 {
+    font-family: $font-family_corp;
+}
+
+.fs1 {
+    font-size: $font-size_3l;
+}
+
+.fs-xl {
+    font-size: $font-size_xl;
+}
+
+.fs-m {
+    font-size: $font-size_m;
+}
+
+
+.mr10 {
+    margin-right: $space-m;
+}
+
+.mr-l {
+    margin-right: $space_l;
+}
+
+.mr20 {
+    margin-right: $space_xl;
+}
+
+.mb5 {
+    margin-bottom: $space-s;
+}
+
+.mb-l {
+    margin-bottom: $space-l;
+}
+
+.mb40 {
+    margin-bottom: $space_3l;
+}
+
+.pr20 {
+    padding-right: $space_xl;
+
+    @include mq() {
+        padding-right: $space_l;
+    }
+}
+
+.pl20 {
+    padding-left: $space_xl;
+
+    @include mq() {
+        padding-left: $space_l;
+    }
+}

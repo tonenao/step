@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    background: #888577;
+    color: #fff;
+
+    @include mq() {
+        font-size: 12px;
+    }
+}
