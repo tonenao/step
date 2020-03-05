@@ -5,11 +5,12 @@
 
 // Layout
 
+@import "layout/_main";
 @import "layout/_header";
 @import "layout/_footer";
 
 // Object
 
-@import "object/component/_component";
-@import "object/project/_project";
-@import "object/utility/_utility";
+@import "object/_component";
+@import "object/_project";
+@import "object/_utility";

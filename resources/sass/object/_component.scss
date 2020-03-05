@@ -1,0 +1,561 @@
+.c-header {
+    width: 100%;
+}
+
+.c-hero {
+    // background-attachment: fixed;
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    vertical-align: bottom;
+
+    @include mq(xl) {
+        // background-size: contain;
+        width: 980px;
+        margin: 0 auto;
+    }
+
+    @include mq() {
+        height: 600px;
+    }
+
+}
+
+
+.c-img-prof {
+
+
+    img {
+        width: 100%;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+    }
+
+}
+
+
+// ===============================
+// フォーム
+// ===============================
+
+.c-form-group {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.c-form-group-submit {
+    width: 80%;
+    margin-top: 60px;
+}
+
+.invalid-feedback {
+    margin-top: 15px;
+    color: red;
+}
+
+// ===============================
+// ハンバーガーメニュー
+// ===============================
+
+.c-menu-trigger {
+    display: none;
+    z-index: 3;
+    width: 40px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+
+
+    span {
+        display: inline-block;
+        position: absolute;
+        background-color: $color-dark;
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        transition: .3s;
+
+        &:nth-of-type(1) {
+            top: 0;
+        }
+
+        &:nth-of-type(2) {
+            top: 14px;
+        }
+
+        &:nth-of-type(3) {
+            bottom: 0;
+        }
+    }
+
+    &.active span {
+        &:nth-of-type(1) {
+            transform: translateY(12px) rotate(-45deg);
+        }
+
+        &:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        &:nth-of-type(3) {
+            transform: translateY(-15px) rotate(45deg)
+        }
+
+        background-color:#777;
+    }
+}
+
+
+// ===============================
+// Container
+// ===============================
+
+.c-container {
+    max-width: 980px;
+
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 0 100px;
+
+
+    @include mq() {
+        width: 100%;
+        padding: 50px 0 80px;
+    }
+}
+
+.c-container-body {
+    width: 80%;
+    // min-width: 414px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include mq(md) {
+        width: 90%;
+    }
+
+    @include mq() {
+        width: 95%;
+    }
+}
+
+
+.c-container-title-wrap {
+    margin: 10px 0 20px;
+
+
+}
+
+.c-container-title {
+    font-size: $font-size_3l;
+    display: inline;
+    border-bottom: 2px solid $color-dark;
+    padding: 0 10px 5px;
+}
+
+.c-container-detail {
+    width: 40%;
+    border: 2px solid $color-accent3;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: $color-accent3;
+
+    h2 {
+        margin: 10px 0 -10px;
+    }
+
+    @include mq() {
+        width: 80%;
+    }
+
+    .c-step-count {
+        margin-left: 40%;
+        font-size: 4rem;
+
+        @include mq() {
+            margin-left: 30%;
+            font-size: 3rem;
+        }
+    }
+
+    .c-step-unit {
+        margin-left: 10px;
+        font-size: 1.5rem;
+    }
+
+}
+
+
+// ===============================
+// ボタン
+// ===============================
+.c-button {
+    display: inline-block;
+    // padding: 0 1.5em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: .4s;
+    font-family: $font-family_corp;
+    font-size: $font-size_xl;
+    margin: 20px 0;
+}
+
+
+
+.c-button-form {
+    width: 100%;
+}
+
+.c-button-footer {
+    padding: 0 1.5em;
+}
+
+
+
+
+
+
+
+// ===============================
+// パネル
+// ===============================
+
+.c-panel-wrap {
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+    margin-right: -15px;
+
+    @include mq() {
+        margin-right: 0;
+    }
+}
+
+.c-panel {
+    border-radius: 5px;
+    border: 1px solid $color-accent2;
+    float: left;
+    box-shadow: 1px 1px 5px $color-dark;
+
+    a {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+}
+
+.c-panel-title {
+    font-size: $font-size_xl;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.c-category {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: $color-dark;
+    border-radius: 3px;
+    color: $color-base;
+    max-width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.c-panel-name {
+    display: inline-block;
+    padding: 0 10px;
+    float: right;
+    max-width: 40%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.c-panel-bar {
+    height: 28px;
+    border: 2px solid $color-dark;
+    border-radius: 15px;
+    position: relative;
+    width: 90%;
+    margin: 10px auto 5px;
+    color: #333;
+    background-color: $color-base;
+    z-index: 1;
+}
+
+.c-panel-bar-progress {
+    height: 24px;
+    border-radius: 15px;
+    border: 2px solid $color-dark;
+    width: 80%;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-color: $color-accent1;
+    z-index: 0;
+    box-sizing: content-box;
+
+}
+
+.c-panel-bar-info {
+    position: relative;
+    padding-left: 15px;
+    z-index: 1;
+}
+
+.c-panel-bar-val {
+    position: relative;
+    float: right;
+    z-index: 1;
+}
+
+.c-panel-bar-val-sm {
+    position: relative;
+    z-index: 1;
+    float: right;
+    margin-right: 15px;
+    font-size: 80%;
+    padding-top: 3px;
+}
+
+.c-panel-badge {
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    font-size: 4em;
+    color: $color-accent2;
+
+    .fas {
+        text-shadow: 1px 1px 5px $color-dark;
+    }
+}
+
+
+
+// ===============================
+// そのた
+// ===============================
+
+.c-step-child {
+    border: 3px solid $color-base;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 40px auto;
+    text-align: center;
+
+    h3 {
+        margin: 25px auto 5px;
+        font-size: 20px;
+    }
+
+    p {
+        height: 80px;
+        width: 80%;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        margin: 0 auto;
+        border-top: 1px solid $color-base;
+        border-bottom: 1px solid $color-base;
+    }
+
+    button {
+        font-size: 16px;
+        width: 30%;
+        margin: 12px auto;
+        border-radius: 20px;
+    }
+}
+
+
+
+
+
+// ==========================================
+
+
+
+// .c-news {
+//     margin: 0 auto;
+//     padding: 15px 20px;
+//     width: 70%;
+//     height: 60px;
+//     overflow-y: scroll;
+//     background-color: #e9e5d3;
+//     border-radius: 5px;
+// }
+
+// .c-news-date {
+//     color: $color_corp;
+//     font-family: $font-family_corp;
+//     font-weight: bold;
+// }
+
+
+// .c-panel-group {
+//     // overflow:hidden;
+//     margin-right: -15px;
+// }
+
+// .c-panel-staff {
+//     float: left;
+//     width: calc(25% - 15px);
+
+//     &:hover {
+//         transform: scale(1.03);
+//         translate: .5s;
+//         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+//     }
+
+//     @include mq() {
+//         width: calc(50% - 15px);
+//     }
+// }
+
+// .c-panel-cource {
+//     float: left;
+//     background-color: #fff;
+//     width: calc(33.3% - 15px);
+
+//     @include mq() {
+//         width: 100%;
+//     }
+// }
+
+// .c-panel-border {
+//     border: 5px solid #f6f5f4;
+//     box-sizing: border-box;
+// }
+
+// .c-panel-active {
+//     border: 5px solid #e3a8b1;
+//     position: relative;
+// }
+
+// .c-panel-badge {
+//     position: absolute;
+//     background-color: #e37b89;
+//     color: #fff;
+//     border-radius: 60px;
+//     top: -20px;
+//     right: -20px;
+//     width: 60px;
+//     height: 60px;
+//     text-align: center;
+//     line-height: 1.3em;
+//     padding: 3px 0 0 2px;
+//     box-sizing: border-box;
+//     transform: rotate(15deg);
+
+//     @include mq() {
+//         right: -13px;
+//         padding: 10px;
+//     }
+// }
+
+// .c-panel-group-flex {
+//     display: flex;
+//     flex-wrap: wrap;
+// }
+
+// .c-panel-head {
+//     text-align: center;
+//     color: $color_corp;
+//     background-color: #fff;
+//     padding: 10px;
+// }
+
+// .c-panel-foot {
+//     padding: 10px;
+//     background-color: #fff;
+// }
+
+// .float-active {
+//     transition: .3s;
+//     background: rgba(255, 255, 255, 0.9);
+//     color: #777;
+
+//     & .menu-link {
+//         color: #777;
+//     }
+
+//     & .p-title {
+//         color: #777;
+//     }
+
+//     & span {
+//         background-color: #777;
+//     }
+// }
+
+// .c-form {
+//     width: 60%;
+//     margin: 0 auto;
+
+//     @include mq() {
+//         width: 100%;
+//     }
+// }
+
+// .input {
+//     display: block;
+//     width: 100%;
+//     padding: 5px 10px;
+//     margin-bottom: 10px;
+//     border: 3px solid #f6f5f4;
+//     height: 60px;
+//     box-sizing: border-box;
+//     color: #777;
+
+//     @include mq() {
+//         font-size: 18px;
+//     }
+
+
+// }
+
+// ::placeholder {
+//     color: #ccc;
+
+//     @include mq() {
+//         font-size: $font-size_l;
+//     }
+// }
+
+// .input-textarea {
+//     height: 200px;
+//     margin-bottom: 30px;
+// }
+
+// .c-btn-l {
+//     padding: 15px 30px;
+//     width: 100%;
+//     font-size: 18px;
+//     color: #fff;
+//     background: linear-gradient(to right, #ffdde1, #ee9ca7);
+//     border: none;
+//     cursor: pointer;
+//     border-radius: 5px;
+//     transition: .3s;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+// }

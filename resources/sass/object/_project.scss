@@ -1,0 +1,218 @@
+.p-button-accent1 {
+    background-color: $color-accent1;
+    border-color: $color-base;
+    color: $color-base;
+}
+
+.p-button-accent2 {
+    background-color: $color-accent2;
+    border-color: $color-base;
+    color: $color-base;
+}
+
+.p-button-accent3 {
+    background-color: $color-accent3;
+    border-color: $color-accent3;
+    color: $color-base;
+}
+
+.p-title-accent2 {
+    border-bottom-color: $color-base;
+}
+
+
+.p-title {
+    // font-family:$font-family_corp;
+    font-size: $font-size_xxl;
+    font-weight: bold;
+    color: #f6f5f4;
+    transition: .3s;
+}
+
+.p-container-top {
+    padding: 250px 0 100px;
+
+    @include mq() {
+        padding: 100px 0 80px;
+    }
+}
+
+.p-panel-step {
+    width: calc(50% - 15px);
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    form{
+        width:90%;
+        padding:30px 0;
+    }
+
+    @include mq(md) {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    @include mq() {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+.p-panel-edit {
+    width: 70%;
+    margin: 30px;
+    background-color: $color-accent2;
+    color: $color-base;
+    font-weight: bold;
+    padding:30px 0;
+
+    input,textarea,select{
+        color:$color-dark;
+    }
+
+    @include mq(md) {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    @include mq() {
+        width: 90%;
+    }
+}
+
+.p-panel-detail {
+    width: 70%;
+    margin: 30px;
+    font-weight: bold;
+    padding:30px 0;
+
+    input,textarea,select{
+        color:$color-dark;
+    }
+
+    form{
+        width:90%;
+        padding:30px 0;
+    }
+
+    @include mq(md) {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    @include mq() {
+        width: 90%;
+    }
+}
+
+.p-panel-step-done {
+    background: $color-accent0;
+}
+
+
+.p-panel-step-mystep {
+    background-color: $color-accent2;
+    color: $color-base;
+    font-weight: bold;
+}
+
+.p-panel-bar-mystep {
+    background-color: $color-base;
+    border-color: $color-accent2;
+    color: $color-accent2;
+}
+
+.p-prof-edit {
+    margin: 10px auto 0;
+    width: 200px;
+    height: 200px;
+
+    img {
+        border: 5px solid $color-accent3;
+    }
+}
+
+.p-prof-description{
+    width:60%;
+    margin:50px auto;
+    word-wrap:break-word;
+
+    @include mq() {
+        width: 90%;
+    }
+
+}
+
+
+.p-step-detail{
+    border-color:$color-accent3;
+    background-color:$color-accent0;
+
+    p {
+        border-top-color:$color-accent3;
+        border-bottom-color:$color-accent3;
+    }
+}
+
+
+// ==========================================
+
+.p-menu {
+    // font-family:$font-family_corp;
+    font-size: $font-size_xl;
+    // font-weight:bolder;
+
+}
+
+.menu-link {
+    color: $font-color_default;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.p-hero-title {
+    // font-family:$font-family_corp;
+    font-size: 60px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 20px rgba(227, 123, 137, 0.4),
+        0 0 50px rgba(0, 0, 0, 0.8);
+
+}
+
+
+
+
+
+.p-container-ornament {
+    background: #e9e5d3;
+    box-shadow: 0px 0px 8px 2px #ddd inset;
+}
+
+.p-container-normal .c-container-title {
+    background-color: white;
+
+    span {
+        background-color: #fff;
+        position: relative;
+        padding: 0 10px;
+        z-index: 1;
+    }
+
+    &:before,
+    &:after {
+        border-top: 1px solid #2e1f1a;
+        content: "";
+        display: block;
+        position: relative;
+        z-index: 0;
+    }
+
+    &:before {
+        top: 28px;
+    }
+
+    &:after {
+        top: -28px;
+    }
+}

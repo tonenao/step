@@ -1,0 +1,17 @@
+.l-main {
+    margin: 15px 15px 0;
+    background-color: $color-base;
+
+    @include mq() {
+        margin: 15px 10px 0;
+    }
+}
+
+.l-main-top {
+    margin: 0 15px;
+    background-color: $color-base;
+
+    @include mq() {
+        margin: 80px 10px 0;
+    }
+}

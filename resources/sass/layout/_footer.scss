@@ -2,11 +2,23 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
-    background: #888577;
-    color: #fff;
+    // height: 200px;
+    margin: 0 15px;
+    padding-bottom: 10px;
+    background: $color-accent1;
+    color: $color-base;
 
     @include mq() {
+        // height: 150px;
         font-size: 12px;
+        margin: 0 10px;
+    }
+
+    p {
+        font-size: $font-size_s;
+
+        a {
+            color: $color-base;
+        }
     }
 }

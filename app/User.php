@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //id・権限カラムのロック
+    protected $guarded=['id','role'];
+
+    //テーブルのリレーション設定
+    public function steps(){
+        return $this->hasMany('App\Step');
+    }
+
+    public function do_steps(){
+        return $this->hasMany('App\DoStep');
+    }
+
+    public function do_child_steps(){
+        return $this->hasMany('App\DoChildStep');
+    }
 }

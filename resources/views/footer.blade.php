@@ -1,3 +1,13 @@
 <footer class="footer">
-    <p>Copyright © tone-corp. All Rights Reserved</p>
+  <div class="c-container-body">
+    <div class="c-container-title-wrap">
+      <a href="{{route('steps.home')}}">
+        <h2 class="c-container-title p-title-accent2">STEP</h2>
+      </a>
+    </div>
+    <p><a href="#">会社概要</a></p>
+    <p><a href="#">プライバシーポリシー</a></p>
+    <button class="c-button c-button-footer p-button-accent1">CONTACT US</button>
+    <p>COPYRIGHT©︎ 2020  STEP INC.</p>
+    </div>
   </footer>

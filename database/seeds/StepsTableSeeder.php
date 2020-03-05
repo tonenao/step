@@ -1,0 +1,100 @@
+<?php
+
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class StepsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('steps')->insert([
+        [
+            'title'=>'最短で学んだ私の英語学習',
+            'description'=>'中学・高校と英語が苦手で偏差値30だった私が、外国人と意思疎通できる用意になった方法です。',
+            'user_id'=>1,
+            'achievement_time'=>60,
+            'category_id'=>3,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'プログラミング未経験から年収1000万稼ぐ方法',
+            'description'=>'プログラミングは学習コストが低い割に稼ぎやすい職種なのです。もちろん技術だけではダメなのでビジネスマンとしての総合力も身に付けることで1000万は難しくありませんよ。',
+            'user_id'=>1,
+            'achievement_time'=>600,
+            'category_id'=>2,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'３ヶ月で−10kg痩せたダイエットノウハウ',
+            'description'=>'ダイエットで失敗するのでしょうか？素人が個人でやるダイエットを成功させたいのであれば、身の丈にあった方法（70点の方法）でダイエットしなくてはいけません。',
+            'user_id'=>1,
+            'achievement_time'=>45,
+            'category_id'=>8,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'社会人の国家資格勉強方法',
+            'description'=>'社会人になってから資格を取るには、最短の時間で可能な限り効率よく勉強する必要があります。',
+            'user_id'=>1,
+            'achievement_time'=>300,
+            'category_id'=>5,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'未経験からのフロントエンドエンジニアとしての転職成功方法',
+            'description'=>'なんの準備もなく未経験からの転職で失敗している人はたくさんいます。何をゴールとするのかは人それぞれですが、少なくとも「転職してよかった！」と思える転職方法です。',
+            'user_id'=>1,
+            'achievement_time'=>100,
+            'category_id'=>6,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'副業で月30万稼げるようになるまでのステップ',
+            'description'=>'収入は増やしたいけど転職は難しいという方向けのノウハウです。',
+            'user_id'=>1,
+            'achievement_time'=>500,
+            'category_id'=>7,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'人間関係で悩まなくなるシンプルな考え方',
+            'description'=>'人間関係の悩みのほとんどは「考え方」を変えることで解決できます！',
+            'user_id'=>2,
+            'achievement_time'=>100,
+            'category_id'=>4,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'短期間で効率よく筋トレ！！',
+            'description'=>'私なりに実践してきた、筋トレの効果を最大化する方法です。',
+            'user_id'=>2,
+            'achievement_time'=>100,
+            'category_id'=>9,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ],
+        [
+            'title'=>'ファッションはセンスではなく理論で身に付く',
+            'description'=>'オシャレな人になるには生まれ持ったセンスがなくても大丈夫です。正しい理論を実践するのみ！',
+            'user_id'=>2,
+            'achievement_time'=>100,
+            'category_id'=>10,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ]
+        ]);
+    }
+}
