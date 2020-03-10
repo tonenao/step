@@ -1,6 +1,6 @@
 <header id="header" class="c-header">
   <div class="title">
-    <a href="{{ route('steps.home')}}">
+    <a href="{{ route('steps.index')}}">
       <h1 class="title-step">STEP</h1>
       <p class="title-step-sub">Share your life STEP</p>
     </a>

@@ -247,12 +247,22 @@
 
 .c-panel {
     border-radius: 5px;
-    border: 1px solid $color-accent2;
+    border: 1px solid $color-accent0;
     float: left;
-    box-shadow: 1px 1px 5px $color-dark;
+    transition: all 0.3s ease 0s;
+    background-color: $color-accent0;
+    // border-color: $color-accent0;
+
+    &:hover {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+        transform: translateY(-0.1875em);
+    }
+
+
+    // box-shadow: 1px 1px 1px $color-dark;
 
     a {
-        padding: 10px 15px;
+        padding: 40px 20px 15px;
         display: block;
         width: 100%;
         height: 100%;
@@ -261,9 +271,9 @@
 }
 
 .c-panel-title {
-    font-size: $font-size_xl;
+    font-size: $font-size_l;
     font-weight: bolder;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -271,20 +281,22 @@
 
 .c-category {
     display: inline-block;
-    padding: 5px 10px;
-    background-color: $color-dark;
-    border-radius: 3px;
+    padding: 3px 10px;
+    background-color: $color-accent3;
+    border-radius: 5px;
     color: $color-base;
     max-width: 60%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 80%;
+    font-weight: bold;
 }
 
 .c-panel-name {
     display: inline-block;
     padding: 0 10px;
-    float: right;
+    // float: right;
     max-width: 40%;
     overflow: hidden;
     white-space: nowrap;
@@ -297,20 +309,22 @@
     border-radius: 15px;
     position: relative;
     width: 90%;
-    margin: 10px auto 5px;
+    margin: 15px auto 5px;
     color: #333;
     background-color: $color-base;
     z-index: 1;
+    font-weight: bold;
+    overflow: hidden;
 }
 
 .c-panel-bar-progress {
-    height: 24px;
+    height: 28px;
     border-radius: 15px;
-    border: 2px solid $color-dark;
+    // border: 1px solid $color-dark;
     width: 80%;
     position: absolute;
     top: -2px;
-    left: -2px;
+    left: 0px;
     background-color: $color-accent1;
     z-index: 0;
     box-sizing: content-box;
@@ -357,7 +371,7 @@
 // ===============================
 
 .c-step-child {
-    border: 3px solid $color-base;
+    border: 2px solid $color-base;
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -381,9 +395,11 @@
 
     button {
         font-size: 16px;
+        font-weight: bold;
         width: 30%;
-        margin: 12px auto;
+        margin: 10px auto;
         border-radius: 20px;
+        letter-spacing: 1px;
     }
 }
 

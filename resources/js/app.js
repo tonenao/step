@@ -19,8 +19,12 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('home-step-component', require('./components/HomeStepComponent.vue').default);
+Vue.component('step-count-component', require('./components/StepCountComponent.vue').default);
+Vue.component('my-step-component', require('./components/MyStepComponent.vue').default);
+Vue.component('my-challenge-component', require('./components/MyChallengeComponent.vue').default);
+Vue.component('progress-bar-component', require('./components/ProgressBarComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,5 +33,5 @@ Vue.component('home-step-component', require('./components/HomeStepComponent.vue
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

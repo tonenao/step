@@ -18,7 +18,6 @@ class CreateDoChildStepsTable extends Migration
             $table->integer('child_step_id');
             $table->integer('user_id');
             $table->string('comment')->nullable();
-            $table->boolean('status')->default(0);
             $table->boolean('delete_flg')->default(0);
             $table->timestamps();
         });

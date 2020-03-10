@@ -19,10 +19,10 @@
         <div class="c-panel p-panel-detail">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-        <h3 class="c-panel-title">最短で学んだ英語学習あああああああああ</h3>
-        <span class="c-category">英語学習</span>
+        <h3 class="c-panel-title">{{ $step->title }}</h3>
+        <span class="c-category">{{ $step->category->category }}</span>
 
-          <span class="c-panel-name">aaaaaaa</span>
+          <span class="c-panel-name">{{ $step->user->name }}</span>
 
 
 
@@ -34,6 +34,10 @@
           <div class="c-panel-bar-progress"></div>
           </div>
 
+          <div class="p-description">
+            <p>{{ $step->description }}</p>
+          </div>
+
             
 
             <div class="c-form-group">
@@ -42,31 +46,31 @@
                   <div class="c-step-child p-step-detail">
                     <h3>STEP1</h3>
                     <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent3">編集</button>
+                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
                   </div>
 
                   <div class="c-step-child p-step-detail">
                     <h3>STEP2</h3>
                     <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent3">編集</button>
+                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
                   </div>
 
                   <div class="c-step-child p-step-detail">
                     <h3>STEP3</h3>
                     <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent3">編集</button>
+                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
                   </div>
 
                   <div class="c-step-child p-step-detail">
                     <h3>STEP4</h3>
                     <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent3">編集</button>
+                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
                   </div>
 
                   <div class="c-step-child p-step-detail">
                     <h3>STEP5</h3>
                     <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent3">編集</button>
+                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
                   </div>
 
 

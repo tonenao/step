@@ -13,6 +13,44 @@ class DoChildStepsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('do_child_steps')->insert([
+            [
+                'child_step_id'=>17,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            [
+                'child_step_id'=>18,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            [
+                'child_step_id'=>11,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            [
+                'child_step_id'=>12,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            [
+                'child_step_id'=>13,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            [
+                'child_step_id'=>14,
+                'user_id'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ],
+            
+        ]);
     }
 }

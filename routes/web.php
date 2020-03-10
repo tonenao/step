@@ -14,37 +14,41 @@
 
 Route::get('/', 'StepsController@top')->name('steps.top');
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
+Route::get('/login', function () {
+    return view('auth.login');
+});
 
-Route::get('/home', 'StepsController@home')->name('steps.home');
+Route::get('/step', 'StepsController@index')->name('steps.index');
+
+Route::get('/step/json', 'StepsController@index_json')->name('steps.index_json');
 
 
 Route::get('/mypage', 'StepsController@mypage')->name('steps.mypage');
 
+Route::get('/mystep/json','StepsController@mystep_json')->name('steps.mystep_json');
 
-Route::get('/stepregist', 'StepsController@new')->name('steps.new');
-
-Route::post('/stepregist', 'StepsController@create')->name('steps.create');
-
-
-Route::get('/stepdetail/{id}', 'StepsController@show')->name('steps.show');
+Route::get('/mychallenge/json','StepsController@mychallenge_json')->name('steps.mychallenge_json');
 
 
-Route::get('/stepedit/{id}', 'StepsController@edit')->name('steps.edit');
+Route::get('/step/new', 'StepsController@new')->name('steps.new');
 
-Route::post('/stepedit/{id}', 'StepsController@update')->name('steps.update');
+Route::post('/step', 'StepsController@create')->name('steps.create');
+
+
+Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
+
+
+Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
+
+Route::post('/step/{id}', 'StepsController@update')->name('steps.update');
 
 
 
-Route::get('/profedit', function () {
-    return view('profedit');
-});
+Route::get('prof/{id}','UserController@show')->name('users.show');
 
-Route::get('/profdetail', function () {
-    return view('profdetail');
-});
+Route::get('/prof/{id}/edit', 'UserController@edit')->name('users.edit');
+
+Route::post('/prof/{id}', 'UserController@update')->name('users.update');
 
 Auth::routes();
 

@@ -17,7 +17,7 @@ class CreateChildStepsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->integer('step_id');
-            $table->integer('description');
+            $table->string('description');
             $table->boolean('delete_flg')->default(0);
             $table->timestamps();
         });

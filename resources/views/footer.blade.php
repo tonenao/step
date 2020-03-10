@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="c-container-body">
     <div class="c-container-title-wrap">
-      <a href="{{route('steps.home')}}">
+      <a href="{{route('steps.index')}}">
         <h2 class="c-container-title p-title-accent2">STEP</h2>
       </a>
     </div>
