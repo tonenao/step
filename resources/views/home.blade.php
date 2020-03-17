@@ -36,31 +36,7 @@
           <home-step-component></home-step-component>
 
 
-            <!-- @foreach($steps as $step)
-                <div class="c-panel p-panel-step p-panel-step-done">
 
-                  <a href="{{ route('steps.show',$step->id) }}">
-
-                  <span class="c-panel-badge">
-                    <i class="fas fa-check"></i>
-                  </span>
-                    <h3 class="c-panel-title">{{ $step->title }}</h3>
-                    <span class="c-category">{{ $step->category->category }}</span>
-                    <span class="c-panel-name">{{ $step->user->name }}</span>
-                    <div class="c-panel-bar p-panel-bar-done">
-                      <span class="c-panel-bar-info">Challenging!!</span>
-                  
-                      <span class="c-panel-bar-val-sm">人</span>
-                      <span class="c-panel-bar-val">{{ $step->count_challenge() }}</span>
-                    </div>
-                    <div class="c-panel-bar p-panel-bar-done">
-                      <span class="c-panel-bar-info">Done!!</span>
-                      <span class="c-panel-bar-val-sm">人</span>
-                      <span class="c-panel-bar-val">{{ $step->count_done() }}</span>
-                    </div>
-                  </a>
-                </div>
-              @endforeach -->
         </div>
 
       </div>

@@ -37,10 +37,12 @@ Route::post('/step', 'StepsController@create')->name('steps.create');
 
 Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
 
+Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json');
+
 
 Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
 
-Route::post('/step/{id}', 'StepsController@update')->name('steps.update');
+Route::post('/step/do_child/', 'DoChildStepController@create')->name('do_child_steps.create');
 
 
 

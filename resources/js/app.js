@@ -21,10 +21,10 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('home-step-component', require('./components/HomeStepComponent.vue').default);
-Vue.component('step-count-component', require('./components/StepCountComponent.vue').default);
 Vue.component('my-step-component', require('./components/MyStepComponent.vue').default);
 Vue.component('my-challenge-component', require('./components/MyChallengeComponent.vue').default);
 Vue.component('progress-bar-component', require('./components/ProgressBarComponent.vue').default);
+Vue.component('child-step-component', require('./components/ChildStepComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -15,22 +15,6 @@
         <div class="c-panel-wrap">
 
           <my-challenge-component></my-challenge-component>
-        
-          <!-- @foreach($steps as $step)
-            <div class="c-panel p-panel-step">
-              <a href="#">
-                <h3 class="c-panel-title">{{ $step->title }}</h3>
-                <span class="c-category">{{ $step->category->category }}</span>
-                <span class="c-panel-name">{{ $step->user->name }}</span>
-                <div class="c-panel-bar">
-                  <span class="c-panel-bar-info">進捗…</span>
-                  <span class="c-panel-bar-val-sm">10</span>
-                  <span class="c-panel-bar-val">3/</span>
-                <div class="c-panel-bar-progress"></div>
-                </div>
-                </a>
-              </div>
-          @endforeach -->
 
 
         </div>

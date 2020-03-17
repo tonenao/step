@@ -3,98 +3,75 @@
 @section('title','STEP詳細')
 
 @section('content')
-<div class="l-main-top">
-<div class="c-container  p-container-top">
+<div id="app">
+  <div class="l-main-top">
+    <div class="c-container  p-container-top">
 
-    <div class="c-container-title-wrap">
-        <h2 class="c-container-title">{{ __('STEP詳細') }}</h2>
-    </div>
+      <div class="c-container-title-wrap">
+          <h2 class="c-container-title">{{ __('STEP詳細') }}</h2>
+      </div>
 
-    <div class="c-container-body">
-      <!-- <div id="app">
-        <example-component></example-component>
-      </div> -->
-      <!-- <div class="c-panel-wrap"> -->
+      <div class="c-container-body">
 
         <div class="c-panel p-panel-detail">
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-        <h3 class="c-panel-title">{{ $step->title }}</h3>
-        <span class="c-category">{{ $step->category->category }}</span>
-
-          <span class="c-panel-name">{{ $step->user->name }}</span>
-
+          <form method="POST" action="{{ route('login') }}">
+              @csrf
+            <h3 class="c-panel-title">{{ $step->title }}</h3>
+            <span class="c-category">{{ $step->category->category }}</span>
+            <span class="c-panel-name">{{ $step->user->name }}</span>
 
 
-
-          <div class="c-panel-bar">
-            <span class="c-panel-bar-info">進捗…</span>
-            <span class="c-panel-bar-val-sm">10</span>
-            <span class="c-panel-bar-val">3/</span>
-          <div class="c-panel-bar-progress"></div>
-          </div>
-
-          <div class="p-description">
-            <p>{{ $step->description }}</p>
-          </div>
-
-            
-
-            <div class="c-form-group">
-                <div class="">
-
-                  <div class="c-step-child p-step-detail">
-                    <h3>STEP1</h3>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
-                  </div>
-
-                  <div class="c-step-child p-step-detail">
-                    <h3>STEP2</h3>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
-                  </div>
-
-                  <div class="c-step-child p-step-detail">
-                    <h3>STEP3</h3>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
-                  </div>
-
-                  <div class="c-step-child p-step-detail">
-                    <h3>STEP4</h3>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
-                  </div>
-
-                  <div class="c-step-child p-step-detail">
-                    <h3>STEP5</h3>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                    <button class="c-button c-button-step-child p-button-accent2">編集</button>
-                  </div>
+            <progress-bar-component
+            :count_child="{{ $step->count_child_steps() }}"
+            :count_do_child="{{ $step->count_do_child_steps }}"
+          ></progress-bar-component>
 
 
-
-                </div>
+            <div class="p-description">
+              <p>{{ $step->description }}</p>
             </div>
 
-            
+            <div class="c-panel-bar p-panel-bar-mystep">
+              <span class="c-panel-bar-info">Challenging!!</span>
+              <span class="c-panel-bar-val-sm">人</span>
+              <span class="c-panel-bar-val">{{$step->count_challenge()}}</span>
+            </div>
+            <div class="c-panel-bar p-panel-bar-mystep">
+              <span class="c-panel-bar-info">Done!!</span>
+              <span class="c-panel-bar-val-sm">人</span>
+              <span class="c-panel-bar-val">{{$step->count_done()}}</span>
+            </div>
+
+            <div class="c-form-group">
+              <div class="">
+
+                <child-step-component :id={{$id}} :count_do_child="{{ $step->count_do_child_steps }}"></child-step-component>
+
+
+              </div>
+            </div>
+
+              
 
             <div class="c-form-group-submit">
                     <button type="submit" class="c-button   c-button-form p-button-accent2">
-                        {{ __('更新する ') }}
+                        {{ __('←もどる') }}
                     </button>
             </div>
-        </form>
+
+            <div class="c-form-group-submit">
+                    <button type="submit" class="c-button   c-button-form p-button-accent3">
+                        {{ __('Challengeする') }}
+                    </button>
+            </div>
+
+
+          </form>
         </div>
-
-        
-
-    <!-- </div> -->
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
 
 
 @endsection

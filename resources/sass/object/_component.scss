@@ -249,17 +249,8 @@
     border-radius: 5px;
     border: 1px solid $color-accent0;
     float: left;
-    transition: all 0.3s ease 0s;
     background-color: $color-accent0;
-    // border-color: $color-accent0;
 
-    &:hover {
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
-        transform: translateY(-0.1875em);
-    }
-
-
-    // box-shadow: 1px 1px 1px $color-dark;
 
     a {
         padding: 40px 20px 15px;
@@ -385,12 +376,13 @@
 
     p {
         height: 80px;
-        width: 80%;
+        width: 75%;
         overflow: hidden;
         overflow-wrap: break-word;
         margin: 0 auto;
         border-top: 1px solid $color-base;
         border-bottom: 1px solid $color-base;
+        text-align: left;
     }
 
     button {

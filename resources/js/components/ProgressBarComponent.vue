@@ -14,6 +14,7 @@ export default {
     console.log("ProgressBarコンポーネント");
   },
   computed: {
+    //進捗バーのwidthを取得
     progressWidth: function() {
       var progress = Math.round((this.count_do_child / this.count_child) * 100);
       if (!isNaN(progress)) {
