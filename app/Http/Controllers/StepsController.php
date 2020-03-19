@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Step;
 use App\ChildStep;
+use App\DoStep;
 
 class StepsController extends Controller
 {
@@ -100,8 +101,13 @@ class StepsController extends Controller
 
     public function show($id){
         $step=Step::find($id);
-        $child_steps=$step->child_steps;
+        $step['count_challenge']=$step->count_challenge();
+        $step['count_done']=$step->count_done();
+        $step['count_child_steps']=$step->count_child_steps();
+        $step['auth_user_challenge']=$step->auth_user_challenge();
+        $step['do_steps_auth']=$step->do_steps_auth[0];
         $count_do_child_steps=0;
+        $child_steps=$step->child_steps;
         foreach($child_steps as $child_step){
             if($child_step->count_do_child_step()){
                 $count_do_child_steps ++;

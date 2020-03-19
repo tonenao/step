@@ -11,12 +11,14 @@
 |
 */
 
-
-Route::get('/', 'StepsController@top')->name('steps.top');
-
 Route::get('/login', function () {
     return view('auth.login');
 });
+
+
+//StepsController
+
+Route::get('/', 'StepsController@top')->name('steps.top');
 
 Route::get('/step', 'StepsController@index')->name('steps.index');
 
@@ -42,9 +44,24 @@ Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json
 
 Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
 
-Route::post('/step/do_child/', 'DoChildStepController@create')->name('do_child_steps.create');
+
+//DoStepController
+
+Route::post('/do_step/{id}', 'DoStepController@update');
 
 
+
+
+//DoChildStepController
+
+Route::post('/step/do_child/', 'DoChildStepController@create');
+
+Route::delete('/step/do_child/', 'DoChildStepController@delete');
+
+
+
+
+//UserController
 
 Route::get('prof/{id}','UserController@show')->name('users.show');
 
@@ -54,4 +71,4 @@ Route::post('/prof/{id}', 'UserController@update')->name('users.update');
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+

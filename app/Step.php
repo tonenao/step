@@ -33,6 +33,12 @@ class Step extends Model
     }
 
 
+    //ログインユーザーのdo_stepsのみを取得
+    public function do_steps_auth(){
+        $id=Auth::id();
+        return $this->hasMany('App\DoStep')->where('user_id',$id);
+    }
+
     //チャレンジ中ユーザー数をカウント
     public function count_challenge(){
         return $this->do_steps->where('status','0')->count();

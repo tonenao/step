@@ -19,37 +19,8 @@
             <h3 class="c-panel-title">{{ $step->title }}</h3>
             <span class="c-category">{{ $step->category->category }}</span>
             <span class="c-panel-name">{{ $step->user->name }}</span>
-
-
-            <progress-bar-component
-            :count_child="{{ $step->count_child_steps() }}"
-            :count_do_child="{{ $step->count_do_child_steps }}"
-          ></progress-bar-component>
-
-
-            <div class="p-description">
-              <p>{{ $step->description }}</p>
-            </div>
-
-            <div class="c-panel-bar p-panel-bar-mystep">
-              <span class="c-panel-bar-info">Challenging!!</span>
-              <span class="c-panel-bar-val-sm">人</span>
-              <span class="c-panel-bar-val">{{$step->count_challenge()}}</span>
-            </div>
-            <div class="c-panel-bar p-panel-bar-mystep">
-              <span class="c-panel-bar-info">Done!!</span>
-              <span class="c-panel-bar-val-sm">人</span>
-              <span class="c-panel-bar-val">{{$step->count_done()}}</span>
-            </div>
-
-            <div class="c-form-group">
-              <div class="">
-
-                <child-step-component :id={{$id}} :count_do_child="{{ $step->count_do_child_steps }}"></child-step-component>
-
-
-              </div>
-            </div>
+          
+            <step-detail-component  :id={{$id}} :step="{{json_encode($step)}}" :do_step_id="{{$step->do_steps_auth->id}}" :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
 
               
 
