@@ -14,30 +14,38 @@
       <div class="c-container-body">
 
         <div class="c-panel p-panel-detail">
-          <form method="POST" action="{{ route('login') }}">
+          <!-- <form method="POST" action="{{ route('login') }}"> -->
+          <form method="POST" action="">
               @csrf
             <h3 class="c-panel-title">{{ $step->title }}</h3>
+           
             <span class="c-category">{{ $step->category->category }}</span>
             <span class="c-panel-name">{{ $step->user->name }}</span>
           
-            <step-detail-component  :id={{$id}} :step="{{json_encode($step)}}" :do_step_id="{{$step->do_steps_auth->id}}" :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
+            <!-- <step-detail-component  :id={{$id}} :step="{{json_encode($step)}}"  :do_steps="{{$step->do_steps_auth}}"></step-detail-component> -->
+            <step-detail-component  :step="{{json_encode($step)}}"  :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
 
               
 
-            <div class="c-form-group-submit">
+            <!-- <div class="c-form-group-submit">
                     <button type="submit" class="c-button   c-button-form p-button-accent2">
                         {{ __('←もどる') }}
                     </button>
             </div>
 
             <div class="c-form-group-submit">
+              @if($step->auth_user_challenge)
                     <button type="submit" class="c-button   c-button-form p-button-accent3">
+                        {{ __('Challengeをやめる') }}
+                    </button>
+              @else
+              <button type="submit" class="c-button   c-button-form p-button-accent3">
                         {{ __('Challengeする') }}
                     </button>
-            </div>
+              @endif
+            </div> -->
 
-
-          </form>
+         </form>
         </div>
       </div>
     </div>

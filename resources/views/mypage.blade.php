@@ -8,7 +8,7 @@
     <div class="c-container p-container-top">
 
       <div class="c-container-title-wrap">
-          <h2 class="c-container-title">{{ __('チャレンジ中STEP') }}</h2>
+          <h2 class="c-container-title">チャレンジ中STEP</h2>
       </div>
 
       <div class="c-container-body">
@@ -26,7 +26,7 @@
     <div class="c-container">
 
       <div class="c-container-title-wrap">
-          <h2 class="c-container-title">{{ __('登録したSTEP') }}</h2>
+          <h2 class="c-container-title">登録したSTEP</h2>
       </div>
       <div class="c-container-body">
           

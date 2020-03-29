@@ -134,6 +134,7 @@ textarea {
     box-sizing: border-box;
     transition: all 0.5s;
     background-color: #FDF7EB;
+    resize: vertical;
 
     &:focus {
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
@@ -158,9 +159,9 @@ textarea {
     width: 100%;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #FDF7EB inset !important;
-}
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//     -webkit-box-shadow: 0 0 0 30px #FDF7EB inset !important;
+// }

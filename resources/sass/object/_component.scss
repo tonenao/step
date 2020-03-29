@@ -51,7 +51,7 @@
 
 .c-form-group-submit {
     width: 80%;
-    margin-top: 60px;
+    margin: 60px auto 30px;
 }
 
 .invalid-feedback {
@@ -362,12 +362,14 @@
 // ===============================
 
 .c-step-child {
+    position: relative;
     border: 2px solid $color-base;
     border-radius: 50%;
     width: 200px;
     height: 200px;
     margin: 40px auto;
     text-align: center;
+    background-color: $color-accent2;
 
     h3 {
         margin: 25px auto 5px;
@@ -385,6 +387,16 @@
         text-align: left;
     }
 
+    textarea {
+        height: 80px;
+        width: 75%;
+        font: inherit;
+        margin: 0 auto -7px;
+        border: 0.5px solid #ddd;
+        text-align: left;
+        resize: none;
+    }
+
     button {
         font-size: 16px;
         font-weight: bold;
@@ -393,13 +405,40 @@
         border-radius: 20px;
         letter-spacing: 1px;
     }
+
+    &.isModal {
+        z-index: 2;
+    }
+}
+
+
+.c-modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
+// ==========================================
+
+.modal-enter-active {
+    transition: opacity .5s
+}
+
+.modal-enter {
+    opacity: 0
 }
 
 
 
 
-
 // ==========================================
+
 
 
 

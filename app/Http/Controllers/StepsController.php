@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Step;
 use App\ChildStep;
 use App\DoStep;
+use App\Category;
 
 class StepsController extends Controller
 {
+
     public function top(){
         return view('top');
     }
@@ -20,7 +22,7 @@ class StepsController extends Controller
         return view('home',compact('steps'));
     }
 
-    //一覧ページへのJSON
+    //STEP一覧へのJSON
     public function index_json(){
         $steps=Step::orderBy('id','desc')->get();
         foreach($steps as $step){
@@ -45,9 +47,35 @@ class StepsController extends Controller
         return $steps->toJson();
     }
 
+    //お気に入りSTEP一覧へのJSON
+    public function favorite_json(){
+        $steps=Step::withCount('do_steps')->orderBy('do_steps_count','desc')->limit(5)->get();
+        foreach($steps as $step){
+            $category=$step->category;
+            $user=$step->user;
+            $count_challenge=$step->count_challenge();
+            $count_done=$step->count_done();
+
+            // $auth_user_challenge_doneにログインユーザーがチャレンジすみかを判定
+            if($step->auth_user_challenge_done()){
+                $auth_user_challenge_done=true;
+            }else{
+                $auth_user_challenge_done=false;
+            }
+
+            $step['category']=$category;
+            $step['user']=$user;
+            $step['count_challenge']=$count_challenge;
+            $step['count_done']=$count_done;
+            $step['auth_user_challenge_done']=$auth_user_challenge_done;
+        }
+        return $steps->toJson();
+    }
+
     public function mypage(){
-        $steps=Step::all();
-        return view('mypage',compact('steps'));
+        // $steps=Step::all();
+        // return view('mypage',compact('steps'));
+        return view('mypage');
     }
 
     //マイページへのJSON（MYSTEP）
@@ -91,9 +119,7 @@ class StepsController extends Controller
 
 
 
-    public function new(){
-        return view('stepregist');
-    }
+
 
     public function create(Request $request){
         return redirect('/mypage');
@@ -105,7 +131,11 @@ class StepsController extends Controller
         $step['count_done']=$step->count_done();
         $step['count_child_steps']=$step->count_child_steps();
         $step['auth_user_challenge']=$step->auth_user_challenge();
-        $step['do_steps_auth']=$step->do_steps_auth[0];
+        // $step['do_steps_auth']=$step->zdo_steps_auth[0];
+        if(isset($step->do_steps_auth[0])){
+        $step['do_steps_auth']=$step->do_steps_auth[0];}
+        // else{$step['do_steps_auth']=array();};
+        
         $count_do_child_steps=0;
         $child_steps=$step->child_steps;
         foreach($child_steps as $child_step){
@@ -132,11 +162,33 @@ class StepsController extends Controller
         return $child_steps->toJson();
     }
 
-    public function edit($id){
-        return view('stepedit');
+
+
+    public function new(){
+        return view('stepregist');
     }
 
-    public function update($id){
-        return redirect('/mypage');
+    public function edit($id){
+        if(!ctype_digit($id)){
+            return redirect('stepregist')->with('flash_message', __('Invalid operation was performed.'));
+        };
+        $step=Step::find($id);
+        $categories=Category::all();
+        return view('stepedit',compact('id','step','categories'));
+    }
+
+    public function update(Request $request,$id){
+        if(!ctype_digit($id)){
+            return redirect('stepregist')->with('flash_message', __('Invalid operation was performed.'));
+        };
+        $step=Step::find($id);
+        $data=[
+            'title'=>$request->title,
+            'category_id'=>$request->category,
+            'achievement_time'=>$request->achievement_time,
+            'description'=>$request->description
+        ];
+        $step->update($data);
+        return redirect('/mypage')->with('flash_message', '更新しました');
     }
 }

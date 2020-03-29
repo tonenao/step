@@ -9,7 +9,11 @@
 
 <script>
 export default {
-  props: ["count_child", "count_do_child"],
+  // props: ["count_child", "count_do_child", ":auth_challenge="],
+  props: {
+    count_child: { type: Number, default: "" },
+    count_do_child: { type: Number, default: "" }
+  },
   mounted: function() {
     console.log("ProgressBarコンポーネント");
   },

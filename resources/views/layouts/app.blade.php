@@ -14,6 +14,12 @@
 @include('header')
     
 <!-- <div class="l-main"> -->
+
+@if (session('flash_message'))
+    <div class="alert alert-primary text-center" role="alert">
+        {{ session('flash_message') }}
+    </div>
+@endif
     
 @yield('content')
 

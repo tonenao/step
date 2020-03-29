@@ -189,6 +189,7 @@ textarea {
   box-sizing: border-box;
   transition: all 0.5s;
   background-color: #FDF7EB;
+  resize: vertical;
 }
 
 input:focus,
@@ -210,13 +211,6 @@ textarea:focus {
   font-size: 1em;
   padding: 0.4em 0.8em;
   width: 100%;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #FDF7EB inset !important;
 }
 
 .l-main {
@@ -406,7 +400,7 @@ footer p a {
 
 .c-form-group-submit {
   width: 80%;
-  margin-top: 60px;
+  margin: 60px auto 30px;
 }
 
 .invalid-feedback {
@@ -684,12 +678,14 @@ footer p a {
 }
 
 .c-step-child {
+  position: relative;
   border: 2px solid #FEFEFE;
   border-radius: 50%;
   width: 200px;
   height: 200px;
   margin: 40px auto;
   text-align: center;
+  background-color: #F56608;
 }
 
 .c-step-child h3 {
@@ -708,6 +704,16 @@ footer p a {
   text-align: left;
 }
 
+.c-step-child textarea {
+  height: 80px;
+  width: 75%;
+  font: inherit;
+  margin: 0 auto -7px;
+  border: 0.5px solid #ddd;
+  text-align: left;
+  resize: none;
+}
+
 .c-step-child button {
   font-size: 16px;
   font-weight: bold;
@@ -715,6 +721,29 @@ footer p a {
   margin: 10px auto;
   border-radius: 20px;
   letter-spacing: 1px;
+}
+
+.c-step-child.isModal {
+  z-index: 2;
+}
+
+.c-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: #333;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modal-enter-active {
+  transition: opacity 0.5s;
+}
+
+.modal-enter {
+  opacity: 0;
 }
 
 .p-button-accent1 {
@@ -725,7 +754,7 @@ footer p a {
 
 .p-button-accent2 {
   background-color: #F56608;
-  border-color: #F56608;
+  border-color: #FEFEFE;
   color: #FEFEFE;
 }
 
@@ -802,6 +831,10 @@ footer p a {
   color: #555;
 }
 
+.p-panel-edit form {
+  width: 80%;
+}
+
 @media screen and (min-width: 415px) and (max-width: 768px) {
   .p-panel-edit {
     width: 100%;
@@ -811,7 +844,7 @@ footer p a {
 
 @media screen and (max-width: 414px) {
   .p-panel-edit {
-    width: 90%;
+    width: 100%;
   }
 }
 

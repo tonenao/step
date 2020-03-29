@@ -4,7 +4,7 @@
       <div
         class="c-step-child p-step-detail p-step-detail-done"
         style="position:relative;"
-        v-if="count_do_child>=index+1"
+        v-if="count>=index+1 && auth_challenge"
         v-on:click="removeData(child_step.id)"
       >
         <span class="c-panel-badge">
@@ -15,17 +15,17 @@
         <button
           type="button"
           class="c-button c-button-step-child p-button-accent3"
-          v-if="count_do_child===index+1 && auth_challenge"
+          v-if="count===index+1 && auth_challenge"
         >戻す</button>
       </div>
 
-      <div class="c-step-child p-step-detail" v-if="count_do_child<index+1">
+      <div class="c-step-child p-step-detail" v-if="count<index+1 || !auth_challenge">
         <h3>STEP{{index+1}}</h3>
         <p>{{child_step.title}}</p>
         <button
           type="button"
           class="c-button c-button-step-child p-button-accent2"
-          v-if="count_do_child===index && auth_challenge"
+          v-if="count===index && auth_challenge"
           v-on:click="createData(child_step.id)"
         >Clear</button>
       </div>
@@ -36,18 +36,22 @@
 <script>
 const axios = require("axios");
 export default {
-  props: ["id", "count_do_child", "count_child", "auth_challenge"],
+  props: {
+    id: { type: Number, default: "" },
+    count_do_child: { type: Number, default: "" },
+    count_child: { type: Number, default: "" },
+    auth_challenge: { type: Number, default: "" }
+  },
   mounted: function() {
     console.log("ChildStepコンポーネント");
-    console.log(this.id);
     this.getData();
   },
 
   data: function() {
     return {
-      // count_do_child: this.count_do_child,
-      child_steps: [],
-      status_flg: ""
+      count: this.count_do_child,
+      child_steps: []
+      // status_flg: ""
     };
   },
 
@@ -66,8 +70,9 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.count_do_child++;
-      this.$emit("click-inc-count", this.status_flg);
+      this.count++;
+      // this.$emit("click-inc-count", this.status_flg);
+      this.$emit("click-inc-count");
     },
     removeData($child_step_id) {
       axios
@@ -78,8 +83,9 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.count_do_child--;
-      this.$emit("click-dec-count", this.status_flg);
+      this.count--;
+      // this.$emit("click-dec-count", this.status_flg);
+      this.$emit("click-dec-count");
     }
   }
 };

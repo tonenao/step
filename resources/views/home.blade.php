@@ -13,7 +13,7 @@
       <div class="c-container-body">
         <div class="c-panel-wrap">
 
-          <home-step-component></home-step-component>
+          <favorite-step-component></favorite-step-component>
           
         </div>
       </div>

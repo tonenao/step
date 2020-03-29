@@ -6,7 +6,7 @@
 
 .p-button-accent2 {
     background-color: $color-accent2;
-    border-color: $color-accent2;
+    border-color: $color-base;
     color: $color-base;
 }
 
@@ -78,13 +78,17 @@
         color: $color-dark;
     }
 
+    form {
+        width: 80%;
+    }
+
     @include mq(md) {
         width: 100%;
         margin-right: 0;
     }
 
     @include mq() {
-        width: 90%;
+        width: 100%;
     }
 }
 

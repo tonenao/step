@@ -18,11 +18,15 @@ Route::get('/login', function () {
 
 //StepsController
 
+
+
 Route::get('/', 'StepsController@top')->name('steps.top');
 
 Route::get('/step', 'StepsController@index')->name('steps.index');
 
 Route::get('/step/json', 'StepsController@index_json')->name('steps.index_json');
+
+Route::get('/favorite/json', 'StepsController@favorite_json')->name('steps.favorite_json');
 
 
 Route::get('/mypage', 'StepsController@mypage')->name('steps.mypage');
@@ -44,10 +48,16 @@ Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json
 
 Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
 
+Route::post('/step/{id}/edit', 'StepsController@update')->name('steps.update');
+
 
 //DoStepController
 
-Route::post('/do_step/{id}', 'DoStepController@update');
+Route::post('/do_step', 'DoStepController@update');
+
+Route::post('/do_step/challenge', 'DoStepController@challenge');
+
+Route::post('/do_step/giveup', 'DoStepController@giveup');
 
 
 
@@ -65,7 +75,7 @@ Route::delete('/step/do_child/', 'DoChildStepController@delete');
 
 Route::get('prof/{id}','UserController@show')->name('users.show');
 
-Route::get('/prof/{id}/edit', 'UserController@edit')->name('users.edit');
+Route::get('/prof/edit', 'UserController@edit')->name('users.edit');
 
 Route::post('/prof/{id}', 'UserController@update')->name('users.update');
 
