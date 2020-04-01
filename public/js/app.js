@@ -2069,6 +2069,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2086,8 +2107,16 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     return {
       child_steps: [],
       modal: false,
-      add_modal: false
+      add_modal: false,
+      add_title: "",
+      add_description: "",
+      isError: ""
     };
+  },
+  computed: {
+    add_steps_number: function add_steps_number() {
+      return this.child_steps.length + 1;
+    }
   },
   methods: {
     getData: function getData() {
@@ -2108,36 +2137,63 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       }
     },
     //子STEP追加モードの切り替え
-    AddMode: function AddMode() {
+    changeAddMode: function changeAddMode() {
       this.modal = !this.modal;
       this.add_modal = !this.add_modal;
-    } // createData($child_step_id) {
-    //   axios
-    //     .post("/step/do_child/", { child_step_id: $child_step_id })
-    //     .then(function(response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function(error) {
-    //       console.log(error);
-    //     });
-    //   this.count++;
-    //   // this.$emit("click-inc-count", this.status_flg);
-    //   this.$emit("click-inc-count");
-    // },
-    // removeData($child_step_id) {
-    //   axios
-    //     .delete("/step/do_child/", { data: { child_step_id: $child_step_id } })
-    //     .then(function(response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function(error) {
-    //       console.log(error);
-    //     });
-    //   this.count--;
-    //   // this.$emit("click-dec-count", this.status_flg);
-    //   this.$emit("click-dec-count");
-    // }
-
+    },
+    //タイトルのバリデーション＋ChildStepの追加
+    addChildStep: function addChildStep() {
+      if (this.add_title) {
+        this.child_steps.push({
+          title: this.add_title,
+          step_id: this.id,
+          description: this.add_description
+        });
+        this.isError = false;
+        this.changeAddMode();
+        this.createData();
+      } else {
+        console.log("空っぽ");
+        this.isError = true;
+      }
+    },
+    //タイトルのバリデーション＋ChildStepの更新
+    updateChildStep: function updateChildStep(index) {
+      if (this.child_steps[index].title) {
+        this.isError = false;
+        this.changeEditMode(index);
+        this.updateData(index);
+      } else {
+        console.log("空っぽ");
+        this.isError = true;
+      }
+    },
+    //新規のchild_stepのDB登録
+    createData: function createData() {
+      axios.post("/step/child_step/", {
+        title: this.add_title,
+        description: this.add_description,
+        step_id: this.id
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.add_title = "";
+      this.add_description = "";
+      this.getData();
+    },
+    //child_stepのDB内容更新
+    updateData: function updateData(index) {
+      axios.post("/step/" + this.child_steps[index].id + "/child_step/", {
+        title: this.child_steps[index].title,
+        description: this.child_steps[index].description
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -2301,6 +2357,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2494,6 +2553,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2512,21 +2576,14 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     return {
       count_child: this.step.count_child_steps,
       count_do_child: this.step.count_do_child_steps,
-      // challenging: this.step.auth_user_challenge,
       count_challenge: this.step.count_challenge,
       count_done: this.step.count_done,
       auth_user_challenge: this.step.auth_user_challenge,
       status_flg: "",
-      status: 0 // do_step_id: this.do_steps.id
-
+      status: 0
     };
   },
   computed: {
-    // do_step_id: function() {
-    //   if (Object.keys(this.do_steps).length > 0) {
-    //     return this.do_steps.id;
-    //   }
-    // },
     button_word: function button_word() {
       if (this.auth_user_challenge) {
         return "Challengeをやめる";
@@ -3231,29 +3288,226 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm._l(_vm.child_steps, function(child_step, index) {
-        return _c("li", { key: child_step.index }, [
-          child_step.editMode
-            ? _c("div", { staticClass: "c-step-child isModal" }, [
-                _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+        return _c(
+          "li",
+          { key: child_step.index },
+          [
+            _c("transition", { attrs: { name: "modal" } }, [
+              child_step.editMode
+                ? _c(
+                    "div",
+                    { key: "edit", staticClass: "c-step-child isModal" },
+                    [
+                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v("タイトル")]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.isError,
+                              expression: "isError"
+                            }
+                          ],
+                          staticClass: "error"
+                        },
+                        [_vm._v("タイトルが未入力です")]
+                      ),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: child_step.title,
+                            expression: "child_step.title"
+                          }
+                        ],
+                        attrs: { type: "text", rows: "3" },
+                        domProps: { value: child_step.title },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(child_step, "title", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v("説明文")]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: child_step.description,
+                            expression: "child_step.description"
+                          }
+                        ],
+                        attrs: { type: "text", rows: "8" },
+                        domProps: { value: child_step.description },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              child_step,
+                              "description",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "c-button c-button-step-child p-button-accent3",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.updateChildStep(index)
+                            }
+                          }
+                        },
+                        [_vm._v("更新")]
+                      )
+                    ]
+                  )
+                : _c("div", { key: "save", staticClass: "c-step-child" }, [
+                    _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(child_step.title))]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "c-button c-button-step-child p-button-accent3",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.changeEditMode(index)
+                          }
+                        }
+                      },
+                      [_vm._v("編集")]
+                    )
+                  ])
+            ])
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "modal" } }, [
+        !this.add_modal
+          ? _c(
+              "div",
+              {
+                staticClass: "c-step-child p-step-detail",
+                class: { isModal: _vm.add_modal }
+              },
+              [
+                _c("h3", { staticStyle: { color: "#555" } }, [
+                  _vm._v("STEP" + _vm._s(this.child_steps.length + 1))
+                ]),
+                _vm._v(" "),
+                _c("p"),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "c-button c-button-step-child p-button-accent2",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changeAddMode($event)
+                      }
+                    }
+                  },
+                  [_vm._v("追加")]
+                )
+              ]
+            )
+          : _c(
+              "div",
+              {
+                staticClass: "c-step-child p-step-detail",
+                class: { isModal: _vm.add_modal }
+              },
+              [
+                _c("h3", { staticStyle: { color: "#555" } }, [
+                  _vm._v("STEP" + _vm._s(this.add_steps_number))
+                ]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("タイトル")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isError,
+                        expression: "isError"
+                      }
+                    ],
+                    staticClass: "error"
+                  },
+                  [_vm._v("タイトルが未入力です")]
+                ),
                 _vm._v(" "),
                 _c("textarea", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: child_step.title,
-                      expression: "child_step.title"
+                      value: _vm.add_title,
+                      expression: "add_title"
                     }
                   ],
-                  staticStyle: { display: "inline-block" },
-                  attrs: { type: "text" },
-                  domProps: { value: child_step.title },
+                  attrs: { type: "text", rows: "3" },
+                  domProps: { value: _vm.add_title },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(child_step, "title", $event.target.value)
+                      _vm.add_title = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("h4", [_vm._v("説明文")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.add_description,
+                      expression: "add_description"
+                    }
+                  ],
+                  attrs: { type: "text", rows: "8" },
+                  domProps: { value: _vm.add_description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.add_description = $event.target.value
                     }
                   }
                 }),
@@ -3263,110 +3517,39 @@ var render = function() {
                   {
                     staticClass:
                       "c-button c-button-step-child p-button-accent3",
+                    staticStyle: { width: "40%" },
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.changeEditMode(index)
+                        return _vm.changeAddMode($event)
                       }
                     }
                   },
-                  [_vm._v("登録")]
-                )
-              ])
-            : _c("div", { staticClass: "c-step-child" }, [
-                _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(child_step.title))]),
+                  [_vm._v("キャンセル")]
+                ),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
                     staticClass:
-                      "c-button c-button-step-child p-button-accent3",
+                      "c-button c-button-step-child p-button-accent2",
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        return _vm.changeEditMode(index)
+                        return _vm.addChildStep($event)
                       }
                     }
                   },
-                  [_vm._v("編集")]
+                  [_vm._v("追加")]
                 )
-              ])
-        ])
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "c-step-child p-step-detail",
-          class: { isModal: _vm.add_modal }
-        },
-        [
-          _c("h3", { staticStyle: { color: "#555" } }, [_vm._v("STEP")]),
-          _vm._v(" "),
-          !this.add_modal
-            ? _c("p")
-            : _c("textarea", {
-                staticStyle: { display: "inline-block" },
-                attrs: { type: "text" }
-              }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "c-button c-button-step-child p-button-accent2",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.AddMode($event)
-                }
-              }
-            },
-            [_vm._v("追加")]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1)
+              ]
+            )
+      ])
     ],
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-form-group-submit" }, [
-      _c(
-        "button",
-        {
-          staticClass: "c-button c-button-form p-button-accent2",
-          attrs: { type: "button" }
-        },
-        [_vm._v("更新する")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-form-group-submit" }, [
-      _c(
-        "button",
-        {
-          staticClass: "c-button c-button-form p-button-accent3",
-          attrs: { type: "button" }
-        },
-        [_vm._v("削除する")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -3611,33 +3794,46 @@ var render = function() {
     "div",
     _vm._l(_vm.steps, function(step) {
       return _c("li", { key: step.id }, [
-        _c("div", { staticClass: "c-panel p-panel-step" }, [
-          _c(
-            "a",
-            { attrs: { href: "/step/" + step.id } },
-            [
-              _c("h3", { staticClass: "c-panel-title" }, [
-                _vm._v(_vm._s(step.title))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-category" }, [
-                _vm._v(_vm._s(step.category.category))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-name" }, [
-                _vm._v(_vm._s(step.name))
-              ]),
-              _vm._v(" "),
-              _c("progress-bar-component", {
-                attrs: {
-                  count_child: step.count_child_steps,
-                  count_do_child: step.count_do_child_steps
-                }
-              })
-            ],
-            1
-          )
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "c-panel p-panel-step",
+            class: { "p-panel-step-done": step.check_done }
+          },
+          [
+            _c(
+              "a",
+              { attrs: { href: "/step/" + step.id } },
+              [
+                step.check_done
+                  ? _c("span", { staticClass: "c-panel-badge" }, [
+                      _c("i", { staticClass: "fas fa-check" })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("h3", { staticClass: "c-panel-title" }, [
+                  _vm._v(_vm._s(step.title))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-category" }, [
+                  _vm._v(_vm._s(step.category.category))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-panel-name" }, [
+                  _vm._v(_vm._s(step.name))
+                ]),
+                _vm._v(" "),
+                _c("progress-bar-component", {
+                  attrs: {
+                    count_child: step.count_child_steps,
+                    count_do_child: step.count_do_child_steps
+                  }
+                })
+              ],
+              1
+            )
+          ]
+        )
       ])
     }),
     0
@@ -3813,6 +4009,16 @@ var render = function() {
         _c("span", { staticClass: "c-panel-bar-val" }, [
           _vm._v(_vm._s(_vm.count_done))
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-achievement-time" }, [
+        _c("p", [_vm._v("目安達成時間")]),
+        _vm._v(" "),
+        _c("span", { staticStyle: { "font-size": "60px" } }, [
+          _vm._v(_vm._s(_vm.step.achievement_time))
+        ]),
+        _vm._v(" "),
+        _c("span", { staticStyle: { "font-size": "20px" } }, [_vm._v("時間")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "c-form-group" }, [

@@ -13,7 +13,7 @@
     <div class="c-container-body">
 
       <div class="c-panel p-panel-edit">
-        <form method="POST" action="{{ route('steps.update',$step->id) }}">
+        <form method="POST" action="{{ route('steps.update') }}">
             @csrf
             
           <div class="c-form-group">
@@ -71,23 +71,21 @@
           <div class="c-form-group">
             <label for="description" class="col-form-label text-md-right">子STEP</label>
             <div id="app">
-
-            <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component>
-            
+              <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component>
             </div>
           </div>
             
-          <!-- <div class="c-form-group-submit">
-            <button type="submit" class="c-button   c-button-form p-button-accent2">
+          <div class="c-form-group-submit">
+            <button type="submit" name="create" class="c-button c-button-form p-button-accent2">
                 更新する
             </button>
           </div>
 
           <div class="c-form-group-submit">
-            <button type="submit" class="c-button   c-button-form p-button-accent3">
+            <button type="submit" name="cancel" class="c-button c-button-form p-button-accent3" onclick='return confirm("削除しますか？");'>
                 削除する
             </button>
-          </div> -->
+          </div>
         </form>
 
       </div>
@@ -96,6 +94,9 @@
   </div>
 </div>
 
+<script>
 
+</script>
 
 @endsection
+

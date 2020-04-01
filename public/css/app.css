@@ -240,7 +240,7 @@ header {
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   height: 150px;
   box-sizing: border-box;
   padding-right: 80px;
@@ -400,7 +400,13 @@ footer p a {
 
 .c-form-group-submit {
   width: 80%;
-  margin: 60px auto 30px;
+  margin: 40px auto 30px;
+}
+
+@media screen and (max-width: 414px) {
+  .c-form-group-submit {
+    width: 90%;
+  }
 }
 
 .invalid-feedback {
@@ -586,6 +592,13 @@ footer p a {
   position: relative;
 }
 
+.c-panel .link {
+  text-align: center;
+  padding: 0;
+  margin: 40px 0 15px;
+  width: auto;
+}
+
 .c-panel-title {
   font-size: 18px;
   font-weight: bolder;
@@ -612,7 +625,6 @@ footer p a {
 .c-panel-name {
   display: inline-block;
   padding: 0 10px;
-  max-width: 40%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -677,10 +689,29 @@ footer p a {
   text-shadow: 1px 1px 5px #555;
 }
 
+.c-achievement-time {
+  width: 90%;
+  padding-top: 15px;
+  margin: 60px auto 70px;
+  background-color: #FEFEFE;
+  border: 2px solid #4B6683;
+  border-radius: 3px;
+  text-align: center;
+  color: #4B6683;
+}
+
+.c-achievement-time p {
+  font-size: 16px;
+}
+
+.c-achievement-time span {
+  font-weight: bold;
+}
+
 .c-step-child {
   position: relative;
   border: 2px solid #FEFEFE;
-  border-radius: 50%;
+  border-radius: 100px;
   width: 200px;
   height: 200px;
   margin: 40px auto;
@@ -704,17 +735,23 @@ footer p a {
   text-align: left;
 }
 
+.c-step-child h4 {
+  border-top: 1px solid #FEFEFE;
+  width: 50%;
+  margin: 0 auto;
+}
+
 .c-step-child textarea {
-  height: 80px;
   width: 75%;
-  font: inherit;
-  margin: 0 auto -7px;
+  font-size: inherit;
+  margin: 0 auto 30px;
   border: 0.5px solid #ddd;
   text-align: left;
-  resize: none;
+  resize: vertical;
 }
 
 .c-step-child button {
+  display: block;
   font-size: 16px;
   font-weight: bold;
   width: 30%;
@@ -723,8 +760,18 @@ footer p a {
   letter-spacing: 1px;
 }
 
+.c-step-child .error {
+  background-color: #4B6683;
+  font-size: 16px;
+  padding: 5px 15px;
+}
+
 .c-step-child.isModal {
   z-index: 2;
+  height: auto;
+  width: 300px;
+  border-radius: 150px;
+  padding-bottom: 20px;
 }
 
 .c-modal {
@@ -840,11 +887,19 @@ footer p a {
     width: 100%;
     margin-right: 0;
   }
+
+  .p-panel-edit form {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 414px) {
   .p-panel-edit {
     width: 100%;
+  }
+
+  .p-panel-edit form {
+    width: 90%;
   }
 }
 
@@ -933,6 +988,10 @@ footer p a {
   border-top-color: #555;
   border-bottom-color: #555;
   font-weight: normal;
+}
+
+.p-step-detail h4 {
+  color: #555;
 }
 
 .p-step-detail-done {

@@ -5,42 +5,63 @@
     </transition>
 
     <li v-for="(child_step,index) in child_steps" :key="child_step.index">
-      <div v-if="child_step.editMode" class="c-step-child isModal">
-        <h3>STEP{{index+1}}</h3>
-        <!-- <span>タイトル</span> -->
-        <textarea type="text" v-model="child_step.title" style="display:inline-block;" />
-        <!-- <span>説明</span> -->
-        <!-- <textarea type="text" v-model="child_step.description" style="display:inline-block;" /> -->
-        <button
-          class="c-button c-button-step-child p-button-accent3"
-          v-on:click.prevent="changeEditMode(index)"
-        >登録</button>
-      </div>
+      <transition name="modal">
+        <div v-if="child_step.editMode" class="c-step-child isModal" key="edit">
+          <h3>STEP{{index+1}}</h3>
+          <h4>タイトル</h4>
+          <span class="error" v-show="isError">タイトルが未入力です</span>
+          <textarea type="text" rows="3" v-model="child_step.title" />
+          <h4>説明文</h4>
+          <textarea type="text" rows="8" v-model="child_step.description" />
+          <button
+            class="c-button c-button-step-child p-button-accent3"
+            v-on:click.prevent="updateChildStep(index)"
+          >更新</button>
+        </div>
 
-      <div v-else class="c-step-child">
-        <h3>STEP{{index+1}}</h3>
-        <p>{{child_step.title}}</p>
-        <button
-          class="c-button c-button-step-child p-button-accent3"
-          v-on:click.prevent="changeEditMode(index)"
-        >編集</button>
-      </div>
+        <div v-else class="c-step-child" key="save">
+          <h3>STEP{{index+1}}</h3>
+          <p>{{child_step.title}}</p>
+          <button
+            class="c-button c-button-step-child p-button-accent3"
+            v-on:click.prevent="changeEditMode(index)"
+          >編集</button>
+        </div>
+      </transition>
     </li>
 
-    <div class="c-step-child p-step-detail" v-bind:class="{isModal:add_modal}">
-      <h3 style="color:#555;">STEP</h3>
-      <p v-if="!this.add_modal"></p>
-      <textarea v-else type="text" style="display:inline-block;" />
-      <button class="c-button c-button-step-child p-button-accent2" v-on:click.prevent="AddMode">追加</button>
-    </div>
+    <transition name="modal">
+      <div
+        v-if="!this.add_modal"
+        class="c-step-child p-step-detail"
+        v-bind:class="{isModal:add_modal}"
+      >
+        <h3 style="color:#555;">STEP{{this.child_steps.length+1}}</h3>
+        <p></p>
+        <button
+          class="c-button c-button-step-child p-button-accent2"
+          v-on:click.prevent="changeAddMode"
+        >追加</button>
+      </div>
 
-    <div class="c-form-group-submit">
-      <button type="button" class="c-button c-button-form p-button-accent2">更新する</button>
-    </div>
-
-    <div class="c-form-group-submit">
-      <button type="button" class="c-button c-button-form p-button-accent3">削除する</button>
-    </div>
+      <div v-else class="c-step-child p-step-detail" v-bind:class="{isModal:add_modal}">
+        <h3 style="color:#555;">STEP{{this.add_steps_number}}</h3>
+        <h4>タイトル</h4>
+        <span class="error" v-show="isError">タイトルが未入力です</span>
+        <textarea type="text" rows="3" v-model="add_title" />
+        <h4>説明文</h4>
+        <textarea type="text" rows="8" v-model="add_description" />
+        <button
+          class="c-button c-button-step-child p-button-accent3"
+          style="width:40%;"
+          v-on:click.prevent="changeAddMode"
+        >キャンセル</button>
+        <button
+          class="c-button c-button-step-child p-button-accent2"
+          v-on:click.prevent="addChildStep"
+        >追加</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -59,8 +80,17 @@ export default {
     return {
       child_steps: [],
       modal: false,
-      add_modal: false
+      add_modal: false,
+      add_title: "",
+      add_description: "",
+      isError: ""
     };
+  },
+
+  computed: {
+    add_steps_number: function() {
+      return this.child_steps.length + 1;
+    }
   },
 
   methods: {
@@ -79,37 +109,69 @@ export default {
       }
     },
     //子STEP追加モードの切り替え
-    AddMode: function() {
+    changeAddMode: function() {
       this.modal = !this.modal;
       this.add_modal = !this.add_modal;
+    },
+    //タイトルのバリデーション＋ChildStepの追加
+    addChildStep() {
+      if (this.add_title) {
+        this.child_steps.push({
+          title: this.add_title,
+          step_id: this.id,
+          description: this.add_description
+        });
+        this.isError = false;
+        this.changeAddMode();
+        this.createData();
+      } else {
+        console.log("空っぽ");
+        this.isError = true;
+      }
+    },
+    //タイトルのバリデーション＋ChildStepの更新
+    updateChildStep(index) {
+      if (this.child_steps[index].title) {
+        this.isError = false;
+        this.changeEditMode(index);
+        this.updateData(index);
+      } else {
+        console.log("空っぽ");
+        this.isError = true;
+      }
+    },
+    //新規のchild_stepのDB登録
+    createData() {
+      axios
+        .post("/step/child_step/", {
+          title: this.add_title,
+          description: this.add_description,
+          step_id: this.id
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      this.add_title = "";
+      this.add_description = "";
+      this.getData();
+    },
+    //child_stepのDB内容更新
+    updateData(index) {
+      axios
+        .post("/step/" + this.child_steps[index].id + "/child_step/", {
+          title: this.child_steps[index].title,
+          description: this.child_steps[index].description
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
-
-    // createData($child_step_id) {
-    //   axios
-    //     .post("/step/do_child/", { child_step_id: $child_step_id })
-    //     .then(function(response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function(error) {
-    //       console.log(error);
-    //     });
-    //   this.count++;
-    //   // this.$emit("click-inc-count", this.status_flg);
-    //   this.$emit("click-inc-count");
-    // },
-    // removeData($child_step_id) {
-    //   axios
-    //     .delete("/step/do_child/", { data: { child_step_id: $child_step_id } })
-    //     .then(function(response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function(error) {
-    //       console.log(error);
-    //     });
-    //   this.count--;
-    //   // this.$emit("click-dec-count", this.status_flg);
-    //   this.$emit("click-dec-count");
-    // }
   }
 };
 </script>

@@ -28,6 +28,15 @@
       <div class="c-container-title-wrap">
           <h2 class="c-container-title">登録したSTEP</h2>
       </div>
+
+      
+      <a href="{{ route('steps.new')}}" style="margin:30px auto;">
+          <button type="submit" name="create" class="c-button c-button-form p-button-accent3" style="padding:0 50px;">
+              STEPを新規作成する
+          </button>
+      </a>
+
+
       <div class="c-container-body">
           
         <div class="c-panel-wrap">

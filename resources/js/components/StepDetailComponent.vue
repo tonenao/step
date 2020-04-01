@@ -20,6 +20,12 @@
       <span class="c-panel-bar-val">{{count_done}}</span>
     </div>
 
+    <div class="c-achievement-time">
+      <p>目安達成時間</p>
+      <span style="font-size:60px;">{{step.achievement_time}}</span>
+      <span style="font-size:20px;">時間</span>
+    </div>
+
     <div class="c-form-group">
       <div class>
         <child-step-component
@@ -33,7 +39,6 @@
       </div>
     </div>
 
-    <!-- <button class="c-button c-button-form p-button-accent2">←もどる</button> -->
     <button
       type="button"
       class="c-button c-button-form p-button-accent3"
@@ -60,21 +65,14 @@ export default {
     return {
       count_child: this.step.count_child_steps,
       count_do_child: this.step.count_do_child_steps,
-      // challenging: this.step.auth_user_challenge,
       count_challenge: this.step.count_challenge,
       count_done: this.step.count_done,
       auth_user_challenge: this.step.auth_user_challenge,
       status_flg: "",
       status: 0
-      // do_step_id: this.do_steps.id
     };
   },
   computed: {
-    // do_step_id: function() {
-    //   if (Object.keys(this.do_steps).length > 0) {
-    //     return this.do_steps.id;
-    //   }
-    // },
     button_word: function() {
       if (this.auth_user_challenge) {
         return "Challengeをやめる";

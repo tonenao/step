@@ -51,7 +51,11 @@
 
 .c-form-group-submit {
     width: 80%;
-    margin: 60px auto 30px;
+    margin: 40px auto 30px;
+
+    @include mq() {
+        width: 90%;
+    }
 }
 
 .invalid-feedback {
@@ -251,13 +255,19 @@
     float: left;
     background-color: $color-accent0;
 
-
     a {
         padding: 40px 20px 15px;
         display: block;
         width: 100%;
         height: 100%;
         position: relative;
+    }
+
+    .link {
+        text-align: center;
+        padding: 0;
+        margin: 40px 0 15px;
+        width: auto;
     }
 }
 
@@ -287,8 +297,7 @@
 .c-panel-name {
     display: inline-block;
     padding: 0 10px;
-    // float: right;
-    max-width: 40%;
+    // max-width: 40%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -355,6 +364,28 @@
     }
 }
 
+.c-achievement-time {
+    width: 90%;
+    padding-top: 15px;
+    margin: 60px auto 70px;
+    background-color: $color-base;
+    border: 2px solid $color-accent3;
+    border-radius: 3px;
+    text-align: center;
+    color: $color-accent3;
+
+    p {
+        // margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+}
+
+
 
 
 // ===============================
@@ -364,7 +395,7 @@
 .c-step-child {
     position: relative;
     border: 2px solid $color-base;
-    border-radius: 50%;
+    border-radius: 100px;
     width: 200px;
     height: 200px;
     margin: 40px auto;
@@ -387,17 +418,24 @@
         text-align: left;
     }
 
+    h4 {
+        border-top: 1px solid $color-base;
+        width: 50%;
+        margin: 0 auto;
+    }
+
     textarea {
-        height: 80px;
+        // height: 80px;
         width: 75%;
-        font: inherit;
-        margin: 0 auto -7px;
+        font-size: inherit;
+        margin: 0 auto 30px;
         border: 0.5px solid #ddd;
         text-align: left;
-        resize: none;
+        resize: vertical;
     }
 
     button {
+        display: block;
         font-size: 16px;
         font-weight: bold;
         width: 30%;
@@ -406,8 +444,20 @@
         letter-spacing: 1px;
     }
 
+    .error {
+        background-color: $color-accent3;
+        font-size: 16px;
+        padding: 5px 15px;
+
+    }
+
     &.isModal {
         z-index: 2;
+        height: auto;
+        width: 300px;
+        border-radius: 150px;
+        padding-bottom: 20px;
+
     }
 }
 
@@ -433,6 +483,7 @@
 .modal-enter {
     opacity: 0
 }
+
 
 
 

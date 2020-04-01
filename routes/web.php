@@ -41,9 +41,9 @@ Route::get('/step/new', 'StepsController@new')->name('steps.new');
 Route::post('/step', 'StepsController@create')->name('steps.create');
 
 
-Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
-
 Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json');
+
+Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
 
 
 Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
@@ -61,6 +61,12 @@ Route::post('/do_step/giveup', 'DoStepController@giveup');
 
 
 
+//ChildStepController
+
+Route::post('/step/child_step/','ChildStepController@create');
+
+Route::post('/step/{id}/child_step/','ChildStepController@update');
+
 
 //DoChildStepController
 
@@ -73,11 +79,11 @@ Route::delete('/step/do_child/', 'DoChildStepController@delete');
 
 //UserController
 
-Route::get('prof/{id}','UserController@show')->name('users.show');
-
 Route::get('/prof/edit', 'UserController@edit')->name('users.edit');
 
-Route::post('/prof/{id}', 'UserController@update')->name('users.update');
+Route::get('/prof/{id}','UserController@show')->name('users.show');
+
+Route::post('/prof', 'UserController@update')->name('users.update');
 
 Auth::routes();
 

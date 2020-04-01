@@ -85,10 +85,18 @@
     @include mq(md) {
         width: 100%;
         margin-right: 0;
+
+        form {
+            width: 90%;
+        }
     }
 
     @include mq() {
         width: 100%;
+
+        form {
+            width: 90%;
+        }
     }
 }
 
@@ -172,9 +180,15 @@
     p {
         border-top-color: $color-dark;
         border-bottom-color: $color-dark;
-        // color: $color-dark;
         font-weight: normal;
     }
+
+    h4 {
+
+        color: $color-dark;
+    }
+
+
 }
 
 .p-step-detail-done {
