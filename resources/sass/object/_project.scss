@@ -153,10 +153,17 @@
 
 .p-prof-edit {
     margin: 10px auto 0;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+
+
 
     img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        object-fit: cover;
         border: 5px solid $color-accent3;
     }
 }

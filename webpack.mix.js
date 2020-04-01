@@ -12,7 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/liveview.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .autoload({
+        "jquery": ['$', 'window.jQuery']
+        // "vue": ['Vue', 'window.Vue']
+    })
     .browserSync({
         files: [
             "resources/views/**/*.blade.php",

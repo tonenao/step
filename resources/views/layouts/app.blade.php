@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <script src="https://kit.fontawesome.com/673dcd33bb.js" crossorigin="anonymous"></script>
+    <!-- <script src = "https://cdn.jsdelivr.net/npm/exif-js"> </ script> -->
 </head>
 <body>
     

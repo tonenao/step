@@ -3,7 +3,7 @@
 @section('title','PROFILE-EDIT')
 
 @section('content')
-<div id="app">
+<!-- <div id="app"> -->
 <div class="l-main-top">
 <div class="c-container p-container-top">
 
@@ -18,14 +18,14 @@
             <div class="c-form-group">
                 <label for="img" class="">プロフィール画像</label>
 
-                <input type="file" name="pic" class="form-control" multiple="multiple">
-
-                <!-- <img src="{{ asset('img/'.$user->pic) }}"> -->
 
 
+                <div class="c-img-prof p-prof-edit area-drop">
 
-                <!-- <div class="c-img-prof p-prof-edit">
-                    <img src="{{asset('img/no-profile-image.png')}}"> -->
+                <input type="file" name="pic" multiple="multiple" class="input-file">
+                <img src="{{ asset('storage/img/'.$user->pic) }}" class="prev-img">
+
+                    <!-- <img src="{{asset('img/no-profile-image.png')}}"> -->
 
                     @error('pic')
                         <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
 
                 <div class="">
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
-
+                    
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -87,5 +87,5 @@
     </div>
 </div>
 </div>
-</div>
+<!-- </div> -->
 @endsection
