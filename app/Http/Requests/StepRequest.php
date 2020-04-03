@@ -26,7 +26,7 @@ class StepRequest extends FormRequest
         return [
             'title'=>'required|max:30',
             'category_id'=>'required',
-            'description'=>'required|max:255',
+            'description'=>'required|max:191',
             'achievement_time'=>'required|numeric'
         ];
     }
@@ -35,7 +35,11 @@ class StepRequest extends FormRequest
         return[
             'title.required'=>'タイトルを入力してください。',
             'title.max'=>'タイトルは30文字以内で入力してください。',
-
+            'category.required'=>'カテゴリーを選択してください。',
+            'description.required'=>'説明文を入力してください。',
+            'description.max'=>'説明文は191文字以内で入力してください。',
+            'achievement_time.required'=>'目安時間を入力してください。',
+            'achievement_time.max'=>'目安時間は数字で入力してください。',
         ];
     }
 }
