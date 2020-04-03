@@ -13,7 +13,7 @@ class StepRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,12 +24,17 @@ class StepRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required|max:30',
+            'category_id'=>'required',
+            'description'=>'required|max:255',
+            'achievement_time'=>'required|numeric'
         ];
     }
 
     public function message(){
         return[
+            'title.required'=>'タイトルを入力してください。',
+            'title.max'=>'タイトルは30文字以内で入力してください。',
 
         ];
     }

@@ -20,12 +20,12 @@ class UserController extends Controller
     public function edit(){
       $user=Auth::user();
       return view('profedit',compact('user'));
-    }
+    }     
 
     public function update(Request $request){
       // $validated = $request->validated();
       $user=Auth::user();
-      //&nbspLog::debug($request->file('pic'));
+      //Log::debug($request->file('pic'));
       if(!empty($request->file('pic'))){
         $path=$request->file('pic')->store('public/img');
         $data=[

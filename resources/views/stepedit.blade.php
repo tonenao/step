@@ -31,7 +31,7 @@
           <div class="c-form-group">
               <label for="name" class="col-form-label text-md-right">カテゴリー</label>
               <div class="">
-                  <select id="category" class="form-control @error('category') is-invalid @enderror" name="category"  required autocomplete="category" autofocus>
+                  <select id="category_id" class="form-control @error('category') is-invalid @enderror" name="category_id"  required autocomplete="category_id" autofocus>
                   @foreach($categories as $category)
                       <option value="{{$category->id}}" @if($category->id===$step->category->id) selected @endif>{{$category->category}}</option>
                   @endforeach
@@ -59,7 +59,7 @@
           <div class="c-form-group">
               <label for="description" class="col-form-label text-md-right">説明文</label>
               <div class="">
-                  <textarea id="description" class="form-control" name="description" value="{{ $step->description }}" rows="5">{{ $step->description }}</textarea>
+                  <textarea id="description" class="form-control" name="description" value="{{ $step->description }}" rows="5" required autocomplete="description">{{ $step->description }}</textarea>
                   @error('description')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

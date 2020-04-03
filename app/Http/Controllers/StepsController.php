@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StepRequest;
 use App\Step;
 use App\ChildStep;
 use App\DoStep;
 use App\Category;
+use Log;
 
 class StepsController extends Controller
 {
@@ -203,7 +205,7 @@ class StepsController extends Controller
         if(!ctype_digit($id)){
             return redirect('stepregist')->with('flash_message', __('無効な操作が実行されました.'));
         };
-        // $step=Step::find($id);
+
         $step=Auth::user()->steps()->find($id);
         if($step){
             $categories=Category::all();
@@ -214,7 +216,9 @@ class StepsController extends Controller
     }
 
 
-    public function update(Request $request,$id){
+    public function update(StepRequest $request,$id){
+        // Log::debug($request);
+
         if(!ctype_digit($id)){
             return redirect('stepregist')->with('flash_message', __('無効な操作が実行されました.'));
         };
@@ -222,9 +226,10 @@ class StepsController extends Controller
         $step=Step::find($id);
 
         if(isset($request['create'])){
+            // Log::debug('データ更新');
             $data=[
                 'title'=>$request->title,
-                'category_id'=>$request->category,
+                'category_id'=>$request->category_id,
                 'achievement_time'=>$request->achievement_time,
                 'description'=>$request->description
             ];
@@ -232,6 +237,7 @@ class StepsController extends Controller
             return redirect('/mypage')->with('flash_message', '更新しました');
 
         }elseif(isset($request['cancel'])){
+            // Log::debug('削除');
             $step->update(['delete_flg'=>1]);
             // \Log::debug($step->delete_flg);
             return redirect('/mypage')->with('flash_message', __('削除しました'));
