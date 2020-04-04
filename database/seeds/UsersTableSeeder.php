@@ -37,22 +37,6 @@ class UsersTableSeeder extends Seeder
             'role'=>10,
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
-        ],
-        [
-            'name'=>'shiro',
-            'email'=>'tonenao4@gmail.com',
-            'password'=>bcrypt('password'),
-            'role'=>10,
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
-        ],
-        [
-            'name'=>'goro',
-            'email'=>'tonenao5@gmail.com',
-            'password'=>bcrypt('password'),
-            'role'=>10,
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
         ]
         ]);
     }
