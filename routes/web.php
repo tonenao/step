@@ -16,6 +16,10 @@ Route::get('/login', function () {
 });
 
 
+Auth::routes();
+
+
+
 //StepsController
 
 
@@ -85,6 +89,6 @@ Route::get('/prof/{id}','UserController@show')->name('users.show');
 
 Route::post('/prof', 'UserController@update')->name('users.update');
 
-Auth::routes();
+
 
 

@@ -15,7 +15,7 @@
             @csrf
 
             <div class="c-form-group">
-                <label for="email" class="">{{ __('E-Mail Address') }}</label>
+                <label for="email" class="">email</label>
 
                 <div class="">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="c-form-group">
-                <label for="password" class="">{{ __('Password') }}</label>
+                <label for="password" class="">パスワード</label>
 
                 <div class="">
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -49,7 +49,7 @@
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                         <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
+                            自動でログイン
                         </label>
                     </div>
                 </div>
@@ -57,13 +57,13 @@
 
             <div class="c-form-group-submit">
                     <button type="submit" class="c-button   c-button-form p-button-accent2">
-                        {{ __('ログイン') }}
+                        ログイン
                     </button>
             </div>
 
                     @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            パスワードを忘れた方はこちら
                         </a>
                     @endif
         </form>

@@ -14,11 +14,15 @@
             @if(is_null($user->pic))
               <img src="{{asset('img/no-profile-image.png')}}">
             @else
-              {{ $user->pic }}
+            <img src="/storage/img/{{ $user->pic }}">
             @endif
         </div>
         <div class="p-prof-description">
-        {{ $user->introduction }}
+            @if(!empty($user->introduction))
+              {{ $user->introduction }}
+            @else
+              ーー 自己紹介文は未登録です ーー
+            @endif
         </div>
       </div>
     </div>
@@ -32,11 +36,11 @@
 
       <div class="c-container-detail">
         <h2>公開中のSTEP</h2>
-        <span class="c-step-count">4</span><span class="c-step-unit">STEP</span>
+        <span class="c-step-count">{{$user->count_steps}}</span><span class="c-step-unit">STEP</span>
         <h2>Challenge中の人数</h2>
-        <span class="c-step-count">40</span><span class="c-step-unit">人</span>
+        <span class="c-step-count">{{$user->count_challenge}}</span><span class="c-step-unit">人</span>
         <h2>Challenge済みの人数</h2>
-        <span class="c-step-count">40</span><span class="c-step-unit">人</span>
+        <span class="c-step-count">{{$user->count_done}}</span><span class="c-step-unit">人</span>
       </div>
 
 
@@ -44,78 +48,11 @@
       <div class="c-container-body">
         <div class="c-panel-wrap">
 
-
-          <div class="c-panel p-panel-step">
-            <a href="#">
-              <h3 class="c-panel-title">最短で学んだ私の英語学習方法</h3>
-              <span class="c-category">英語学習</span>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Challenging!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Done!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="c-panel p-panel-step">
-            <a href="#">
-              <h3 class="c-panel-title">最短で学んだ私の英語学習方法</h3>
-              <span class="c-category">英語学習</span>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Challenging!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Done!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="c-panel p-panel-step">
-            <a href="#">
-              <h3 class="c-panel-title">最短で学んだ私の英語学習方法</h3>
-              <span class="c-category">英語学習</span>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Challenging!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Done!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="c-panel p-panel-step p-panel-step-done">
-            <a href="#">
-              <span class="c-panel-badge"><i class="fas fa-check"></i></span>
-              <h3 class="c-panel-title">最短で学んだ私の英語学習方法</h3>
-              <span class="c-category">英語学習</span>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Challenging!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-              <div class="c-panel-bar p-panel-bar-mystep">
-                <span class="c-panel-bar-info">Done!!</span>
-                <span class="c-panel-bar-val-sm">人</span>
-                <span class="c-panel-bar-val">10</span>
-              </div>
-            </a>
-          </div>
+          <user-step-component :steps="{{$steps}}"></user-step-component>
 
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -42,6 +42,7 @@
     <button
       type="button"
       class="c-button c-button-form p-button-accent3"
+      v-if="auth"
       v-on:click="change_challenge_handler"
     >{{button_word}}</button>
   </div>
@@ -59,6 +60,10 @@ export default {
       type: Object,
       required: false,
       default: () => {}
+    },
+    auth: {
+      type: Boolean,
+      default: true
     }
   },
   data: function() {

@@ -3,7 +3,7 @@
 @section('title','PROFILE-EDIT')
 
 @section('content')
-<!-- <div id="app"> -->
+
 <div class="l-main-top">
 <div class="c-container p-container-top">
 
@@ -18,21 +18,17 @@
             <div class="c-form-group">
                 <label for="img" class="">プロフィール画像</label>
 
-
-
                 <div class="c-img-prof p-prof-edit area-drop">
 
                 <input type="file" name="pic" multiple="multiple" class="input-file">
                 <img src="{{ asset('storage/img/'.$user->pic) }}" class="prev-img">
-
-                    <!-- <img src="{{asset('img/no-profile-image.png')}}"> -->
 
                     @error('pic')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                <!-- </div> -->
+
             </div>
 
             <div class="c-form-group">
@@ -87,5 +83,5 @@
     </div>
 </div>
 </div>
-<!-- </div> -->
+
 @endsection

@@ -11,6 +11,9 @@
           </span>
           <h3 class="c-panel-title">{{step.title}}</h3>
           <span class="c-category">{{step.category.category}}</span>
+          <div class="c-img-prof p-prof-list">
+            <img v-bind:src="'/storage/img/'+step.user.pic" />
+          </div>
           <span class="c-panel-name">{{step.user.name}}</span>
           <div class="c-panel-bar p-panel-bar-mystep">
             <span class="c-panel-bar-info">Challenging!!</span>

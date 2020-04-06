@@ -30,6 +30,7 @@ Vue.component('progress-bar-component', require('./components/ProgressBarCompone
 Vue.component('child-step-component', require('./components/ChildStepComponent.vue').default);
 Vue.component('child-step-edit-component', require('./components/ChildStepEditComponent.vue').default);
 Vue.component('step-detail-component', require('./components/StepDetailComponent.vue').default);
+Vue.component('user-step-component', require('./components/UserStepComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -41,4 +42,4 @@ const app = new Vue({
     el: '#app'
 });
 
-require('./liveview');
+require('./jquery');

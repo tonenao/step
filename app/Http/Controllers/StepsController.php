@@ -20,7 +20,7 @@ class StepsController extends Controller
     }
 
     public function index(){
-        $steps=Step::orderBy('id','desc')->get();
+        $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
         return view('home',compact('steps'));
     }
 
@@ -145,9 +145,9 @@ class StepsController extends Controller
             $step=Step::create($data);
             $id=$step->id;
             
-            return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', __('登録しました。続いて子STEPを編集してください。'));
+            return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', '登録しました。続いて子STEPを編集してください。<br>【※注】一度登録した子STEPは編集は可能ですが削除できません');
         }elseif(isset($request['cancel'])){
-            return redirect('/mypage')->with('flash_message', __('キャンセルしました'));
+            return redirect('/mypage')->with('flash_message', 'キャンセルしました');
         }
     }
 
@@ -156,13 +156,13 @@ class StepsController extends Controller
 
     public function show($id){
         if(!ctype_digit($id)){
-            return redirect('/step')->with('flash_message', __('無効な操作が実行されました.'));
+            return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
 
         $step=Step::find($id);
         
         if($step===null){
-            return redirect('/step')->with('flash_message', __('無効な操作が実行されました.'));
+            return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
         
         $step['count_challenge']=$step->count_challenge();
@@ -203,16 +203,22 @@ class StepsController extends Controller
 
     public function edit($id){
         if(!ctype_digit($id)){
-            return redirect('stepregist')->with('flash_message', __('無効な操作が実行されました.'));
+            return redirect('stepregist')->with('flash_message', '無効な操作が実行されました.');
         };
 
-        $step=Auth::user()->steps()->find($id);
+        if(!Auth::check()){
+            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
+        };
+
+        $step=Auth::user()->steps()->where('delete_flg',0)->find($id);
+
         if($step){
             $categories=Category::all();
             return view('stepedit',compact('id','step','categories'));
         }else{
             return redirect('/mypage')->with('flash_message', '無効な操作が実行されました');
         }
+       
     }
 
 
@@ -220,7 +226,7 @@ class StepsController extends Controller
         // Log::debug($request);
 
         if(!ctype_digit($id)){
-            return redirect('stepregist')->with('flash_message', __('無効な操作が実行されました.'));
+            return redirect('stepregist')->with('flash_message', '無効な操作が実行されました.');
         };
         
         $step=Step::find($id);
@@ -240,7 +246,7 @@ class StepsController extends Controller
             // Log::debug('削除');
             $step->update(['delete_flg'=>1]);
             // \Log::debug($step->delete_flg);
-            return redirect('/mypage')->with('flash_message', __('削除しました'));
+            return redirect('/mypage')->with('flash_message', '削除しました');
         }
     }
 }

@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
+    /**re
      * The attributes that are mass assignable.
      *
      * @var array
@@ -52,4 +52,18 @@ class User extends Authenticatable
     public function do_child_steps(){
         return $this->hasMany('App\DoChildStep');
     }
+
+
+
+     //ユーザーの公開したSTEP
+     public function published_steps(){
+        return $this->steps()->where('delete_flg',0)->get();
+    }
+
+    //ユーザーの公開したSTEP数のカウント
+    public function count_steps(){
+        return $this->steps()->where('delete_flg',0)->count();
+    }
+
+
 }

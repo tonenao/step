@@ -10696,10 +10696,10 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./resources/js/liveview.js":
-/*!**********************************!*\
-  !*** ./resources/js/liveview.js ***!
-  \**********************************/
+/***/ "./resources/js/jquery.js":
+/*!********************************!*\
+  !*** ./resources/js/jquery.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10734,6 +10734,34 @@ return jQuery;
     };
 
     fileReader.readAsDataURL(file);
+  }); //フラッシュメッセージ表示
+
+  var $jsShowMsg = $('#js-show-msg');
+  var msg = $jsShowMsg.text();
+
+  if (msg.replace(/^[\s　]+[\s　]+$/g, "").length) {
+    $jsShowMsg.slideToggle('slow');
+    setTimeout(function () {
+      $jsShowMsg.slideToggle('slow');
+    }, 5000);
+  } // フロートヘッダーメニュー
+
+
+  var $title = $('.js-title');
+  $(window).on('scroll', function () {
+    var scr_count = $(document).scrollTop();
+
+    if (scr_count > 200) {
+      $title.addClass('title-reduce');
+    } else {
+      $title.removeClass('title-reduce');
+    }
+  }); //ハンバーガーメニュー表示切り替え
+  // SPメニュー
+
+  $('.js-toggle-sp-menu').on('click', function () {
+    $(this).toggleClass('active');
+    $('.js-toggle-sp-menu-target').toggleClass('active');
   });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
@@ -10741,13 +10769,13 @@ return jQuery;
 /***/ }),
 
 /***/ 1:
-/*!****************************************!*\
-  !*** multi ./resources/js/liveview.js ***!
-  \****************************************/
+/*!**************************************!*\
+  !*** multi ./resources/js/jquery.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/step/resources/js/liveview.js */"./resources/js/liveview.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/step/resources/js/jquery.js */"./resources/js/jquery.js");
 
 
 /***/ })

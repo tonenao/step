@@ -7,7 +7,7 @@
 <div class="c-container p-container-top">
 
     <div class="c-container-title-wrap">
-    <h2 class="c-container-title">{{ __('Reset Password') }}</h2>
+    <h2 class="c-container-title">パスワード リセット</h2>
     </div>
 
     @if (session('status'))
@@ -20,7 +20,7 @@
         @csrf
 
         <div class="c-form-group">
-            <label for="email" class="">{{ __('E-Mail Address') }}</label>
+            <label for="email" class="">email</label>
 
             <div class="col-md-6">
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -35,7 +35,7 @@
 
         <div class="c-form-group-submit">
                 <button type="submit" class="c-button   c-button-form p-button-accent2">
-                    {{ __('Send Password Reset Link') }}
+                    リセットのためのリンク送信
                 </button>
         </div>
 
