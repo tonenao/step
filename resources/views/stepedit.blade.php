@@ -19,10 +19,10 @@
           <div class="c-form-group">
               <label for="name" class="">STEP名</label>
               <div class="">
-                  <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $step->title }}" required autocomplete="title" autofocus>
+                  <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title' ,$step->title) }}" required autocomplete="title" autofocus>
                   @error('title')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>{{ $errors->first('title')  }}</strong>
                       </span>
                   @enderror
               </div>
@@ -36,21 +36,17 @@
                       <option value="{{$category->id}}" @if($category->id===$step->category->id) selected @endif>{{$category->category}}</option>
                   @endforeach
                   </select>
-                  @error('category')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+                  
               </div>
           </div>
 
           <div class="c-form-group">
               <label for="achievement_time" class="col-form-label text-md-right">目安時間（※単位：時間）</label>
               <div class="">
-                <input id="achievement_time" type="number" min="0" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ $step->achievement_time }}" required autocomplete="achievement_time" autofocus>
+                <input id="achievement_time" type="number" min="0" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time' ,$step->achievement_time) }}" required autocomplete="achievement_time" autofocus>
                   @error('achievement_time')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>{{ $errors->first('achievement_time') }}</strong>
                       </span>
                   @enderror
               </div>
@@ -59,10 +55,10 @@
           <div class="c-form-group">
               <label for="description" class="col-form-label text-md-right">説明文</label>
               <div class="">
-                  <textarea id="description" class="form-control" name="description" value="{{ $step->description }}" rows="5" required autocomplete="description">{{ $step->description }}</textarea>
+                  <textarea id="description" class="form-control" name="description" value="{{ $step->description }}" rows="5" required autocomplete="description">{{ old('description' ,$step->description) }}</textarea>
                   @error('description')
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
+                          <strong>{{ $errors->first('description') }}</strong>
                       </span>
                   @enderror
               </div>

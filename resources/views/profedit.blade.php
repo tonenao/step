@@ -35,7 +35,7 @@
                 <label for="name" class="">email</label>
 
                 <div class="">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email' ,$user->email) }}" required autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                 <label for="name" class="col-form-label text-md-right">ニックネーム</label>
 
                 <div class="">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name' ,$user->name) }}" required autocomplete="name" autofocus>
                     
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                 <label for="introduction" class="col-form-label text-md-right">自己紹介文</label>
 
                 <div class="">
-                    <textarea id="introduction" class="form-control" name="introduction" rows="5">{{ $user->introduction }}</textarea>
+                    <textarea id="introduction" class="form-control" name="introduction" rows="5">{{ old('introduction' ,$user->introduction) }}</textarea>
                     
                     @error('introduction')
                         <span class="invalid-feedback" role="alert">

@@ -24,10 +24,23 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name'=>'max:30',
-            // 'email'=>'required|unique|email|max:255',
-            // 'introduction'=>'max:255',
-            // 'pic'=>'file|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'name'=>'max:191',
+            'email'=>'required|email|max:191',
+            'introduction'=>'max:191',
+            'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
+        ];
+    }
+
+    public function messages(){
+        return[
+            'name.max'=>'名前は191文字以内で入力してください。',
+            'email.required'=>'emailを入力してください。',
+            'email.email'=>'emailの形式で入力してください。',
+            'email.max'=>'emailは191文字以内で入力してください。',
+            'introduction.max'=>'自己紹介文は191文字以内で入力してください。',
+            'pic.image'=>'画像ファイルを選択してください。',
+            'pic.mimes'=>'選択できる画像はJPEG・JPG・PNG形式のみです。',
+            'pic.max'=>'2MB以下のファイルを選択してください。',
         ];
     }
 }

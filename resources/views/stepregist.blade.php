@@ -24,7 +24,7 @@
                         <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
                         @error('title')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ $errors->first('title') }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -38,11 +38,7 @@
                         <option value="{{$category->id}}">{{$category->category}}</option>
                         @endforeach
                         </select>
-                        @error('category')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        
                     </div>
                 </div>
 
@@ -52,7 +48,7 @@
                     <input id="title" type="number" min="0" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time') }}" required autocomplete="achievement_time" autofocus>
                         @error('achievement_time')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ $errors->first('achievement_time') }}</strong>
                             </span>
                         @enderror
                     </div>
@@ -64,13 +60,15 @@
                         <textarea id="dexcription" class="form-control" name="description" rows="5" required autocomplete="description">{{ old('description') }}</textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ $errors->first('description') }}</strong>
                             </span>
                         @enderror
                     </div>
                 </div>
 
                 
+
+
                 <div class="c-form-group-submit">
                     <button type="submit" name="create" class="c-button c-button-form p-button-accent2">
                         登録（子STEP登録へ）

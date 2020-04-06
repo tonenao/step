@@ -24,17 +24,17 @@ class StepRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|max:30',
+            'title'=>'required|max:191',
             'category_id'=>'required',
             'description'=>'required|max:191',
             'achievement_time'=>'required|numeric'
         ];
     }
 
-    public function message(){
+    public function messages(){
         return[
             'title.required'=>'タイトルを入力してください。',
-            'title.max'=>'タイトルは30文字以内で入力してください。',
+            'title.max'=>'タイトルは191文字以内で入力してください。',
             'category.required'=>'カテゴリーを選択してください。',
             'description.required'=>'説明文を入力してください。',
             'description.max'=>'説明文は191文字以内で入力してください。',

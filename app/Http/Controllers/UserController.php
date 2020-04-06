@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserRequest;
 use App\User;
 use App\Step;
 use Log;
@@ -77,11 +78,10 @@ class UserController extends Controller
     }     
 
 
-    public function update(Request $request){
-      // $validated = $request->validated();
+    public function update(UserRequest $request){
       $user=Auth::user();
-      //Log::debug($request->file('pic'));
-      if(!empty($request->file('pic'))){
+
+      if($request->hasFile('pic')){
         $path=$request->file('pic')->store('public/img');
         $data=[
           'name'=>$request->name,
@@ -90,10 +90,9 @@ class UserController extends Controller
           'pic'=>basename($path)
         ];
         $user->update($data);
-      return redirect('/mypage')->with('flash_message', '更新しました');
+      return redirect('/mypage')->with('flash_message', '（画像も）更新しました');
 
       }else{
-
         $data=[
           'name'=>$request->name,
           'email'=>$request->email,

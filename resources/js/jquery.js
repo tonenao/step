@@ -1,6 +1,5 @@
 $(function () {
 
-    //画像ライブプレビュー
     var $dropArea = $('.area-drop');
     var $fileInput = $('.input-file');
     $dropArea.on('dragover', function (e) {
@@ -21,20 +20,19 @@ $(function () {
             $img = $(this).siblings('.prev-img'),
             fileReader = new FileReader();
 
-        // var orientation = 0;
-        // EXIF.getData(file, function () {
-        //     orientation = file.exifdata.Orientation;
-        //     if (orientation === undefined) {
-        //         orientation = 1;
-        //     }
-        // });
+        //アップロードファイルのサイズと形式をチェック
+        if (file.type != 'image/jpeg' && file.type != 'image/gif' && file.type != 'image/png') {
+            alert('.jpg、.gif、.pngのいずれかのファイルのみ許可されています');
+        } else if (file.size > 2000000) {
+            alert('ファイルサイズが上限の２MBより大きすぎます。選択しなおしてください。');
+        } else {
+            //画像ライブプレビュー
+            fileReader.onload = function (event) {
+                $img.attr('src', event.target.result).show();
+            };
 
-        fileReader.onload = function (event) {
-            $img.attr('src', event.target.result).show();
-        };
-
-        fileReader.readAsDataURL(file);
-
+            fileReader.readAsDataURL(file);
+        }
     });
 
 
@@ -49,7 +47,7 @@ $(function () {
     }
 
 
-    // フロートヘッダーメニュー
+    // 画面スクロールによるヘッダータイトルの変形
     var $title = $('.js-title');
     $(window).on('scroll', function () {
 
@@ -60,14 +58,10 @@ $(function () {
         } else {
             $title.removeClass('title-reduce');
         }
-
-
     });
 
 
-
     //ハンバーガーメニュー表示切り替え
-    // SPメニュー
     $('.js-toggle-sp-menu').on('click', function () {
         $(this).toggleClass('active');
         $('.js-toggle-sp-menu-target').toggleClass('active');

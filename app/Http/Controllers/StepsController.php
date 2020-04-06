@@ -133,7 +133,7 @@ class StepsController extends Controller
 
 
 
-    public function create(Request $request){
+    public function create(StepRequest $request){
         if(isset($request['create'])){
             $data=[
                 'title'=>$request->title,
