@@ -22,7 +22,7 @@
             <a href="{{ route('users.show',['id'=>$step->user->id]) }}" class="link">
             <div class="c-img-prof p-prof-step">
 
-            @if(empty($step->user->pic))
+            @if($step->user->pic=="no-profile-image.png")
               <img src="{{asset('img/no-profile-image.png')}}">
             @else
               <img src="/storage/img/{{ $step->user->pic }}">

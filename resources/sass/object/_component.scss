@@ -61,6 +61,20 @@
 .c-form-group {
     width: 100%;
     margin-top: 40px;
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &.confirm {
+        width: 60%;
+
+        @include mq() {
+            width: 90%;
+        }
+
+    }
 }
 
 .c-form-group-submit {
@@ -394,8 +408,8 @@
     padding: 0 1.5em;
 }
 
-.c-button-step-child{
-    z-index:2;
+.c-button-step-child {
+    z-index: 2;
 }
 
 

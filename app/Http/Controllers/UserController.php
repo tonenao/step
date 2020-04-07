@@ -90,6 +90,10 @@ class UserController extends Controller
           'pic'=>basename($path)
         ];
         $user->update($data);
+
+        // 二重送信対策
+        $request->session()->regenerateToken();
+
       return redirect('/mypage')->with('flash_message', '（画像も）更新しました');
 
       }else{
@@ -99,6 +103,10 @@ class UserController extends Controller
           'introduction'=>$request->introduction,
         ];
         $user->update($data);
+
+        // 二重送信対策
+        $request->session()->regenerateToken();
+        
       return redirect('/mypage')->with('flash_message', '更新しました');
 
       }

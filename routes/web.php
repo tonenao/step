@@ -20,9 +20,17 @@ Auth::routes();
 
 
 
+//ContactController
+
+Route::get('/contact', 'ContactsController@index')->name('contact');
+
+Route::post('/contact/confirm', 'ContactsController@confirm')->name('confirm');
+
+Route::post('/contact/complete', 'ContactsController@complete')->name('complete');
+
+
+
 //StepsController
-
-
 
 Route::get('/', 'StepsController@top')->name('steps.top');
 
@@ -55,6 +63,7 @@ Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
 Route::post('/step/{id}/edit', 'StepsController@update')->name('steps.update');
 
 
+
 //DoStepController
 
 Route::post('/do_step', 'DoStepController@update');
@@ -72,12 +81,12 @@ Route::post('/step/child_step/','ChildStepController@create');
 Route::post('/step/{id}/child_step/','ChildStepController@update');
 
 
+
 //DoChildStepController
 
 Route::post('/step/do_child/', 'DoChildStepController@create');
 
 Route::delete('/step/do_child/', 'DoChildStepController@delete');
-
 
 
 

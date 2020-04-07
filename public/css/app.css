@@ -217,6 +217,7 @@ textarea:focus {
   padding: 1em;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .pagination li {
@@ -228,14 +229,16 @@ textarea:focus {
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
-  background: #F56608;
-  color: #FEFEFE;
+  background: #FEFEFE;
+  color: #4B6683;
+  border: 2px solid #4B6683;
   transition: 0.3s;
 }
 
 .pagination li.active,
 .pagination li :hover {
   background-color: #4B6683;
+  color: #FEFEFE;
 }
 
 .pagination li a {
@@ -466,6 +469,21 @@ footer p a {
 .c-form-group {
   width: 100%;
   margin-top: 40px;
+}
+
+.c-form-group p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.c-form-group.confirm {
+  width: 60%;
+}
+
+@media screen and (max-width: 414px) {
+  .c-form-group.confirm {
+    width: 90%;
+  }
 }
 
 .c-form-group-submit {

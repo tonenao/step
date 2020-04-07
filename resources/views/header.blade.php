@@ -39,7 +39,7 @@
             
             <div class="c-img-prof p-prof-nav">
 
-              @if(empty(Auth::user()->pic))
+              @if(Auth::user()->pic==='no-profile-image.png')
                 <img src="{{asset('img/no-profile-image.png')}}">
               @else
                 <img src="/storage/img/{{ Auth::user()->pic }}">

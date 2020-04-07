@@ -145,6 +145,9 @@ class StepsController extends Controller
             $step=Step::create($data);
             $id=$step->id;
             
+            // 二重送信対策
+            $request->session()->regenerateToken();
+
             return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', '登録しました。続いて子STEPを編集してください。<br>【※注】一度登録した子STEPは編集は可能ですが削除できません');
         }elseif(isset($request['cancel'])){
             return redirect('/mypage')->with('flash_message', 'キャンセルしました');
@@ -240,12 +243,19 @@ class StepsController extends Controller
                 'description'=>$request->description
             ];
             $step->update($data);
+
+            // 二重送信対策
+            $request->session()->regenerateToken();
             return redirect('/mypage')->with('flash_message', '更新しました');
 
         }elseif(isset($request['cancel'])){
             // Log::debug('削除');
             $step->update(['delete_flg'=>1]);
             // \Log::debug($step->delete_flg);
+
+            // 二重送信対策
+            $request->session()->regenerateToken();
+            
             return redirect('/mypage')->with('flash_message', '削除しました');
         }
     }

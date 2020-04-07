@@ -2309,6 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2338,6 +2339,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -14484,7 +14486,11 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                _c("img", { attrs: { src: "/storage/img/" + step.user.pic } })
+                step.user.pic == "no-profile-image.png"
+                  ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
+                  : _c("img", {
+                      attrs: { src: "storage/img/" + step.user.pic }
+                    })
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "c-panel-name" }, [
@@ -14576,7 +14582,11 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                  _c("img", { attrs: { src: "/storage/img/" + step.user.pic } })
+                  step.user.pic == "no-profile-image.png"
+                    ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
+                    : _c("img", {
+                        attrs: { src: "storage/img/" + step.user.pic }
+                      })
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "c-panel-name" }, [
@@ -27778,15 +27788,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/StepDetailComponent.vue ***!
   \*********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StepDetailComponent_vue_vue_type_template_id_473b25b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StepDetailComponent.vue?vue&type=template&id=473b25b6& */ "./resources/js/components/StepDetailComponent.vue?vue&type=template&id=473b25b6&");
 /* harmony import */ var _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StepDetailComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/StepDetailComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -27816,7 +27825,7 @@ component.options.__file = "resources/js/components/StepDetailComponent.vue"
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/StepDetailComponent.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
