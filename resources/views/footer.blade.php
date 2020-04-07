@@ -7,7 +7,7 @@
     </div>
     <p><a href="#">会社概要</a></p>
     <p><a href="#">プライバシーポリシー</a></p>
-    <button class="c-button c-button-footer p-button-accent1">CONTACT US</button>
+    <button class="c-button c-button-footer p-button-accent2">CONTACT US</button>
     <p>COPYRIGHT©︎ 2020  STEP INC.</p>
     </div>
   </footer>

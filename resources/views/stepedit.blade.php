@@ -72,7 +72,7 @@
           </div>
             
           <div class="c-form-group-submit">
-            <button type="submit" name="create" class="c-button c-button-form p-button-accent2">
+            <button type="submit" name="create" class="c-button c-button-form p-button-accent1">
                 更新する
             </button>
           </div>

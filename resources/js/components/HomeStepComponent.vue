@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li v-for="step in steps" :key="step.id">
+    <li v-for="step in getSteps" :key="step.id">
       <div
         class="c-panel p-panel-step"
         v-bind:class="{'p-panel-step-done':step.auth_user_challenge_done}"
@@ -28,6 +28,16 @@
         </a>
       </div>
     </li>
+    <paginate
+      :page-count="getPageCount"
+      :page-range="3"
+      :margin-pages="2"
+      :click-handler="clickCallback"
+      :prev-text="'«'"
+      :next-text="'»'"
+      :container-class="'pagination'"
+      :page-class="'page-item'"
+    ></paginate>
   </div>
 </template>
 
@@ -40,11 +50,27 @@ export default {
       this.steps = response.data;
     });
   },
-
   data: function() {
     return {
-      steps: []
+      steps: [],
+      parPage: 6,
+      currentPage: 1
     };
+  },
+  methods: {
+    clickCallback: function(pageNum) {
+      this.currentPage = Number(pageNum);
+    }
+  },
+  computed: {
+    getSteps: function() {
+      let current = this.currentPage * this.parPage;
+      let start = current - this.parPage;
+      return this.steps.slice(start, current);
+    },
+    getPageCount: function() {
+      return Math.ceil(this.steps.length / this.parPage);
+    }
   }
 };
 </script>

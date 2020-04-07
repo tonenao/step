@@ -1,34 +1,60 @@
 <template>
   <div>
-    <li v-for="(child_step,index) in child_steps" :key="child_step.index">
-      <div
-        class="c-step-child p-step-detail p-step-detail-done"
-        style="position:relative;"
-        v-if="count>=index+1 && auth_challenge"
-        v-on:click="removeData(child_step.id)"
-      >
-        <span class="c-panel-badge">
-          <i class="fas fa-check"></i>
-        </span>
-        <h3>STEP{{index+1}}</h3>
-        <p>{{child_step.title}}</p>
-        <button
-          type="button"
-          class="c-button c-button-step-child p-button-accent3"
-          v-if="count===index+1 && auth_challenge"
-        >戻す</button>
-      </div>
+    <transition name="modal">
+      <div class="c-modal" v-show="modal"></div>
+    </transition>
 
-      <div class="c-step-child p-step-detail" v-if="count<index+1 || !auth_challenge">
-        <h3>STEP{{index+1}}</h3>
-        <p>{{child_step.title}}</p>
-        <button
-          type="button"
-          class="c-button c-button-step-child p-button-accent2"
-          v-if="count===index && auth_challenge"
-          v-on:click="createData(child_step.id)"
-        >Clear</button>
-      </div>
+    <li v-for="(child_step,index) in child_steps" :key="child_step.index">
+      <transition name="modal">
+        <div
+          class="c-step-child p-step-detail p-step-detail-done"
+          style="position:relative;"
+          v-if="!child_step.editMode && count>=index+1 && auth_challenge"
+          v-on:click="changeEditMode(index)"
+        >
+          <span class="c-panel-badge">
+            <i class="fas fa-check"></i>
+          </span>
+          <h3>STEP{{index+1}}</h3>
+          <p>{{child_step.title}}</p>
+          <button
+            type="button"
+            class="c-button c-button-step-child p-button-accent3"
+            v-if="count===index+1 && auth_challenge"
+            v-on:click.stop="removeData(child_step.id)"
+          >戻す</button>
+        </div>
+
+        <div
+          class="c-step-child p-step-detail"
+          v-if="count<(!child_step.editMode && index+1) ||(!child_step.editMode && !auth_challenge)"
+          v-on:click="changeEditMode(index)"
+        >
+          <h3>STEP{{index+1}}</h3>
+          <p>{{child_step.title}}</p>
+          <button
+            type="button"
+            class="c-button c-button-step-child p-button-accent2"
+            v-if="count===index && auth_challenge"
+            v-on:click.stop="createData(child_step.id)"
+          >Clear</button>
+        </div>
+      </transition>
+
+      <transition name="modal">
+        <div
+          class="c-step-child p-step-detail isModal"
+          v-if="child_step.editMode"
+          v-on:click="changeEditMode(index)"
+        >
+          <h3 style="color:#555;">STEP{{index+1}}</h3>
+          <h4>タイトル</h4>
+          <p class="detail">{{child_step.title}}</p>
+          <h4>説明文</h4>
+          <p class="detail">{{child_step.description}}</p>
+          <div style="height:50px;"></div>
+        </div>
+      </transition>
     </li>
   </div>
 </template>
@@ -50,8 +76,9 @@ export default {
   data: function() {
     return {
       count: this.count_do_child,
-      child_steps: []
-      // status_flg: ""
+      child_steps: [],
+      modal: false,
+      add_modal: true
     };
   },
 
@@ -86,6 +113,15 @@ export default {
       this.count--;
       // this.$emit("click-dec-count", this.status_flg);
       this.$emit("click-dec-count");
+    },
+    //子STEP編集モードの切り替え
+    changeEditMode: function(index) {
+      this.modal = !this.modal;
+      if (!this.child_steps[index].hasOwnProperty("editMode")) {
+        this.child_steps[index].editMode = true;
+      } else {
+        this.child_steps[index].editMode = !this.child_steps[index].editMode;
+      }
     }
   }
 };

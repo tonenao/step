@@ -1943,6 +1943,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1971,8 +1997,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   data: function data() {
     return {
       count: this.count_do_child,
-      child_steps: [] // status_flg: ""
-
+      child_steps: [],
+      modal: false,
+      add_modal: true
     };
   },
   methods: {
@@ -2008,6 +2035,16 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       this.count--; // this.$emit("click-dec-count", this.status_flg);
 
       this.$emit("click-dec-count");
+    },
+    //子STEP編集モードの切り替え
+    changeEditMode: function changeEditMode(index) {
+      this.modal = !this.modal;
+
+      if (!this.child_steps[index].hasOwnProperty("editMode")) {
+        this.child_steps[index].editMode = true;
+      } else {
+        this.child_steps[index].editMode = !this.child_steps[index].editMode;
+      }
     }
   }
 });
@@ -2334,6 +2371,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2347,8 +2394,25 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   data: function data() {
     return {
-      steps: []
+      steps: [],
+      parPage: 6,
+      currentPage: 1
     };
+  },
+  methods: {
+    clickCallback: function clickCallback(pageNum) {
+      this.currentPage = Number(pageNum);
+    }
+  },
+  computed: {
+    getSteps: function getSteps() {
+      var current = this.currentPage * this.parPage;
+      var start = current - this.parPage;
+      return this.steps.slice(start, current);
+    },
+    getPageCount: function getPageCount() {
+      return Math.ceil(this.steps.length / this.parPage);
+    }
   }
 });
 
@@ -2437,6 +2501,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2450,8 +2524,25 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   data: function data() {
     return {
-      steps: []
+      steps: [],
+      parPage: 8,
+      currentPage: 1
     };
+  },
+  methods: {
+    clickCallback: function clickCallback(pageNum) {
+      this.currentPage = Number(pageNum);
+    }
+  },
+  computed: {
+    getSteps: function getSteps() {
+      var current = this.currentPage * this.parPage;
+      var start = current - this.parPage;
+      return this.steps.slice(start, current);
+    },
+    getPageCount: function getPageCount() {
+      return Math.ceil(this.steps.length / this.parPage);
+    }
   }
 });
 
@@ -13851,81 +13942,154 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.child_steps, function(child_step, index) {
-      return _c("li", { key: child_step.index }, [
-        _vm.count >= index + 1 && _vm.auth_challenge
-          ? _c(
-              "div",
-              {
-                staticClass: "c-step-child p-step-detail p-step-detail-done",
-                staticStyle: { position: "relative" },
-                on: {
-                  click: function($event) {
-                    return _vm.removeData(child_step.id)
-                  }
-                }
-              },
-              [
-                _vm._m(0, true),
-                _vm._v(" "),
-                _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(child_step.title))]),
-                _vm._v(" "),
-                _vm.count === index + 1 && _vm.auth_challenge
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "c-button c-button-step-child p-button-accent3",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v("戻す")]
-                    )
-                  : _vm._e()
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.count < index + 1 || !_vm.auth_challenge
-          ? _c("div", { staticClass: "c-step-child p-step-detail" }, [
-              _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(child_step.title))]),
-              _vm._v(" "),
-              _vm.count === index && _vm.auth_challenge
+    [
+      _c("transition", { attrs: { name: "modal" } }, [
+        _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.modal,
+              expression: "modal"
+            }
+          ],
+          staticClass: "c-modal"
+        })
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.child_steps, function(child_step, index) {
+        return _c(
+          "li",
+          { key: child_step.index },
+          [
+            _c("transition", { attrs: { name: "modal" } }, [
+              !child_step.editMode &&
+              _vm.count >= index + 1 &&
+              _vm.auth_challenge
                 ? _c(
-                    "button",
+                    "div",
                     {
                       staticClass:
-                        "c-button c-button-step-child p-button-accent2",
-                      attrs: { type: "button" },
+                        "c-step-child p-step-detail p-step-detail-done",
+                      staticStyle: { position: "relative" },
                       on: {
                         click: function($event) {
-                          return _vm.createData(child_step.id)
+                          return _vm.changeEditMode(index)
                         }
                       }
                     },
-                    [_vm._v("Clear")]
+                    [
+                      _c("span", { staticClass: "c-panel-badge" }, [
+                        _c("i", { staticClass: "fas fa-check" })
+                      ]),
+                      _vm._v(" "),
+                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(child_step.title))]),
+                      _vm._v(" "),
+                      _vm.count === index + 1 && _vm.auth_challenge
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "c-button c-button-step-child p-button-accent3",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  $event.stopPropagation()
+                                  return _vm.removeData(child_step.id)
+                                }
+                              }
+                            },
+                            [_vm._v("戻す")]
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.count < (!child_step.editMode && index + 1) ||
+              (!child_step.editMode && !_vm.auth_challenge)
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "c-step-child p-step-detail",
+                      on: {
+                        click: function($event) {
+                          return _vm.changeEditMode(index)
+                        }
+                      }
+                    },
+                    [
+                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(child_step.title))]),
+                      _vm._v(" "),
+                      _vm.count === index && _vm.auth_challenge
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "c-button c-button-step-child p-button-accent2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  $event.stopPropagation()
+                                  return _vm.createData(child_step.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Clear")]
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("transition", { attrs: { name: "modal" } }, [
+              child_step.editMode
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "c-step-child p-step-detail isModal",
+                      on: {
+                        click: function($event) {
+                          return _vm.changeEditMode(index)
+                        }
+                      }
+                    },
+                    [
+                      _c("h3", { staticStyle: { color: "#555" } }, [
+                        _vm._v("STEP" + _vm._s(index + 1))
+                      ]),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v("タイトル")]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "detail" }, [
+                        _vm._v(_vm._s(child_step.title))
+                      ]),
+                      _vm._v(" "),
+                      _c("h4", [_vm._v("説明文")]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "detail" }, [
+                        _vm._v(_vm._s(child_step.description))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticStyle: { height: "50px" } })
+                    ]
                   )
                 : _vm._e()
             ])
-          : _vm._e()
-      ])
-    }),
-    0
+          ],
+          1
+        )
+      })
+    ],
+    2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "c-panel-badge" }, [
-      _c("i", { staticClass: "fas fa-check" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -14386,71 +14550,86 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.steps, function(step) {
-      return _c("li", { key: step.id }, [
-        _c(
-          "div",
-          {
-            staticClass: "c-panel p-panel-step",
-            class: { "p-panel-step-done": step.auth_user_challenge_done }
-          },
-          [
-            _c("a", { attrs: { href: "/step/" + step.id } }, [
-              step.auth_user_challenge_done
-                ? _c("span", { staticClass: "c-panel-badge" }, [
-                    _c("i", { staticClass: "fas fa-check" })
+    [
+      _vm._l(_vm.getSteps, function(step) {
+        return _c("li", { key: step.id }, [
+          _c(
+            "div",
+            {
+              staticClass: "c-panel p-panel-step",
+              class: { "p-panel-step-done": step.auth_user_challenge_done }
+            },
+            [
+              _c("a", { attrs: { href: "/step/" + step.id } }, [
+                step.auth_user_challenge_done
+                  ? _c("span", { staticClass: "c-panel-badge" }, [
+                      _c("i", { staticClass: "fas fa-check" })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("h3", { staticClass: "c-panel-title" }, [
+                  _vm._v(_vm._s(step.title))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-category" }, [
+                  _vm._v(_vm._s(step.category.category))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-img-prof p-prof-list" }, [
+                  _c("img", { attrs: { src: "/storage/img/" + step.user.pic } })
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-panel-name" }, [
+                  _vm._v(_vm._s(step.user.name))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
+                  _c("span", { staticClass: "c-panel-bar-info" }, [
+                    _vm._v("Challenging!!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
+                    _vm._v("人")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val" }, [
+                    _vm._v(_vm._s(step.count_challenge))
                   ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("h3", { staticClass: "c-panel-title" }, [
-                _vm._v(_vm._s(step.title))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-category" }, [
-                _vm._v(_vm._s(step.category.category))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                _c("img", { attrs: { src: "/storage/img/" + step.user.pic } })
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-name" }, [
-                _vm._v(_vm._s(step.user.name))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Challenging!!")
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_challenge))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Done!!")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_done))
+                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
+                  _c("span", { staticClass: "c-panel-bar-info" }, [
+                    _vm._v("Done!!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
+                    _vm._v("人")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val" }, [
+                    _vm._v(_vm._s(step.count_done))
+                  ])
                 ])
               ])
-            ])
-          ]
-        )
-      ])
-    }),
-    0
+            ]
+          )
+        ])
+      }),
+      _vm._v(" "),
+      _c("paginate", {
+        attrs: {
+          "page-count": _vm.getPageCount,
+          "page-range": 3,
+          "margin-pages": 2,
+          "click-handler": _vm.clickCallback,
+          "prev-text": "«",
+          "next-text": "»",
+          "container-class": "pagination",
+          "page-class": "page-item"
+        }
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -14548,46 +14727,69 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.steps, function(step) {
-      return _c("li", { key: step.id }, [
-        _c("div", { staticClass: "c-panel p-panel-step p-panel-step-mystep" }, [
-          _c("a", { attrs: { href: "/step/" + step.id + "/edit/" } }, [
-            _c("h3", { staticClass: "c-panel-title" }, [
-              _vm._v(_vm._s(step.title))
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "c-category" }, [
-              _vm._v(_vm._s(step.category.category))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-              _c("span", { staticClass: "c-panel-bar-info" }, [
-                _vm._v("Challenging!!")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-bar-val-sm" }, [_vm._v("人")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-bar-val" }, [
-                _vm._v(_vm._s(step.count_challenge))
+    [
+      _vm._l(_vm.getSteps, function(step) {
+        return _c("li", { key: step.id }, [
+          _c(
+            "div",
+            { staticClass: "c-panel p-panel-step p-panel-step-mystep" },
+            [
+              _c("a", { attrs: { href: "/step/" + step.id + "/edit/" } }, [
+                _c("h3", { staticClass: "c-panel-title" }, [
+                  _vm._v(_vm._s(step.title))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "c-category" }, [
+                  _vm._v(_vm._s(step.category.category))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
+                  _c("span", { staticClass: "c-panel-bar-info" }, [
+                    _vm._v("Challenging!!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
+                    _vm._v("人")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val" }, [
+                    _vm._v(_vm._s(step.count_challenge))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
+                  _c("span", { staticClass: "c-panel-bar-info" }, [
+                    _vm._v("Done!!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
+                    _vm._v("人")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "c-panel-bar-val" }, [
+                    _vm._v(_vm._s(step.count_done))
+                  ])
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-              _c("span", { staticClass: "c-panel-bar-info" }, [
-                _vm._v("Done!!")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-bar-val-sm" }, [_vm._v("人")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-bar-val" }, [
-                _vm._v(_vm._s(step.count_done))
-              ])
-            ])
-          ])
+            ]
+          )
         ])
-      ])
-    }),
-    0
+      }),
+      _vm._v(" "),
+      _c("paginate", {
+        attrs: {
+          "page-count": _vm.getPageCount,
+          "page-range": 3,
+          "margin-pages": 2,
+          "click-handler": _vm.clickCallback,
+          "prev-text": "«",
+          "next-text": "»",
+          "container-class": "pagination",
+          "page-class": "page-item"
+        }
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -26926,6 +27128,17 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuejs-paginate/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vuejs-paginate/dist/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():undefined}(this,function(){return function(e){function t(s){if(n[s])return n[s].exports;var a=n[s]={exports:{},id:s,loaded:!1};return e[s].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function s(e){return e&&e.__esModule?e:{default:e}}var a=n(1),i=s(a);e.exports=i.default},function(e,t,n){n(2);var s=n(6)(n(7),n(8),"data-v-82963a40",null);e.exports=s.exports},function(e,t,n){var s=n(3);"string"==typeof s&&(s=[[e.id,s,""]]);n(5)(s,{});s.locals&&(e.exports=s.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,"a[data-v-82963a40]{cursor:pointer}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var s={},a=0;a<this.length;a++){var i=this[a][0];"number"==typeof i&&(s[i]=!0)}for(a=0;a<t.length;a++){var r=t[a];"number"==typeof r[0]&&s[r[0]]||(n&&!r[2]?r[2]=n:n&&(r[2]="("+r[2]+") and ("+n+")"),e.push(r))}},e}},function(e,t,n){function s(e,t){for(var n=0;n<e.length;n++){var s=e[n],a=c[s.id];if(a){a.refs++;for(var i=0;i<a.parts.length;i++)a.parts[i](s.parts[i]);for(;i<s.parts.length;i++)a.parts.push(l(s.parts[i],t))}else{for(var r=[],i=0;i<s.parts.length;i++)r.push(l(s.parts[i],t));c[s.id]={id:s.id,refs:1,parts:r}}}}function a(e){for(var t=[],n={},s=0;s<e.length;s++){var a=e[s],i=a[0],r=a[1],o=a[2],l=a[3],u={css:r,media:o,sourceMap:l};n[i]?n[i].parts.push(u):t.push(n[i]={id:i,parts:[u]})}return t}function i(e,t){var n=g(),s=C[C.length-1];if("top"===e.insertAt)s?s.nextSibling?n.insertBefore(t,s.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),C.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function r(e){e.parentNode.removeChild(e);var t=C.indexOf(e);t>=0&&C.splice(t,1)}function o(e){var t=document.createElement("style");return t.type="text/css",i(e,t),t}function l(e,t){var n,s,a;if(t.singleton){var i=v++;n=h||(h=o(t)),s=u.bind(null,n,i,!1),a=u.bind(null,n,i,!0)}else n=o(t),s=d.bind(null,n),a=function(){r(n)};return s(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;s(e=t)}else a()}}function u(e,t,n,s){var a=n?"":s.css;if(e.styleSheet)e.styleSheet.cssText=b(t,a);else{var i=document.createTextNode(a),r=e.childNodes;r[t]&&e.removeChild(r[t]),r.length?e.insertBefore(i,r[t]):e.appendChild(i)}}function d(e,t){var n=t.css,s=t.media,a=t.sourceMap;if(s&&e.setAttribute("media",s),a&&(n+="\n/*# sourceURL="+a.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(a))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var c={},p=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},f=p(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),g=p(function(){return document.head||document.getElementsByTagName("head")[0]}),h=null,v=0,C=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=f()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=a(e);return s(n,t),function(e){for(var i=[],r=0;r<n.length;r++){var o=n[r],l=c[o.id];l.refs--,i.push(l)}if(e){var u=a(e);s(u,t)}for(var r=0;r<i.length;r++){var l=i[r];if(0===l.refs){for(var d=0;d<l.parts.length;d++)l.parts[d]();delete c[l.id]}}}};var b=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t,n,s){var a,i=e=e||{},r=typeof e.default;"object"!==r&&"function"!==r||(a=e,i=e.default);var o="function"==typeof i?i.options:i;if(t&&(o.render=t.render,o.staticRenderFns=t.staticRenderFns),n&&(o._scopeId=n),s){var l=o.computed||(o.computed={});Object.keys(s).forEach(function(e){var t=s[e];l[e]=function(){return t}})}return{esModule:a,exports:i,options:o}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={props:{value:{type:Number},pageCount:{type:Number,required:!0},forcePage:{type:Number},clickHandler:{type:Function,default:function(){}},pageRange:{type:Number,default:3},marginPages:{type:Number,default:1},prevText:{type:String,default:"Prev"},nextText:{type:String,default:"Next"},breakViewText:{type:String,default:"…"},containerClass:{type:String},pageClass:{type:String},pageLinkClass:{type:String},prevClass:{type:String},prevLinkClass:{type:String},nextClass:{type:String},nextLinkClass:{type:String},breakViewClass:{type:String},breakViewLinkClass:{type:String},activeClass:{type:String,default:"active"},disabledClass:{type:String,default:"disabled"},noLiSurround:{type:Boolean,default:!1},firstLastButton:{type:Boolean,default:!1},firstButtonText:{type:String,default:"First"},lastButtonText:{type:String,default:"Last"},hidePrevNext:{type:Boolean,default:!1}},beforeUpdate:function(){void 0!==this.forcePage&&this.forcePage!==this.selected&&(this.selected=this.forcePage)},computed:{selected:{get:function(){return this.value||this.innerValue},set:function(e){this.innerValue=e}},pages:function(){var e=this,t={};if(this.pageCount<=this.pageRange)for(var n=0;n<this.pageCount;n++){var s={index:n,content:n+1,selected:n===this.selected-1};t[n]=s}else{for(var a=Math.floor(this.pageRange/2),i=function(n){var s={index:n,content:n+1,selected:n===e.selected-1};t[n]=s},r=function(e){var n={disabled:!0,breakView:!0};t[e]=n},o=0;o<this.marginPages;o++)i(o);var l=0;this.selected-a>0&&(l=this.selected-1-a);var u=l+this.pageRange-1;u>=this.pageCount&&(u=this.pageCount-1,l=u-this.pageRange+1);for(var d=l;d<=u&&d<=this.pageCount-1;d++)i(d);l>this.marginPages&&r(l-1),u+1<this.pageCount-this.marginPages&&r(u+1);for(var c=this.pageCount-1;c>=this.pageCount-this.marginPages;c--)i(c)}return t}},data:function(){return{innerValue:1}},methods:{handlePageSelected:function(e){this.selected!==e&&(this.innerValue=e,this.$emit("input",e),this.clickHandler(e))},prevPage:function(){this.selected<=1||this.handlePageSelected(this.selected-1)},nextPage:function(){this.selected>=this.pageCount||this.handlePageSelected(this.selected+1)},firstPageSelected:function(){return 1===this.selected},lastPageSelected:function(){return this.selected===this.pageCount||0===this.pageCount},selectFirstPage:function(){this.selected<=1||this.handlePageSelected(1)},selectLastPage:function(){this.selected>=this.pageCount||this.handlePageSelected(this.pageCount)}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return e.noLiSurround?n("div",{class:e.containerClass},[e.firstLastButton?n("a",{class:[e.pageLinkClass,e.firstPageSelected()?e.disabledClass:""],attrs:{tabindex:"0"},domProps:{innerHTML:e._s(e.firstButtonText)},on:{click:function(t){e.selectFirstPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.selectFirstPage():null}}}):e._e(),e._v(" "),e.firstPageSelected()&&e.hidePrevNext?e._e():n("a",{class:[e.prevLinkClass,e.firstPageSelected()?e.disabledClass:""],attrs:{tabindex:"0"},domProps:{innerHTML:e._s(e.prevText)},on:{click:function(t){e.prevPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.prevPage():null}}}),e._v(" "),e._l(e.pages,function(t){return[t.breakView?n("a",{class:[e.pageLinkClass,e.breakViewLinkClass,t.disabled?e.disabledClass:""],attrs:{tabindex:"0"}},[e._t("breakViewContent",[e._v(e._s(e.breakViewText))])],2):t.disabled?n("a",{class:[e.pageLinkClass,t.selected?e.activeClass:"",e.disabledClass],attrs:{tabindex:"0"}},[e._v(e._s(t.content))]):n("a",{class:[e.pageLinkClass,t.selected?e.activeClass:""],attrs:{tabindex:"0"},on:{click:function(n){e.handlePageSelected(t.index+1)},keyup:function(n){return"button"in n||!e._k(n.keyCode,"enter",13)?void e.handlePageSelected(t.index+1):null}}},[e._v(e._s(t.content))])]}),e._v(" "),e.lastPageSelected()&&e.hidePrevNext?e._e():n("a",{class:[e.nextLinkClass,e.lastPageSelected()?e.disabledClass:""],attrs:{tabindex:"0"},domProps:{innerHTML:e._s(e.nextText)},on:{click:function(t){e.nextPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.nextPage():null}}}),e._v(" "),e.firstLastButton?n("a",{class:[e.pageLinkClass,e.lastPageSelected()?e.disabledClass:""],attrs:{tabindex:"0"},domProps:{innerHTML:e._s(e.lastButtonText)},on:{click:function(t){e.selectLastPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.selectLastPage():null}}}):e._e()],2):n("ul",{class:e.containerClass},[e.firstLastButton?n("li",{class:[e.pageClass,e.firstPageSelected()?e.disabledClass:""]},[n("a",{class:e.pageLinkClass,attrs:{tabindex:e.firstPageSelected()?-1:0},domProps:{innerHTML:e._s(e.firstButtonText)},on:{click:function(t){e.selectFirstPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.selectFirstPage():null}}})]):e._e(),e._v(" "),e.firstPageSelected()&&e.hidePrevNext?e._e():n("li",{class:[e.prevClass,e.firstPageSelected()?e.disabledClass:""]},[n("a",{class:e.prevLinkClass,attrs:{tabindex:e.firstPageSelected()?-1:0},domProps:{innerHTML:e._s(e.prevText)},on:{click:function(t){e.prevPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.prevPage():null}}})]),e._v(" "),e._l(e.pages,function(t){return n("li",{class:[e.pageClass,t.selected?e.activeClass:"",t.disabled?e.disabledClass:"",t.breakView?e.breakViewClass:""]},[t.breakView?n("a",{class:[e.pageLinkClass,e.breakViewLinkClass],attrs:{tabindex:"0"}},[e._t("breakViewContent",[e._v(e._s(e.breakViewText))])],2):t.disabled?n("a",{class:e.pageLinkClass,attrs:{tabindex:"0"}},[e._v(e._s(t.content))]):n("a",{class:e.pageLinkClass,attrs:{tabindex:"0"},on:{click:function(n){e.handlePageSelected(t.index+1)},keyup:function(n){return"button"in n||!e._k(n.keyCode,"enter",13)?void e.handlePageSelected(t.index+1):null}}},[e._v(e._s(t.content))])])}),e._v(" "),e.lastPageSelected()&&e.hidePrevNext?e._e():n("li",{class:[e.nextClass,e.lastPageSelected()?e.disabledClass:""]},[n("a",{class:e.nextLinkClass,attrs:{tabindex:e.lastPageSelected()?-1:0},domProps:{innerHTML:e._s(e.nextText)},on:{click:function(t){e.nextPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.nextPage():null}}})]),e._v(" "),e.firstLastButton?n("li",{class:[e.pageClass,e.lastPageSelected()?e.disabledClass:""]},[n("a",{class:e.pageLinkClass,attrs:{tabindex:e.lastPageSelected()?-1:0},domProps:{innerHTML:e._s(e.lastButtonText)},on:{click:function(t){e.selectLastPage()},keyup:function(t){return"button"in t||!e._k(t.keyCode,"enter",13)?void e.selectLastPage():null}}})]):e._e()],2)},staticRenderFns:[]}}])});
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -26971,6 +27184,8 @@ module.exports = g;
  */
 // require('./bootstrap');
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var Paginate = __webpack_require__(/*! vuejs-paginate */ "./node_modules/vuejs-paginate/dist/index.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26980,6 +27195,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('home-step-component', __webpack_require__(/*! ./components/HomeStepComponent.vue */ "./resources/js/components/HomeStepComponent.vue")["default"]);
@@ -26991,6 +27207,7 @@ Vue.component('child-step-component', __webpack_require__(/*! ./components/Child
 Vue.component('child-step-edit-component', __webpack_require__(/*! ./components/ChildStepEditComponent.vue */ "./resources/js/components/ChildStepEditComponent.vue")["default"]);
 Vue.component('step-detail-component', __webpack_require__(/*! ./components/StepDetailComponent.vue */ "./resources/js/components/StepDetailComponent.vue")["default"]);
 Vue.component('user-step-component', __webpack_require__(/*! ./components/UserStepComponent.vue */ "./resources/js/components/UserStepComponent.vue")["default"]);
+Vue.component('paginate', Paginate);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -27561,14 +27778,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/StepDetailComponent.vue ***!
   \*********************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _StepDetailComponent_vue_vue_type_template_id_473b25b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StepDetailComponent.vue?vue&type=template&id=473b25b6& */ "./resources/js/components/StepDetailComponent.vue?vue&type=template&id=473b25b6&");
 /* harmony import */ var _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StepDetailComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/StepDetailComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _StepDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -27598,7 +27816,7 @@ component.options.__file = "resources/js/components/StepDetailComponent.vue"
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/StepDetailComponent.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

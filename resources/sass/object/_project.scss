@@ -1,19 +1,37 @@
 .p-button-accent1 {
     background-color: $color-accent1;
-    border-color: $color-base;
-    color: $color-base;
+    border: 2px solid $color-accent1;
+    color: $color-accent3;
+
+    &:hover {
+        background-color: $color-base;
+        border-color: $color-accent1;
+        color: $color-accent2;
+    }
 }
 
 .p-button-accent2 {
     background-color: $color-accent2;
-    border-color: $color-base;
+    border: 2px solid $color-accent2;
     color: $color-base;
+
+    &:hover {
+        background-color: $color-base;
+        border-color: $color-accent2;
+        color: $color-accent2;
+    }
 }
 
 .p-button-accent3 {
     background-color: $color-accent3;
-    border-color: $color-accent3;
+    border: 2px solid $color-accent3;
     color: $color-base;
+
+    &:hover {
+        background-color: $color-base;
+        border-color: $color-accent3;
+        color: $color-accent3;
+    }
 }
 
 .p-title-accent2 {
@@ -215,8 +233,11 @@
         font-weight: normal;
     }
 
-    h4 {
+    p.detail {
+        border-bottom-color: $color-base;
+    }
 
+    h4 {
         color: $color-dark;
     }
 
