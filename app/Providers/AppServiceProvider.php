@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 
@@ -27,11 +28,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         
-        if (\App::environment('production')) {
-            \URL::forceScheme('https');
-        }
-        if (request()->isSecure()) {
-            \URL::forceScheme('https');
-        }
+        if (in_array(config('app.env'), ['prd', 'stg'], true)) {
+            $url->forceScheme('https');
+          }
+        // if (\App::environment('production')) {
+        //     \URL::forceScheme('https');
+        // }
+        // if (request()->isSecure()) {
+        //     \URL::forceScheme('https');
+        // }
+    
     }
 }
