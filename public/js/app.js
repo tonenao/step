@@ -2011,7 +2011,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       });
     },
     createData: function createData($child_step_id) {
-      axios.post("/step/do_child/", {
+      axios.post("/step/do_child", {
         child_step_id: $child_step_id
       }).then(function (response) {
         console.log(response);
@@ -2023,7 +2023,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       this.$emit("click-inc-count");
     },
     removeData: function removeData($child_step_id) {
-      axios["delete"]("/step/do_child/", {
+      axios["delete"]("/step/do_child", {
         data: {
           child_step_id: $child_step_id
         }
@@ -2159,7 +2159,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     getData: function getData() {
       var _this = this;
 
-      axios.get("/step/json/" + this.id).then(function (response) {
+      axios.get("/step/json" + this.id).then(function (response) {
         _this.child_steps = response.data;
       });
     },
@@ -2310,6 +2310,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2339,6 +2340,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2730,7 +2732,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     // do_stepテーブルのステータスをchallengingからdoneに変更する
     change_done: function change_done() {
-      axios.post("/do_step/", {
+      axios.post("/do_step", {
         step_id: this.step.id,
         status: 1
       }).then(function (response) {
@@ -2741,7 +2743,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     // do_stepテーブルのステータスをdoneからchallengingに変更する
     change_challenge: function change_challenge() {
-      axios.post("/do_step/", {
+      axios.post("/do_step", {
         step_id: this.step.id,
         status: 0
       }).then(function (response) {
@@ -2761,7 +2763,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         this.count_challenge++;
       }
 
-      axios.post("/do_step/challenge/", {
+      axios.post("/do_step/challenge", {
         step_id: this.step.id,
         status: this.status
       }).then(function (response) {

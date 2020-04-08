@@ -95,7 +95,7 @@ export default {
 
   methods: {
     getData() {
-      axios.get("/step/json/" + this.id).then(response => {
+      axios.get("/step/json" + this.id).then(response => {
         this.child_steps = response.data;
       });
     },

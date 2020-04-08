@@ -124,7 +124,7 @@ export default {
     // do_stepテーブルのステータスをchallengingからdoneに変更する
     change_done() {
       axios
-        .post("/do_step/", { step_id: this.step.id, status: 1 })
+        .post("/do_step", { step_id: this.step.id, status: 1 })
         .then(function(response) {
           console.log(response);
         })
@@ -135,7 +135,7 @@ export default {
     // do_stepテーブルのステータスをdoneからchallengingに変更する
     change_challenge() {
       axios
-        .post("/do_step/", { step_id: this.step.id, status: 0 })
+        .post("/do_step", { step_id: this.step.id, status: 0 })
         .then(function(response) {
           console.log(response);
         })
@@ -153,7 +153,7 @@ export default {
         this.count_challenge++;
       }
       axios
-        .post("/do_step/challenge/", {
+        .post("/do_step/challenge", {
           step_id: this.step.id,
           status: this.status
         })
