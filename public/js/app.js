@@ -2324,8 +2324,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       _this.steps = response.data;
 
       for (var step in _this.steps) {
-        console.log(_this.steps[step]);
-        console.log(_this.steps[step].id);
+        // console.log(this.steps[step]);
+        // console.log(this.steps[step].id);
+        _this.steps[step].user.pic = "data:image/png;base64," + btoa(String.fromCharCode.apply(String, _this.steps[step].user.pic));
+        console.log(_this.steps[step].user.pic);
       }
     });
   },
