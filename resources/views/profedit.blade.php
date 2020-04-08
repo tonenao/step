@@ -21,10 +21,11 @@
                 <div class="c-img-prof p-prof-edit area-drop">
 
                 <input type="file" name="pic" multiple="multiple" class="input-file">
-                    @if($user->pic=="no-profile-image.png")
-                    <img src="{{ asset('img/no-profile-image.png') }}" class="prev-img">
+                   
+                    @if(empty($user->pic))
+                        <img src="{{asset('img/no-profile-image.png')}}" class="prev-img">
                     @else
-                    <img src="{{ asset('storage/img/'.$user->pic) }}" class="prev-img">
+                        <img src="data:image/png;base64,{{ $user->pic}}" alt="pic" class="prev-img">
                     @endif
 
                     @error('pic')

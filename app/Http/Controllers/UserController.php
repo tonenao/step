@@ -82,11 +82,9 @@ class UserController extends Controller
       $user=Auth::user();
 
       if(!empty($request->pic)){
-        // $path=$request->file('pic')->store('public/img');
+
         $path=base64_encode(file_get_contents($request->pic));
-        Log::debug('aaaaa');
-        Log::debug(strlen($path));
-        // Log::debug($path);
+ 
         $data=[
           'name'=>$request->name,
           'email'=>$request->email,

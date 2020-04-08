@@ -58,7 +58,7 @@ Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json
 Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
 
 
-Route::get('/step/{id}/edit/', 'StepsController@edit')->name('steps.edit');
+Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
 
 Route::post('/step/{id}/edit/', 'StepsController@update')->name('steps.update');
 

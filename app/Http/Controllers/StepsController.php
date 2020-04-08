@@ -206,7 +206,7 @@ class StepsController extends Controller
 
     public function edit($id){
         if(!ctype_digit($id)){
-            return redirect('stepregist')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
         };
 
         if(!Auth::check()){
@@ -229,7 +229,7 @@ class StepsController extends Controller
         // Log::debug($request);
 
         if(!ctype_digit($id)){
-            return redirect('stepregist')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
         };
         
         $step=Step::find($id);

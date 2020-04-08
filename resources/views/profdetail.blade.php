@@ -11,10 +11,11 @@
       </div>
       <div class="c-container-body">
         <div class="c-img-prof p-prof-edit">
-            @if($user->pic=="no-profile-image.png")
-            <img src="{{ asset('img/no-profile-image.png') }}" >
+
+            @if(empty($user->pic))
+                <img src="{{asset('img/no-profile-image.png')}}">
             @else
-            <img src="{{ asset('storage/img/'.$user->pic) }}" >
+              <img src="data:image/png;base64,{{ $user->pic}}" alt="pic">
             @endif
         </div>
         <div class="p-prof-description">
