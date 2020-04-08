@@ -81,9 +81,10 @@ class UserController extends Controller
     public function update(UserRequest $request){
       $user=Auth::user();
 
-      if($request->hasFile('pic')){
+      if(!empty($request->pic)){
         // $path=$request->file('pic')->store('public/img');
         $path=base64_encode(file_get_contents($request->pic));
+        Log::debug('aaaaa');
         Log::debug(strlen($path));
         // Log::debug($path);
         $data=[
