@@ -2159,7 +2159,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     getData: function getData() {
       var _this = this;
 
-      axios.get("/step/json" + this.id).then(function (response) {
+      axios.get("/step/json/" + this.id).then(function (response) {
         _this.child_steps = response.data;
       });
     },

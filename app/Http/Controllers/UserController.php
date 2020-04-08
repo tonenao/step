@@ -78,7 +78,7 @@ class UserController extends Controller
     }     
 
 
-    public function update(Request $request){
+    public function update(UserRequest $request){
       $user=Auth::user();
 
       if(!empty($request->pic)){
