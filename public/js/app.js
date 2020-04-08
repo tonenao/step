@@ -2193,6 +2193,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         console.log("空っぽ");
         this.isError = true;
       }
+
+      this.getData();
     },
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep: function updateChildStep(index) {

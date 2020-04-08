@@ -128,6 +128,7 @@ export default {
         console.log("空っぽ");
         this.isError = true;
       }
+      this.getData();
     },
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep(index) {
