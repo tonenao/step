@@ -1050,11 +1050,13 @@ footer p a {
   z-index: 5;
 }
 
-.modal-enter-active .model-leave-active {
+.modal-enter-active,
+.model-leave-active {
   transition: opacity 0.5s;
 }
 
-.modal-enter .model-leave-to {
+.modal-enter,
+.model-leave-to {
   opacity: 0;
 }
 
