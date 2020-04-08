@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name'=>'max:191',
             'email'=>'required|email|max:191',
             'introduction'=>'max:191',
-            'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
+            // 'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 
