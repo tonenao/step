@@ -14050,10 +14050,8 @@ var render = function() {
                         : _vm._e()
                     ]
                   )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("transition", { attrs: { name: "modal" } }, [
+                : _vm._e(),
+              _vm._v(" "),
               child_step.editMode
                 ? _c(
                     "div",

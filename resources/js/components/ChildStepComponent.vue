@@ -39,9 +39,9 @@
             v-on:click.stop="createData(child_step.id)"
           >Clear</button>
         </div>
-      </transition>
+        <!-- </transition>
 
-      <transition name="modal">
+        <transition name="modal">-->
         <div
           class="c-step-child p-step-detail isModal"
           v-if="child_step.editMode"
