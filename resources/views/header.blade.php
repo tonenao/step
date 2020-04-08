@@ -43,7 +43,7 @@
                 <img src="{{asset('img/no-profile-image.png')}}">
               @else
                 <!-- <img src="/storage/img/{{ Auth::user()->pic }}"> -->
-                <img src="/storage/img/{{ Auth::user()->pic }}">
+                <img src="data:image/png;base64,<?= Auth::user()->pic ?>">
               @endif
             </div>
 
