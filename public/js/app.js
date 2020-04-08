@@ -2322,8 +2322,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     console.log("FavoriteStepコンポーネント");
     axios.get("/favorite/json").then(function (response) {
       _this.steps = response.data;
-      console.log("aaaaE");
-      console.log(_this.steps);
+
+      for (var step in _this.steps) {
+        console.log(step.id);
+      }
     });
   },
   data: function data() {
