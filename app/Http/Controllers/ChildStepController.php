@@ -10,8 +10,8 @@ use App\ChildStep;
 class ChildStepController extends Controller
 {
     public function create(Request $request){
-        $http_origin="https://tonenao.herokuapp.com/step/child_step/";
-        $response->header("Access-Control-Allow-Origin" , $http_origin)->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')->header('Access-Control-Allow-Headers', 'Content-Type');
+        // $http_origin="https://tonenao.herokuapp.com/step/child_step/";
+        // $response->header("Access-Control-Allow-Origin" , $http_origin)->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')->header('Access-Control-Allow-Headers', 'Content-Type');
 
         $title=$request->title;
         $step_id=$request->step_id;
