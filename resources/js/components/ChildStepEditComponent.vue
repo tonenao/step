@@ -143,7 +143,7 @@ export default {
     //新規のchild_stepのDB登録
     createData() {
       axios
-        .post("/step/child_step/", {
+        .post("/step/child_step", {
           title: this.add_title,
           description: this.add_description,
           step_id: this.id
@@ -161,7 +161,7 @@ export default {
     //child_stepのDB内容更新
     updateData(index) {
       axios
-        .post("/step/" + this.child_steps[index].id + "/child_step/", {
+        .post("/step/" + this.child_steps[index].id + "/child_step", {
           title: this.child_steps[index].title,
           description: this.child_steps[index].description
         })

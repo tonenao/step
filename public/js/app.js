@@ -2207,7 +2207,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
-      axios.post("/step/child_step/", {
+      axios.post("/step/child_step", {
         title: this.add_title,
         description: this.add_description,
         step_id: this.id
@@ -2222,7 +2222,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     //child_stepのDB内容更新
     updateData: function updateData(index) {
-      axios.post("/step/" + this.child_steps[index].id + "/child_step/", {
+      axios.post("/step/" + this.child_steps[index].id + "/child_step", {
         title: this.child_steps[index].title,
         description: this.child_steps[index].description
       }).then(function (response) {
