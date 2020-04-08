@@ -34,23 +34,23 @@ Route::post('/contact/complete', 'ContactsController@complete')->name('complete'
 
 Route::get('/', 'StepsController@top')->name('steps.top');
 
-Route::get('/step', 'StepsController@index')->name('steps.index');
+Route::get('/step/', 'StepsController@index')->name('steps.index');
 
 Route::get('/step/json', 'StepsController@index_json')->name('steps.index_json');
 
 Route::get('/favorite/json', 'StepsController@favorite_json')->name('steps.favorite_json');
 
 
-Route::get('/mypage', 'StepsController@mypage')->name('steps.mypage');
+Route::get('/mypage/', 'StepsController@mypage')->name('steps.mypage');
 
 Route::get('/mystep/json','StepsController@mystep_json')->name('steps.mystep_json');
 
 Route::get('/mychallenge/json','StepsController@mychallenge_json')->name('steps.mychallenge_json');
 
 
-Route::get('/step/new', 'StepsController@new')->name('steps.new');
+Route::get('/step/new/', 'StepsController@new')->name('steps.new');
 
-Route::post('/step', 'StepsController@create')->name('steps.create');
+Route::post('/step/', 'StepsController@create')->name('steps.create');
 
 
 Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json');
@@ -58,9 +58,9 @@ Route::get('/step/json/{id}', 'StepsController@show_json')->name('step.show_json
 Route::get('/step/{id}', 'StepsController@show')->name('steps.show');
 
 
-Route::get('/step/{id}/edit', 'StepsController@edit')->name('steps.edit');
+Route::get('/step/{id}/edit/', 'StepsController@edit')->name('steps.edit');
 
-Route::post('/step/{id}/edit', 'StepsController@update')->name('steps.update');
+Route::post('/step/{id}/edit/', 'StepsController@update')->name('steps.update');
 
 
 

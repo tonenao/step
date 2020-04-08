@@ -13,8 +13,7 @@
     <div class="c-container-body">
 
       <div class="c-panel p-panel-edit">
-        <!-- <form method="POST" action="{{ route('steps.update',$step->id,false) }}"> -->
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('steps.update',$step->id,false) }}">
             @csrf
             
           <div class="c-form-group">
@@ -68,7 +67,7 @@
           <div class="c-form-group">
             <label for="description" class="col-form-label text-md-right">子STEP</label>
             <div id="app">
-              <!-- <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component> -->
+              <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component>
             </div>
           </div>
             
