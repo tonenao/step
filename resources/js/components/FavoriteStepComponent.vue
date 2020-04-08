@@ -40,9 +40,9 @@ export default {
     console.log("FavoriteStepコンポーネント");
     axios.get("/favorite/json").then(response => {
       this.steps = response.data;
+      console.log("aaaaE");
+      console.log(this.steps);
     });
-    console.log("aaaaE");
-    console.log(this.steps);
   },
 
   data: function() {
