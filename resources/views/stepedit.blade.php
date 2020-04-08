@@ -67,7 +67,7 @@
           <div class="c-form-group">
             <label for="description" class="col-form-label text-md-right">子STEP</label>
             <div id="app">
-              <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component>
+              <!-- <child-step-edit-component :id="{{$step->id}}"></child-step-edit-component> -->
             </div>
           </div>
             
