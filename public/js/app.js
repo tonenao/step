@@ -2323,6 +2323,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     axios.get("/favorite/json").then(function (response) {
       _this.steps = response.data;
     });
+
+    for (var step in this.steps) {
+      console.log(step.id);
+    }
   },
   data: function data() {
     return {

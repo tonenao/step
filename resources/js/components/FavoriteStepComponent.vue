@@ -41,6 +41,9 @@ export default {
     axios.get("/favorite/json").then(response => {
       this.steps = response.data;
     });
+    for (let step in this.steps) {
+      console.log(step.id);
+    }
   },
 
   data: function() {
