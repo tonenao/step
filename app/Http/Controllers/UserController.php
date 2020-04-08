@@ -78,17 +78,17 @@ class UserController extends Controller
     }     
 
 
-    public function update(Request $request){
+    public function update(UserRequest $request){
       $user=Auth::user();
 
       if($request->hasFile('pic')){
         // $path=$request->file('pic')->store('public/img');
-        $path=$request->base64_encode(file_get_contents($request->pic));
+        $path=base64_encode(file_get_contents($request->pic));
         $data=[
           'name'=>$request->name,
           'email'=>$request->email,
           'introduction'=>$request->introduction,
-          'pic'=>basename($path)
+          'pic'=>$path
         ];
         $user->update($data);
 
