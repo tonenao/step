@@ -14944,7 +14944,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm.auth
+      _vm.auth && _vm.count_child
         ? _c(
             "button",
             {

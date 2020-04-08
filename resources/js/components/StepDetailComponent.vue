@@ -42,7 +42,7 @@
     <button
       type="button"
       class="c-button c-button-form p-button-accent3"
-      v-if="auth"
+      v-if="auth && count_child"
       v-on:click="change_challenge_handler"
     >{{button_word}}</button>
   </div>
