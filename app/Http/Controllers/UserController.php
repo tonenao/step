@@ -82,7 +82,8 @@ class UserController extends Controller
       $user=Auth::user();
 
       if($request->hasFile('pic')){
-        $path=$request->file('pic')->store('public/img');
+        // $path=$request->file('pic')->store('public/img');
+        $path=$request->base64_encode(file_get_contents($request->pic->getRealPath()));
         $data=[
           'name'=>$request->name,
           'email'=>$request->email,
@@ -94,7 +95,7 @@ class UserController extends Controller
         // 二重送信対策
         $request->session()->regenerateToken();
 
-      return redirect('/mypage')->with('flash_message', '（画像も）更新しました');
+      return redirect('/mypage')->with('flash_message', '更新しました');
 
       }else{
         $data=[
