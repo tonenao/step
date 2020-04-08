@@ -2324,7 +2324,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       _this.steps = response.data;
 
       for (var step in _this.steps) {
-        console.log(step.id);
+        console.log(_this.steps[step]);
+        console.log(_this.steps[step].id);
       }
     });
   },
