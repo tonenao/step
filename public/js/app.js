@@ -14490,7 +14490,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                step.user.pic == "no-profile-image.png"
+                !step.user.pic
                   ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
                   : _c("img", {
                       attrs: { src: "data:image/png;base64," + step.user.pic }
@@ -14586,10 +14586,10 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                  step.user.pic == "no-profile-image.png"
+                  !step.user.pic
                     ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
                     : _c("img", {
-                        attrs: { src: "storage/img/" + step.user.pic }
+                        attrs: { src: "data:image/png;base64," + step.user.pic }
                       })
                 ]),
                 _vm._v(" "),

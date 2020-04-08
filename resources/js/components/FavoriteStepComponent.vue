@@ -12,7 +12,7 @@
           <h3 class="c-panel-title">{{step.title}}</h3>
           <span class="c-category">{{step.category.category}}</span>
           <div class="c-img-prof p-prof-list">
-            <img v-if="step.user.pic=='no-profile-image.png'" src="/img/no-profile-image.png" />
+            <img v-if="!step.user.pic" src="/img/no-profile-image.png" />
             <img v-else v-bind:src="'data:image/png;base64,'+step.user.pic" />
           </div>
           <span class="c-panel-name">{{step.user.name}}</span>
