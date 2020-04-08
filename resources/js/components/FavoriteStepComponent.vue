@@ -43,9 +43,10 @@ export default {
       for (let step in this.steps) {
         // console.log(this.steps[step]);
         // console.log(this.steps[step].id);
-        this.steps[step].user.pic =
-          "data:image/png;base64," +
-          btoa(String.fromCharCode.apply(String, this.steps[step].user.pic));
+
+        // this.steps[step].user.pic =
+        //   "data:image/png;base64," +
+        //   btoa(String.fromCharCode.apply(String, this.steps[step].user.pic));
         console.log(this.steps[step].user.pic);
       }
     });
