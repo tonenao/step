@@ -83,7 +83,7 @@ class UserController extends Controller
 
       if($request->hasFile('pic')){
         // $path=$request->file('pic')->store('public/img');
-        $path=$request->base64_encode(file_get_contents($request->pic->getRealPath()));
+        $path=$request->base64_encode(file_get_contents($request->pic));
         $data=[
           'name'=>$request->name,
           'email'=>$request->email,
