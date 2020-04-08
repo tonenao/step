@@ -13,7 +13,8 @@
     <div class="c-container-body">
 
       <div class="c-panel p-panel-edit">
-        <form method="POST" action="{{ route('steps.update',$step->id,false) }}">
+        <!-- <form method="POST" action="{{ route('steps.update',$step->id,false) }}"> -->
+        <form method="POST" action="">
             @csrf
             
           <div class="c-form-group">
