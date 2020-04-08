@@ -42,6 +42,7 @@ export default {
       this.steps = response.data;
     });
     console.log("aaaaE");
+    console.log(this.steps);
     for (let step in this.steps) {
       console.log(step.id);
     }
