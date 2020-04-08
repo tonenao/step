@@ -16,6 +16,7 @@ return [
     |
     */
 
+    // 'driver' => env('MAIL_DRIVER', 'smtp'),
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
@@ -29,7 +30,8 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    // 'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.googlemail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +44,8 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    // 'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +59,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', null),
-        'name' => env('MAIL_FROM_NAME', null),
+        // 'address' => env('MAIL_FROM_ADDRESS', null),
+        // 'name' => env('MAIL_FROM_NAME', null),
+        'address' => env('MAIL_FROM_ADDRESS', 'tonenao@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'TONENAO'),
     ],
 
     /*
@@ -71,7 +76,8 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', null),
+    // 'encryption' => env('MAIL_ENCRYPTION', null),
+    'encryption' => env('MAIL_ENCRYPTION', ssl),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
@@ -83,9 +89,10 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME',null),
-
-    'password' => env('MAIL_PASSWORD',null),
+    // 'username' => env('MAIL_USERNAME',null),
+    // 'password' => env('MAIL_PASSWORD',null),
+    'username' => env('MAIL_USERNAME','tonenao@gmail.com'),
+    'password' => env('MAIL_PASSWORD','yrtrgvqrlgqcvois'),
 
     /*
     |--------------------------------------------------------------------------
@@ -98,6 +105,7 @@ return [
     |
     */
 
+    // 'sendmail' => '/usr/sbin/sendmail -bs',
     'sendmail' => '/usr/sbin/sendmail -bs',
 
     /*
@@ -111,6 +119,13 @@ return [
     |
     */
 
+    // 'markdown' => [
+    //     'theme' => 'default',
+
+    //     'paths' => [
+    //         resource_path('views/vendor/mail'),
+    //     ],
+    // ],
     'markdown' => [
         'theme' => 'default',
 
@@ -130,6 +145,7 @@ return [
     |
     */
 
+    // 'log_channel' => env('MAIL_LOG_CHANNEL'),
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
 ];
