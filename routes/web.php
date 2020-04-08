@@ -79,7 +79,7 @@ Route::post('/do_step/giveup', 'DoStepController@giveup');
 
 //ChildStepController
 
-Route::post('/step/child_step/','ChildStepController@create');
+Route::post('/step/child_step','ChildStepController@create');
 
 Route::post('/step/{id}/child_step/','ChildStepController@update');
 
