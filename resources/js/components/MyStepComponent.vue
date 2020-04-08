@@ -2,7 +2,7 @@
   <div>
     <li v-for="step in getSteps" :key="step.id">
       <div class="c-panel p-panel-step p-panel-step-mystep">
-        <a v-bind:href="'/step/'+step.id+'/edit/'">
+        <a v-bind:href="'/step/'+step.id+'/edit'">
           <h3 class="c-panel-title">{{step.title}}</h3>
           <span class="c-category">{{step.category.category}}</span>
           <div class="c-panel-bar p-panel-bar-mystep">

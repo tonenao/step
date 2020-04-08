@@ -14744,7 +14744,7 @@ var render = function() {
             "div",
             { staticClass: "c-panel p-panel-step p-panel-step-mystep" },
             [
-              _c("a", { attrs: { href: "/step/" + step.id + "/edit/" } }, [
+              _c("a", { attrs: { href: "/step/" + step.id + "/edit" } }, [
                 _c("h3", { staticClass: "c-panel-title" }, [
                   _vm._v(_vm._s(step.title))
                 ]),
