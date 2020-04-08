@@ -13,7 +13,7 @@
           <span class="c-category">{{step.category.category}}</span>
           <div class="c-img-prof p-prof-list">
             <img v-if="step.user.pic=='no-profile-image.png'" src="/img/no-profile-image.png" />
-            <img v-else v-bind:src="'storage/img/'+step.user.pic" />
+            <img v-else v-bind:src="'data:image/png;base64,'+step.user.pic" />
           </div>
           <span class="c-panel-name">{{step.user.name}}</span>
           <div class="c-panel-bar p-panel-bar-mystep">
@@ -40,15 +40,6 @@ export default {
     console.log("FavoriteStepコンポーネント");
     axios.get("/favorite/json").then(response => {
       this.steps = response.data;
-      for (let step in this.steps) {
-        // console.log(this.steps[step]);
-        // console.log(this.steps[step].id);
-
-        // this.steps[step].user.pic =
-        //   "data:image/png;base64," +
-        //   btoa(String.fromCharCode.apply(String, this.steps[step].user.pic));
-        console.log(this.steps[step].user.pic);
-      }
     });
   },
 

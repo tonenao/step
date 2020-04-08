@@ -2322,15 +2322,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     console.log("FavoriteStepコンポーネント");
     axios.get("/favorite/json").then(function (response) {
       _this.steps = response.data;
-
-      for (var step in _this.steps) {
-        // console.log(this.steps[step]);
-        // console.log(this.steps[step].id);
-        // this.steps[step].user.pic =
-        //   "data:image/png;base64," +
-        //   btoa(String.fromCharCode.apply(String, this.steps[step].user.pic));
-        console.log(_this.steps[step].user.pic);
-      }
     });
   },
   data: function data() {
@@ -14502,7 +14493,7 @@ var render = function() {
                 step.user.pic == "no-profile-image.png"
                   ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
                   : _c("img", {
-                      attrs: { src: "storage/img/" + step.user.pic }
+                      attrs: { src: "data:image/png;base64," + step.user.pic }
                     })
               ]),
               _vm._v(" "),
