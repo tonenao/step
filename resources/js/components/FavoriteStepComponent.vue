@@ -42,10 +42,7 @@ export default {
       this.steps = response.data;
     });
     console.log("aaaaE");
-    console.log(steps);
-    for (let step in this.steps) {
-      console.log(step.id);
-    }
+    console.log(this.steps);
   },
 
   data: function() {
