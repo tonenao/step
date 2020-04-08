@@ -42,7 +42,7 @@
               @if(Auth::user()->pic==='no-profile-image.png')
                 <img src="{{asset('img/no-profile-image.png')}}">
               @else
-                <img src="/storage/img/{{ Auth::user()->pic }}">
+                <img src="storage/img/{{ Auth::user()->pic }}">
               @endif
             </div>
 
