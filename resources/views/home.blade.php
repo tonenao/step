@@ -8,7 +8,7 @@
     <div class="c-container  p-container-top">
 
       <div class="c-container-title-wrap">
-          <h2 class="c-container-title">{{ __('人気STEP一覧') }}</h2>
+          <h2 class="c-container-title">人気STEP一覧</h2>
       </div>
       <div class="c-container-body">
         <div class="c-panel-wrap">

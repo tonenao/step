@@ -1,3 +1,31 @@
+.p-page-top {
+
+    .c-container {
+
+
+        img {
+            width: 80%;
+            margin: 20px 0;
+        }
+
+
+        .p-top {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+
+.p-top-link {
+    a {
+        text-decoration: underline;
+        color: $color-accent3;
+        font-weight: bold;
+    }
+}
+
+
+
 .p-button-accent1 {
     background-color: $color-accent1;
     border: 2px solid $color-accent1;
@@ -53,6 +81,14 @@
     @include mq() {
         padding: 100px 0 80px;
     }
+}
+
+.p-container-main {
+    background-color: $color-main;
+}
+
+.p-container-accent1 {
+    background-color: $color-accent1;
 }
 
 .p-panel-step {

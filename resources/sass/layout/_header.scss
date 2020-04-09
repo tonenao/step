@@ -92,8 +92,9 @@ header {
 
         & .title-step-sub {
             transition: 1s;
-            // transition-delay: 1s;
+            transition-delay: 1s;
             opacity: 0;
+            display: none;
         }
     }
 

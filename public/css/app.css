@@ -249,6 +249,7 @@ textarea:focus {
 
 .l-main {
   margin: 15px 15px 0;
+  padding-bottom: 15px;
   background-color: #FEFEFE;
 }
 
@@ -260,6 +261,7 @@ textarea:focus {
 
 .l-main-top {
   margin: 0 15px;
+  padding-bottom: 15px;
   background-color: #FEFEFE;
 }
 
@@ -360,7 +362,9 @@ header .title .title-step-sub {
 
 .js-title.title-reduce .title-step-sub {
   transition: 1s;
+  transition-delay: 1s;
   opacity: 0;
+  display: none;
 }
 
 #nav-menu {
@@ -700,11 +704,12 @@ footer p a {
 
 .c-container {
   max-width: 980px;
-  margin: 0 auto;
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   padding: 50px 0 100px;
 }
 
@@ -801,18 +806,17 @@ footer p a {
   margin: 0 auto;
 }
 
-.c-button-hero {
+.c-button-top {
   width: 300px;
   text-align: center;
   position: absolute;
-  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
 }
 
-.c-button-hero a {
+.c-button-top a {
   display: block;
   width: 100%;
   height: 100%;
@@ -820,10 +824,18 @@ footer p a {
 }
 
 @media screen and (max-width: 414px) {
-  .c-button-hero {
+  .c-button-top {
     padding: 0 3em;
     bottom: 20px;
   }
+}
+
+.c-button-hero {
+  bottom: 80px;
+}
+
+.c-button-challenge {
+  bottom: 50px;
 }
 
 .c-button-step-child {
@@ -1086,6 +1098,21 @@ footer p a {
   opacity: 0;
 }
 
+.p-page-top .c-container img {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.p-page-top .c-container .p-top {
+  margin-bottom: 50px;
+}
+
+.p-top-link a {
+  text-decoration: underline;
+  color: #4B6683;
+  font-weight: bold;
+}
+
 .p-button-accent1 {
   background-color: #F9A603;
   border: 2px solid #F9A603;
@@ -1141,6 +1168,14 @@ footer p a {
   .p-container-top {
     padding: 100px 0 80px;
   }
+}
+
+.p-container-main {
+  background-color: #F7EFE2;
+}
+
+.p-container-accent1 {
+  background-color: #F9A603;
 }
 
 .p-panel-step {
