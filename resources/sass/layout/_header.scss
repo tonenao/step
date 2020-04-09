@@ -14,7 +14,7 @@ header {
         background-color: $color-accent2;
         margin-left: 30px;
         margin-top: -1px;
-        height: 150px;
+        height: 160px;
         width: 120px;
         text-align: center;
         color: $color-base;
@@ -48,7 +48,7 @@ header {
     }
 
     @include mq() {
-        margin-top: -70px;
+        margin-top: -30px;
         height: 60px;
 
         & .title {
@@ -56,9 +56,14 @@ header {
             width: 90px;
             margin-left: 5px;
 
+            & .title-step {
+                line-height: 80px;
+            }
+
             & .title-step-sub {
+                // line-height: 1.2;
                 font-size: 0.5rem;
-                margin-top: -20px;
+                margin-top: -10px;
                 -webkit-font-smoothing: none;
             }
         }

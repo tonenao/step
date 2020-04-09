@@ -2,7 +2,7 @@
   <div class="title js-title">
     <a href="{{ route('steps.index')}}">
       <h1 class="title-step">STEP</h1>
-      <p class="title-step-sub">Share your life STEP</p>
+      <p class="title-step-sub">Share your experience as STEP</p>
     </a>
   </div>
   @if (session('flash_message'))
