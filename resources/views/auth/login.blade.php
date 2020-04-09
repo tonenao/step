@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="l-main-top">
-<div class="c-container p-container-top">
+    <div class="c-container p-container-top">
 
         <div class="c-container-title-wrap">
             <h2 class="c-container-title">{{ __('ログイン') }}</h2>
@@ -67,7 +67,7 @@
                         </a>
                     @endif
         </form>
-    <!-- </div> -->
-</div>
+
+    </div>
 </div>
 @endsection
