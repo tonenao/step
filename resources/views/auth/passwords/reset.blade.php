@@ -10,12 +10,16 @@
         <h2 class="c-container-title">パスワード リセット</h2>
     </div>
 
+    <div class="alert alert-success" role="alert">
+            新しいパスワードを設定しなおしてください。
+        </div>
+
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
 
         <input type="hidden" name="token" value="{{ $token }}">
 
-        <div class="c-form-group">
+        <div class="c-form-group" style="display:none;l">
             <label for="email" class="col-md-4 col-form-label text-md-right">email</label>
 
             <div class="col-md-6">
@@ -54,7 +58,7 @@
 
         <div class="c-form-group-submit">
                 <button type="submit" class="c-button   c-button-form p-button-accent2">
-                    パスワードをリセット
+                    パスワード再登録
                 </button>
         </div>
     </form>

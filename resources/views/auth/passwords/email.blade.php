@@ -10,6 +10,10 @@
     <h2 class="c-container-title">パスワード リセット</h2>
     </div>
 
+    <div class="alert alert-success" role="alert">
+            登録しているemail入力しボタンを押してください。
+        </div>
+
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -35,7 +39,7 @@
 
         <div class="c-form-group-submit">
                 <button type="submit" class="c-button   c-button-form p-button-accent2">
-                    リセットのためのリンク送信
+                    リセット → メール送信
                 </button>
         </div>
 
