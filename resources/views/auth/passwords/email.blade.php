@@ -10,13 +10,14 @@
     <h2 class="c-container-title">パスワード リセット</h2>
     </div>
 
-    <div class="alert alert-success" role="alert">
-            登録しているemail入力しボタンを押してください。
-        </div>
 
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
+        </div>
+    @else
+        <div class="alert alert-success" role="alert">
+            emailを入力して進めてください。
         </div>
     @endif
 
