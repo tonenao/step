@@ -57,9 +57,9 @@ export default {
       default: []
     },
     do_steps: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => {}
+      default: () => []
     },
     auth: {
       type: Boolean,
