@@ -79,7 +79,7 @@ class UserController extends Controller
     }     
 
 
-    public function update(UerRequest $request){
+    public function update(UserRequest $request){
       $user=Auth::user();
 
       // $rules=[
