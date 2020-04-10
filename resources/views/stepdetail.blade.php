@@ -32,6 +32,7 @@
               <span class="c-panel-name">{{ $step->user->name }}</span>
             </a>
 
+            {{$step->do_steps_auth}}
             
             @auth
             <step-detail-component   :auth=true :step="{{json_encode($step)}}"  :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
