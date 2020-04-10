@@ -510,10 +510,10 @@ footer p a {
   padding: 5px 10px;
   min-width: 120px;
   max-width: 100%;
-  color: #F56608;
+  color: #4B6683;
   font-size: 16px;
   background: #F9A603;
-  border: solid 3px #F56608;
+  border: solid 3px #4B6683;
   border-radius: 3px;
 }
 
@@ -535,7 +535,7 @@ footer p a {
   left: 30%;
   margin-left: -17px;
   border: 14px solid transparent;
-  border-bottom: 14px solid #F56608;
+  border-bottom: 14px solid #4B6683;
   z-index: 1;
 }
 
