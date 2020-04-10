@@ -43,7 +43,7 @@
           <div class="c-form-group">
               <label for="achievement_time" class="col-form-label text-md-right">目安時間（※単位：時間）</label>
               <div class="">
-                <input id="achievement_time" type="number" min="0" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time' ,$step->achievement_time) }}" required autocomplete="achievement_time" autofocus>
+                <input id="achievement_time" type="number" min="1" max="10000" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time' ,$step->achievement_time) }}" required autocomplete="achievement_time" autofocus>
                   @error('achievement_time')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $errors->first('achievement_time') }}</strong>

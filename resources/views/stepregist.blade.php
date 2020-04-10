@@ -7,7 +7,7 @@
     <div class="c-container  p-container-top">
 
         <div class="c-container-title-wrap">
-            <h2 class="c-container-title">{{ __('STEP登録') }}</h2>
+            <h2 class="c-container-title">STEP登録</h2>
         </div>
 
         <div class="c-container-body">
@@ -19,7 +19,7 @@
                 
 
                 <div class="c-form-group">
-                    <label for="name" class="">{{ __('STEP名') }}</label>
+                    <label for="name" class="">STEP名</label>
                     <div class="">
                         <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
                         @error('title')
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="c-form-group">
-                    <label for="name" class="col-form-label text-md-right">{{ __('カテゴリー') }}</label>
+                    <label for="name" class="col-form-label text-md-right">カテゴリー</label>
                     <div class="">
                         <select id="category_id" class="form-control @error('category') is-invalid @enderror" name="category_id" value="{{ old('category') }}" required autocomplete="category_id" autofocus>
                         @foreach($categories as $category)
@@ -43,9 +43,9 @@
                 </div>
 
                 <div class="c-form-group">
-                    <label for="achievement_time" class="col-form-label text-md-right">{{ __('目安時間') }}</label>
+                    <label for="achievement_time" class="col-form-label text-md-right">目安時間</label>
                     <div class="">
-                    <input id="title" type="number" min="0" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time') }}" required autocomplete="achievement_time" autofocus>
+                    <input id="title" type="number" min="1" max="10000" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time') }}" required autocomplete="achievement_time" autofocus>
                         @error('achievement_time')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('achievement_time') }}</strong>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="c-form-group">
-                    <label for="description" class="col-form-label text-md-right">{{ __('説明文 ') }}</label>
+                    <label for="description" class="col-form-label text-md-right">説明文</label>
                     <div class="">
                         <textarea id="dexcription" class="form-control" name="description" rows="5" required autocomplete="description">{{ old('description') }}</textarea>
                         @error('description')

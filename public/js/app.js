@@ -2670,11 +2670,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       type: Object,
       "default": []
     },
-    // do_steps: {
-    //   type: Array,
-    //   required: false,
-    //   default: () => []
-    // },
     auth: {
       type: Boolean,
       "default": true
@@ -2704,12 +2699,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     //子STEPの進捗を判定して各プロパティとdo_stepのステータスを変更する
     change_status_handler: function change_status_handler() {
       if (this.count_child === this.count_do_child) {
-        console.log("change_done!!");
         this.count_done++;
         this.count_challenge--;
         this.change_done();
       } else if (this.count_child === this.count_do_child + 1 && this.status_flg === "dec") {
-        console.log("change_challenge!!");
         this.count_done--;
         this.count_challenge++;
         this.change_challenge();

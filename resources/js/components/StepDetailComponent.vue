@@ -56,11 +56,6 @@ export default {
       type: Object,
       default: []
     },
-    // do_steps: {
-    //   type: Array,
-    //   required: false,
-    //   default: () => []
-    // },
     auth: {
       type: Boolean,
       default: true
@@ -90,7 +85,6 @@ export default {
     //子STEPの進捗を判定して各プロパティとdo_stepのステータスを変更する
     change_status_handler: function() {
       if (this.count_child === this.count_do_child) {
-        console.log("change_done!!");
         this.count_done++;
         this.count_challenge--;
         this.change_done();
@@ -98,7 +92,6 @@ export default {
         this.count_child === this.count_do_child + 1 &&
         this.status_flg === "dec"
       ) {
-        console.log("change_challenge!!");
         this.count_done--;
         this.count_challenge++;
         this.change_challenge();

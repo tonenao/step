@@ -27,8 +27,6 @@ class StepRequest extends FormRequest
             'title'=>'required|max:191',
             'category_id'=>'required',
             'description'=>'required|max:191',
-            'introduction'=>'max:191',
-            'achievement_time'=>'integer | between:1,30',
             'achievement_time'=>'required|integer| between:1,10000'
         ];
     }
