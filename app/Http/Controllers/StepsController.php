@@ -19,82 +19,98 @@ class StepsController extends Controller
         return view('top');
     }
 
+
+
     //STEP一覧画面への遷移
     public function index(){
-
-        // $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
-        // return view('home',compact('steps'));
-
         return view('home');
     }
 
-    //STEP一覧へのJSON
-    public function index_json(){
-        //ブラウザバック時にキャッシュクリアしリロード
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
-        header("Pragma: no-cache");
-
-        $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
-        foreach($steps as $step){
-            $category=$step->category;
-            $user=$step->user;
-            $count_challenge=$step->count_challenge();
-            $count_done=$step->count_done();
-
-            // $auth_user_challenge_doneにログインユーザーがチャレンジすみかを判定
-            if($step->auth_user_challenge_done()){
-                $auth_user_challenge_done=true;
-            }else{
-                $auth_user_challenge_done=false;
-            }
-
-            $step['category']=$category;
-            $step['user']=$user;
-            $step['count_challenge']=$count_challenge;
-            $step['count_done']=$count_done;
-            $step['auth_user_challenge_done']=$auth_user_challenge_done;
-        }
-        return $steps->toJson();
-    }
-
-    //お気に入りSTEP一覧へのJSON
-    public function favorite_json(){
-        //ブラウザバック時にキャッシュクリアしリロード
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
-        header("Pragma: no-cache");
-
-        $steps=Step::withCount('do_steps')->orderBy('do_steps_count','desc')->where('delete_flg',0)->limit(5)->get();
-        foreach($steps as $step){
-            $category=$step->category;
-            $user=$step->user;
-            $count_challenge=$step->count_challenge();
-            $count_done=$step->count_done();
-
-            // $auth_user_challenge_doneにログインユーザーがチャレンジすみかを判定
-            if($step->auth_user_challenge_done()){
-                $auth_user_challenge_done=true;
-            }else{
-                $auth_user_challenge_done=false;
-            }
-
-            $step['category']=$category;
-            $step['user']=$user;
-            $step['count_challenge']=$count_challenge;
-            $step['count_done']=$count_done;
-            $step['auth_user_challenge_done']=$auth_user_challenge_done;
-        }
-        return $steps->toJson();
-    }
 
 
+    //マイページへの画面遷移
     public function mypage(){
         return view('mypage');
     }
 
 
-    //マイページへのJSON（MYSTEP）
+
+    //STEP一覧表示用コンポーネントへのJSON
+    public function index_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
+        //新しい順に並び替え
+        $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
+
+
+        foreach($steps as $step){
+            $category=$step->category;
+            $user=$step->user;
+            $count_challenge=$step->count_challenge();
+            $count_done=$step->count_done();
+
+            // $auth_user_challenge_doneにログインユーザーがチャレンジ完了しているかを格納
+            if($step->auth_user_challenge_done()){
+                $auth_user_challenge_done=true;
+            }else{
+                $auth_user_challenge_done=false;
+            }
+
+            $step['category']=$category;
+            $step['user']=$user;
+            $step['count_challenge']=$count_challenge;
+            $step['count_done']=$count_done;
+            $step['auth_user_challenge_done']=$auth_user_challenge_done;
+        }
+        return $steps->toJson();
+    }
+
+
+
+    //お気に入りSTEP一覧表示用コンポーネントへのJSON
+    public function favorite_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
+        //チャレンジ数の多い順に並び替え上位5STEPのデータを取得
+        $steps=Step::withCount('do_steps')->orderBy('do_steps_count','desc')->where('delete_flg',0)->limit(5)->get();
+
+
+        foreach($steps as $step){
+            $category=$step->category;
+            $user=$step->user;
+            $count_challenge=$step->count_challenge();
+            $count_done=$step->count_done();
+
+            // $auth_user_challenge_doneにログインユーザーがチャレンジ完了しているかを格納
+            if($step->auth_user_challenge_done()){
+                $auth_user_challenge_done=true;
+            }else{
+                $auth_user_challenge_done=false;
+            }
+
+            $step['category']=$category;
+            $step['user']=$user;
+            $step['count_challenge']=$count_challenge;
+            $step['count_done']=$count_done;
+            $step['auth_user_challenge_done']=$auth_user_challenge_done;
+        }
+        return $steps->toJson();
+    }
+
+
+
+    //ログイン中ユーザーが登録したSTEP一覧表示用コンポーネントへのJSON
     public function mystep_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         $id=Auth::id();
+
         $steps=Step::orderBy('id','desc')->where('user_id',$id)->where('delete_flg',0)->get();
         foreach($steps as $step){
             $category=$step->category;
@@ -107,12 +123,20 @@ class StepsController extends Controller
         return $steps->toJson();
     }
 
-    //マイページへのJSON（チャンレンジ中STEP）
+
+
+    //チャレンジ中STEP一覧表示用コンポーネントへのJSON
     public function mychallenge_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         $id=Auth::id();
+
         $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get()->filter(function($step){
             return $step->auth_user_challenge() >0;
         });
+
         foreach($steps as $step){
             $category=$step->category;
             $count_child_steps=$step->count_child_steps();
@@ -144,7 +168,6 @@ class StepsController extends Controller
 
 
 
-
     public function create(StepRequest $request){
         if(isset($request['create'])){
             $data=[
@@ -167,8 +190,7 @@ class StepsController extends Controller
     }
 
 
-
-
+    //STEP詳細画面遷移＋データ取得
     public function show($id){
         //ブラウザバック時にキャッシュクリアしリロード
         header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
@@ -178,8 +200,10 @@ class StepsController extends Controller
             return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
 
+        //パラメータidからデータ取得
         $step=Step::find($id);
         
+        //データが存在しなければリダイレクト
         if($step===null){
             return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
@@ -202,6 +226,8 @@ class StepsController extends Controller
         $step['count_do_child_steps']=$count_do_child_steps;
         return view('stepdetail',compact('id','step'));
     }
+
+
 
     //STEP詳細画面へのJSON
     public function show_json($id){
@@ -243,6 +269,7 @@ class StepsController extends Controller
         }
        
     }
+
 
 
     public function update(StepRequest $request,$id){

@@ -49,13 +49,13 @@ class Step extends Model
         return $this->do_steps->where('status','1')->count();
     }
 
-    //ログインユーザーのSTEPチャレンジ中判定
+    //ログインユーザーのSTEPチャレンジ中判定（done含む）
     public function auth_user_challenge(){
         $id=Auth::id();
         return $this->do_steps->where('user_id',$id)->count();
     }
 
-    //ログインユーザーのSTEPチャレンジ済み判定
+    //ログインユーザーのSTEPチャレンジ完了済み判定
     public function auth_user_challenge_done(){
         $id=Auth::id();
         return $this->do_steps->where('user_id',$id)->where('status','1')->count();

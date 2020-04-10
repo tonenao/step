@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Step;
 use App\ChildStep;
 use App\DoChildstep;
+use Log;
 
 class DoChildStepController extends Controller
 {
     public function create(Request $request){
+        Log::debug($request);
         $u_id=Auth::id();
         $child_step_id=$request->child_step_id;
         $update=[
