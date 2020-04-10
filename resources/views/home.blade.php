@@ -24,7 +24,7 @@
     <div class="c-container">
 
       <div class="c-container-title-wrap">
-          <h2 class="c-container-title">{{ __('STEP一覧') }}</h2>
+          <h2 class="c-container-title">STEP一覧</h2>
       </div>
       
       <div class="c-container-body">

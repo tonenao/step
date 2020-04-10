@@ -14,18 +14,18 @@ use Log;
 
 class StepsController extends Controller
 {
-
+    //TOP一覧画面への遷移
     public function top(){
         return view('top');
     }
 
+    //STEP一覧画面への遷移
     public function index(){
-        //ブラウザバック時にキャッシュクリアしリロード
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
-        header("Pragma: no-cache");
 
-        $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
-        return view('home',compact('steps'));
+        // $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
+        // return view('home',compact('steps'));
+
+        return view('home');
     }
 
     //STEP一覧へのJSON
@@ -62,7 +62,7 @@ class StepsController extends Controller
         //ブラウザバック時にキャッシュクリアしリロード
         header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
         header("Pragma: no-cache");
-                
+
         $steps=Step::withCount('do_steps')->orderBy('do_steps_count','desc')->where('delete_flg',0)->limit(5)->get();
         foreach($steps as $step){
             $category=$step->category;
