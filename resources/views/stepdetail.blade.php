@@ -32,13 +32,18 @@
               <span class="c-panel-name">{{ $step->user->name }}</span>
             </a>
 
-            {{$step->do_steps_auth}}
             
+            @auth
+            <step-detail-component   :auth=true :step="{{json_encode($step)}}"></step-detail-component>
+            @else
+            <step-detail-component  :auth=false  :step="{{json_encode($step)}}"></step-detail-component>
+            @endauth
+<!--             
             @auth
             <step-detail-component   :auth=true :step="{{json_encode($step)}}"  :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
             @else
             <step-detail-component  :auth=false  :step="{{json_encode($step)}}"  :do_steps="{{$step->do_steps_auth}}"></step-detail-component>
-            @endauth
+            @endauth -->
 
 
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="【{{ $step->title }}】"  data-hashtags="STEPを共有しよう"  data-lang="ja" data-dnt="true" data-show-count="true">Tweet</a>

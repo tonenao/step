@@ -56,11 +56,11 @@ export default {
       type: Object,
       default: []
     },
-    do_steps: {
-      type: Array,
-      required: false,
-      default: () => []
-    },
+    // do_steps: {
+    //   type: Array,
+    //   required: false,
+    //   default: () => []
+    // },
     auth: {
       type: Boolean,
       default: true

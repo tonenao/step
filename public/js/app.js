@@ -2670,13 +2670,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       type: Object,
       "default": []
     },
-    do_steps: {
-      type: Array,
-      required: false,
-      "default": function _default() {
-        return [];
-      }
-    },
+    // do_steps: {
+    //   type: Array,
+    //   required: false,
+    //   default: () => []
+    // },
     auth: {
       type: Boolean,
       "default": true
