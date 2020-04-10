@@ -261,7 +261,6 @@ textarea:focus {
 
 .l-main-top {
   margin: 0 15px;
-  padding-bottom: 15px;
   background-color: #FEFEFE;
 }
 
@@ -704,7 +703,7 @@ footer p a {
 
 .c-container {
   max-width: 980px;
-  margin: 0 auto 15px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
