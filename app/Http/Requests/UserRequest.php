@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
 
         return [
             'name'=>'max:191',
-            'email'=>['required','email','max:191',Rule::unique('email')->ignore($user->id),],
+            'email'=>['required','email','max:191',Rule::unique('email')->ignore($user),],
             'introduction'=>'max:191',
             'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
         ];
