@@ -30,6 +30,10 @@ class StepsController extends Controller
 
     //STEP一覧へのJSON
     public function index_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
         foreach($steps as $step){
             $category=$step->category;
@@ -55,6 +59,10 @@ class StepsController extends Controller
 
     //お気に入りSTEP一覧へのJSON
     public function favorite_json(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+                
         $steps=Step::withCount('do_steps')->orderBy('do_steps_count','desc')->where('delete_flg',0)->limit(5)->get();
         foreach($steps as $step){
             $category=$step->category;
