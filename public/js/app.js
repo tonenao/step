@@ -27989,13 +27989,7 @@ __webpack_require__.r(__webpack_exports__);
   $('.js-toggle-sp-menu').on('click', function () {
     $(this).toggleClass('active');
     $('.js-toggle-sp-menu-target').toggleClass('active');
-  }); //ブラウザバック時にページを再読み込み
-
-  window.onpageshow = function (event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
-  };
+  });
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 

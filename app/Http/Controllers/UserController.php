@@ -13,6 +13,9 @@ use Validator;
 class UserController extends Controller
 {
     public function show($id){
+      header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+      header("Pragma: no-cache");
+
       if(!ctype_digit($id)){
         return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
       };
@@ -67,6 +70,9 @@ class UserController extends Controller
 
 
     public function edit(){
+      header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+      header("Pragma: no-cache");
+
       if(Auth::check()){
         $user=Auth::user();
 
@@ -80,34 +86,10 @@ class UserController extends Controller
 
 
     public function update(UserRequest $request){
+      header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+      header("Pragma: no-cache");
+      
       $user=Auth::user();
-
-      // $rules=[
-      //   'name'=>'max:191',
-      //   'email'=>['required','email','max:191',Rule::unique('email')->ignore($user->id),],
-      //   'introduction'=>'max:191',
-      //   'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
-      // ];
-
-      // $messages=[
-      //   'name.max'=>'名前は191文字以内で入力してください。',
-      //   'email.required'=>'emailを入力してください。',
-      //   'email.email'=>'emailの形式で入力してください。',
-      //   'email.max'=>'emailは191文字以内で入力してください。',
-      //   'introduction.max'=>'自己紹介文は191文字以内で入力してください。',
-      //   'pic.image'=>'画像ファイルを選択してください。',
-      //   'pic.mimes'=>'選択できる画像はJPEG・JPG・PNG形式のみです。',
-      //   'pic.max'=>'2MB以下のファイルを選択してください。',
-      // ];
-
-      // $validator = Validator::make($request->all(), $rules, $messages);
-
-      // //エラーチェック
-      // if ($validator->fails())
-      // {
-      //     return back()->withInput()->withErrors($validator);
-      // }
-
 
 
       if(!empty($request->pic)){
@@ -143,42 +125,6 @@ class UserController extends Controller
       }
     }
 
-
-    // public function update(UserRequest $request){
-    //   $user=Auth::user();
-
-    //   if(!empty($request->pic)){
-
-    //     $path=base64_encode(file_get_contents($request->pic));
- 
-    //     $data=[
-    //       'name'=>$request->name,
-    //       'email'=>$request->email,
-    //       'introduction'=>$request->introduction,
-    //       'pic'=>$path
-    //     ];
-    //     $user->update($data);
-
-    //     // 二重送信対策
-    //     $request->session()->regenerateToken();
-
-    //   return redirect('/mypage')->with('flash_message', '更新しました');
-
-    //   }else{
-    //     $data=[
-    //       'name'=>$request->name,
-    //       'email'=>$request->email,
-    //       'introduction'=>$request->introduction,
-    //     ];
-    //     $user->update($data);
-
-    //     // 二重送信対策
-    //     $request->session()->regenerateToken();
-        
-    //   return redirect('/mypage')->with('flash_message', '更新しました');
-
-    //   }
-    // }
 }
 
 
