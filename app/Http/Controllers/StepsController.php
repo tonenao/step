@@ -20,6 +20,10 @@ class StepsController extends Controller
     }
 
     public function index(){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         $steps=Step::orderBy('id','desc')->where('delete_flg',0)->get();
         return view('home',compact('steps'));
     }
@@ -158,6 +162,10 @@ class StepsController extends Controller
 
 
     public function show($id){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         if(!ctype_digit($id)){
             return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
@@ -205,6 +213,10 @@ class StepsController extends Controller
 
 
     public function edit($id){
+        //ブラウザバック時にキャッシュクリアしリロード
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+        header("Pragma: no-cache");
+
         if(!ctype_digit($id)){
             return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
         };

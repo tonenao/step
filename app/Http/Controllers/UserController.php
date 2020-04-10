@@ -13,6 +13,7 @@ use Validator;
 class UserController extends Controller
 {
     public function show($id){
+      //ブラウザバック時にキャッシュクリアしリロード
       header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
       header("Pragma: no-cache");
 
@@ -70,6 +71,7 @@ class UserController extends Controller
 
 
     public function edit(){
+      //ブラウザバック時にキャッシュクリアしリロード
       header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
       header("Pragma: no-cache");
 
@@ -86,9 +88,10 @@ class UserController extends Controller
 
 
     public function update(UserRequest $request){
+      //ブラウザバック時にキャッシュクリアしリロード
       header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
       header("Pragma: no-cache");
-      
+
       $user=Auth::user();
 
 
