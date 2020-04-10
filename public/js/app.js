@@ -27230,7 +27230,14 @@ var app = new Vue({
   el: '#app'
 });
 
-__webpack_require__(/*! ./jquery */ "./resources/js/jquery.js");
+__webpack_require__(/*! ./jquery */ "./resources/js/jquery.js"); //ブラウザバック時にページを再読み込み
+
+
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload();
+  }
+};
 
 /***/ }),
 

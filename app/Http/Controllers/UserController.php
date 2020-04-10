@@ -60,7 +60,7 @@ class UserController extends Controller
         $step['category']=$step->category;
       }
 
-      Log::debug($steps);
+      // Log::debug($steps);
 
       return view('profdetail',compact('user','steps'));
     }
