@@ -28,7 +28,7 @@
         </div>
 
         <div class="c-form-group">
-            <label for="password" class="col-md-4 col-form-label text-md-right">パスワード</label>
+            <label for="password" class="col-md-4 col-form-label text-md-right">パスワード（8文字以上）</label>
 
             <div class="col-md-6">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"　value="8文字以上で入力してください。">
@@ -45,7 +45,7 @@
             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">パスワード（確認用）</label>
 
             <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" value="パスワード欄と同じ内容を入力してください。">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" >
             </div>
         </div>
 
