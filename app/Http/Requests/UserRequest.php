@@ -31,7 +31,6 @@ class UserRequest extends FormRequest
             'name'=>'max:191',
             'email'=>['required','email','max:191',Rule::unique('users')->ignore($user),],
             'introduction'=>'max:191',
-            'achievement_time'=>'integer | between:1,30',
             'pic'=>'image|mimes:jpeg,png,jpg|max:2048'
         ];
 
@@ -50,8 +49,6 @@ class UserRequest extends FormRequest
             'email.email'=>'emailの形式で入力してください。',
             'email.max'=>'emailは191文字以内で入力してください。',
             'introduction.max'=>'自己紹介文は191文字以内で入力してください。',
-            'achievement_time.integer'=>'integer | between:1,30',
-            'achievement_time.between'=>'integer | between:1,30',
             'pic.image'=>'画像ファイルを選択してください。',
             'pic.mimes'=>'選択できる画像はJPEG・JPG・PNG形式のみです。',
             'pic.max'=>'2MB以下のファイルを選択してください。',

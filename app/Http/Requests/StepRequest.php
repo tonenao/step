@@ -27,7 +27,9 @@ class StepRequest extends FormRequest
             'title'=>'required|max:191',
             'category_id'=>'required',
             'description'=>'required|max:191',
-            'achievement_time'=>'required|numeric'
+            'introduction'=>'max:191',
+            'achievement_time'=>'integer | between:1,30',
+            'achievement_time'=>'required|integer| between:1,10000'
         ];
     }
 
@@ -39,7 +41,8 @@ class StepRequest extends FormRequest
             'description.required'=>'説明文を入力してください。',
             'description.max'=>'説明文は191文字以内で入力してください。',
             'achievement_time.required'=>'目安時間を入力してください。',
-            'achievement_time.max'=>'目安時間は数字で入力してください。',
+            'achievement_time.integer'=>'目安時間は整数で入力してください。',
+            'achievement_time.between'=>'目安時間は1~10000時間の範囲内で指定してください。',
         ];
     }
 }
