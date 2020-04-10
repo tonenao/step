@@ -153,6 +153,7 @@ return [
     'attributes' => [
         'email' => 'email',
         'password' => 'パスワード',
+        'achievement_time'=>'目安時間',
     ],
 
 ];
