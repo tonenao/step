@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        //本番環境では↓これを有効化する。
-        // $url->forceScheme('https');
+        
+        $url->forceScheme('https');//本番環境では↓これを有効化する。
     
     }
 }
