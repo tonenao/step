@@ -30,14 +30,14 @@ class ContactRequest extends FormRequest
         ];
     }
 
-    // public function message() {
-    //     return [
-    //         'email.required'=>'emailを入力してください。',
-    //         'email.email'=>'emailの形式で入力してください。',
-    //         'subject.required'=>'件名を入力してください。',
-    //         'subject.max'=>'件名は191文字以内で入力してください。',
-    //         'comment.required'=>'問い合わせ内容を入力してください。',
-    //         'comment.max'=>'問い合わせ内容は1000文字以内で入力してください。'
-    //     ];
-    // }
+    public function message() {
+        return [
+            'email.required'=>'emailを入力してください。',
+            'email.email'=>'emailの形式で入力してください。',
+            'subject.required'=>'件名を入力してください。',
+            'subject.max'=>'件名は191文字以内で入力してください。',
+            'comment.required'=>'問い合わせ内容を入力してください。',
+            'comment.max'=>'問い合わせ内容は1000文字以内で入力してください。'
+        ];
+    }
 }

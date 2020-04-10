@@ -161,6 +161,7 @@ class StepsController extends Controller
 
 
 
+    //新規作成画面へ遷移
     public function new(){
         $categories=Category::all();
         return view('stepregist',compact('categories'));
@@ -168,7 +169,9 @@ class StepsController extends Controller
 
 
 
+    //STEPをDBへ登録
     public function create(StepRequest $request){
+        //登録ボタンを押した場合の処理
         if(isset($request['create'])){
             $data=[
                 'title'=>$request->title,
@@ -184,6 +187,8 @@ class StepsController extends Controller
             $request->session()->regenerateToken();
 
             return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', '登録しました。続いて子STEPを編集してください。<br>【※注】一度登録した子STEPは編集は可能ですが削除できません');
+
+        //キャンセルボタンを押した場合
         }elseif(isset($request['cancel'])){
             return redirect('/mypage')->with('flash_message', 'キャンセルしました');
         }
@@ -208,14 +213,13 @@ class StepsController extends Controller
             return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
         };
         
-        $step['count_challenge']=$step->count_challenge();
-        $step['count_done']=$step->count_done();
-        $step['count_child_steps']=$step->count_child_steps();
-        $step['auth_user_challenge']=$step->auth_user_challenge();
+        $step['count_challenge']=$step->count_challenge();//チャレンジ中ユーザー数をカウント
+        $step['count_done']=$step->count_done(); //チャレンジ済みユーザー数をカウント
+        $step['count_child_steps']=$step->count_child_steps();//子STEP数
+        $step['auth_user_challenge']=$step->auth_user_challenge();//ログインユーザーのSTEPチャレンジ中判定（done含む）
 
-        if(isset($step->do_steps_auth[0])){
-        $step['do_steps_auth']=$step->do_steps_auth[0];}
-        
+
+        //ログインユーザーの子STEPクリア数取得
         $count_do_child_steps=0;
         $child_steps=$step->child_steps;
         foreach($child_steps as $child_step){
@@ -224,15 +228,18 @@ class StepsController extends Controller
             };
         }
         $step['count_do_child_steps']=$count_do_child_steps;
+
         return view('stepdetail',compact('id','step'));
     }
 
 
 
-    //STEP詳細画面へのJSON
+    //STEP詳細画面へのJSON（子STEP情報取得）
     public function show_json($id){
         $step=Step::find($id);
         $child_steps=$step->child_steps;
+
+        //ログインユーザーが各子STEPクリア済みかを判定
         foreach($child_steps as $child_step){
             if($child_step->count_do_child_step()){
                 $auth_user_child_step_done=true;
@@ -241,11 +248,13 @@ class StepsController extends Controller
             };
             $child_step['auth_user_child_step_done']=$auth_user_child_step_done;
         }
+
         return $child_steps->toJson();
     }
 
 
 
+    //STEP変種画面の情報取得
     public function edit($id){
         //ブラウザバック時にキャッシュクリアしリロード
         header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
@@ -255,10 +264,7 @@ class StepsController extends Controller
             return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
         };
 
-        if(!Auth::check()){
-            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
-        };
-
+        //ログインユーザーの登録STEPかを判定
         $step=Auth::user()->steps()->where('delete_flg',0)->find($id);
 
         if($step){
@@ -272,6 +278,7 @@ class StepsController extends Controller
 
 
 
+    //STEP編集画面の情報をDBに登録
     public function update(StepRequest $request,$id){
         // Log::debug($request);
 
@@ -281,8 +288,9 @@ class StepsController extends Controller
         
         $step=Step::find($id);
 
+        //更新ボタンを押した場合の処理
         if(isset($request['create'])){
-            // Log::debug('データ更新');
+
             $data=[
                 'title'=>$request->title,
                 'category_id'=>$request->category_id,
@@ -293,12 +301,14 @@ class StepsController extends Controller
 
             // 二重送信対策
             $request->session()->regenerateToken();
+
             return redirect('/mypage')->with('flash_message', '更新しました');
 
+            
+        //削除ボタンを押した場合の処理       
         }elseif(isset($request['cancel'])){
-            // Log::debug('削除');
+
             $step->update(['delete_flg'=>1]);
-            // \Log::debug($step->delete_flg);
 
             // 二重送信対策
             $request->session()->regenerateToken();

@@ -14,7 +14,7 @@ class ContactsController extends Controller
         return view('contact.contact');
     }
 
-
+    //問い合わせフォームから内容確認画面に遷移
     public function confirm(ContactRequest $request){
         $contact = $request->all();
         
@@ -25,21 +25,22 @@ class ContactsController extends Controller
         }   
     
 
+    //問い合わせ内容をメール送信処理
     public function complete(ContactRequest $request){
-        // Log::debug($request);
+
         $contact = $request->all();
-        // Log::debug($contact);
+
+        //戻るボタンを押した場合の処理
         if($request->action === 'back') {
-            // Log::debug('back通った');
             return redirect()->route('contact')->withInput($contact);
         }
 
         // 二重送信対策
         $request->session()->regenerateToken();
-        // Log::debug($contact);
+
+        //メール送信処理
         Mail::to('tonenao@gmail.com')->send(new Contact($contact));
 
-        Log::debug($contact);
         return view('contact.thanks', $contact);
 
     }

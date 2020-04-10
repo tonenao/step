@@ -63,7 +63,7 @@
         
             <div class="c-form-group-submit">
                     <button type="submit" name="action" value="sent" class="c-button c-button-form p-button-accent2">
-                        送信する
+                        内容確認画面へ
                     </button>
             </div>
 

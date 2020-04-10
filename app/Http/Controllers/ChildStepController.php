@@ -9,6 +9,7 @@ use App\ChildStep;
 
 class ChildStepController extends Controller
 {
+    //子STEPをDBに新規登録
     public function create(Request $request){
 
         $title=$request->title;
@@ -23,8 +24,8 @@ class ChildStepController extends Controller
     }
 
 
-
-    public function update(Request $request,$id){
+    //子STEPの内容更新
+        public function update(Request $request,$id){
         $title=$request->title;
         $description=$request->description;
         $child_step=ChildStep::find($id);
