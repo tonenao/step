@@ -90,7 +90,7 @@ export default {
     },
     createData($child_step_id) {
       axios
-        .post("/step/do_child", { child_step_id: $child_step_id })
+        .post("/step/do_child/", { child_step_id: $child_step_id })
         .then(function(response) {
           console.log(response);
         })
@@ -103,7 +103,7 @@ export default {
     },
     removeData($child_step_id) {
       axios
-        .delete("/step/do_child", { data: { child_step_id: $child_step_id } })
+        .delete("/step/do_child/", { data: { child_step_id: $child_step_id } })
         .then(function(response) {
           console.log(response);
         })
