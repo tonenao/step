@@ -89,7 +89,7 @@ export default {
       });
     },
     createData($child_step_id) {
-      console.log($child_step_id);
+      console.log("create" + $child_step_id);
       axios
         .post("/step/do_child", { child_step_id: $child_step_id })
         .then(function(response) {
@@ -103,7 +103,7 @@ export default {
       this.$emit("click-inc-count");
     },
     removeData($child_step_id) {
-      console.log($child_step_id);
+      console.log("delete" + $child_step_id);
       axios
         .delete("/step/do_child", { data: { child_step_id: $child_step_id } })
         .then(function(response) {
