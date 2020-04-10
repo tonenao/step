@@ -1048,7 +1048,7 @@ footer p a {
 
 .c-step-child .error {
   background-color: #4B6683;
-  font-size: 16px;
+  font-size: 12px;
   padding: 5px 15px;
 }
 
@@ -1377,6 +1377,10 @@ footer p a {
 
 .p-step-detail h4 {
   color: #555;
+}
+
+.p-step-detail .error {
+  background-color: #F56608;
 }
 
 .p-step-detail-done {

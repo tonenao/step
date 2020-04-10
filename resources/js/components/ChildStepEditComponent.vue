@@ -9,9 +9,11 @@
         <div v-if="child_step.editMode" class="c-step-child isModal" key="edit">
           <h3>STEP{{index+1}}</h3>
           <h4>タイトル</h4>
-          <span class="error" v-show="isError">タイトルが未入力です</span>
+          <span class="error" v-show="isError_title_require">タイトル未入力です</span>
+          <span class="error" v-show="isError_title_max">191文字以下にしてください。</span>
           <textarea type="text" rows="3" v-model="child_step.title" />
           <h4>説明文</h4>
+          <span class="error" v-show="isError_desc_max">191文字以下にしてください。</span>
           <textarea type="text" rows="8" v-model="child_step.description" />
           <button
             class="c-button c-button-step-child p-button-accent3"
@@ -47,9 +49,11 @@
       <div v-else class="c-step-child p-step-detail" v-bind:class="{isModal:add_modal}">
         <h3 style="color:#555;">STEP{{this.add_steps_number}}</h3>
         <h4>タイトル</h4>
-        <span class="error" v-show="isError">タイトルが未入力です</span>
+        <span class="error" v-show="isError_title_require">タイトル未入力です</span>
+        <span class="error" v-show="isError_title_max">191文字以下にしてください。</span>
         <textarea type="text" rows="3" v-model="add_title" />
         <h4>説明文</h4>
+        <span class="error" v-show="isError_desc_max">191文字以下にしてください。</span>
         <textarea type="text" rows="8" v-model="add_description" />
         <button
           class="c-button c-button-step-child p-button-accent3"
@@ -83,7 +87,10 @@ export default {
       add_modal: false,
       add_title: "",
       add_description: "",
-      isError: ""
+      isError: "",
+      isError_title_require: false,
+      isError_title_max: false,
+      isError_desc_max: false
     };
   },
 
@@ -113,33 +120,36 @@ export default {
       this.modal = !this.modal;
       this.add_modal = !this.add_modal;
     },
+
     //タイトルのバリデーション＋ChildStepの追加
     addChildStep() {
-      if (this.add_title) {
-        this.child_steps.push({
-          title: this.add_title,
-          step_id: this.id,
-          description: this.add_description
-        });
-        this.isError = false;
+      if (this.varidate(this.add_title, this.add_description)) {
         this.changeAddMode();
         this.createData();
-      } else {
-        console.log("空っぽ");
-        this.isError = true;
       }
       this.getData();
     },
+
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep(index) {
-      if (this.child_steps[index].title) {
-        this.isError = false;
+      console.log(index);
+      if (
+        this.varidate(
+          this.child_steps[index].title,
+          this.child_steps[index].description
+        )
+      ) {
         this.changeEditMode(index);
         this.updateData(index);
-      } else {
-        console.log("空っぽ");
-        this.isError = true;
       }
+      // if (this.child_steps[index].title) {
+      //   this.isError = false;
+      //   this.changeEditMode(index);
+      //   this.updateData(index);
+      // } else {
+      //   console.log("空っぽ");
+      //   this.isError = true;
+      // }
     },
     //新規のchild_stepのDB登録
     createData() {
@@ -172,6 +182,32 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    //バリデーション
+    varidate(title, desc) {
+      this.isError_title_require = false;
+      this.isError_title_max = false;
+      this.isError_desc_max = false;
+
+      if (title.length == 0) {
+        this.isError_title_require = true;
+      }
+      if (title.length > 191) {
+        this.isError_title_max = true;
+      }
+      if (desc.length > 191) {
+        this.isError_desc_max = true;
+      }
+
+      if (
+        !this.isError_title_require &&
+        !this.isError_title_max &&
+        !this.isError_desc_max
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };

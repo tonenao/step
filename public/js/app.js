@@ -2125,6 +2125,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2145,7 +2149,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       add_modal: false,
       add_title: "",
       add_description: "",
-      isError: ""
+      isError: "",
+      isError_title_require: false,
+      isError_title_max: false,
+      isError_desc_max: false
     };
   },
   computed: {
@@ -2178,32 +2185,29 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     //タイトルのバリデーション＋ChildStepの追加
     addChildStep: function addChildStep() {
-      if (this.add_title) {
-        this.child_steps.push({
-          title: this.add_title,
-          step_id: this.id,
-          description: this.add_description
-        });
-        this.isError = false;
+      if (this.varidate(this.add_title, this.add_description)) {
         this.changeAddMode();
         this.createData();
-      } else {
-        console.log("空っぽ");
-        this.isError = true;
       }
 
       this.getData();
     },
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep: function updateChildStep(index) {
-      if (this.child_steps[index].title) {
-        this.isError = false;
+      console.log(index);
+
+      if (this.varidate(this.child_steps[index].title, this.child_steps[index].description)) {
         this.changeEditMode(index);
         this.updateData(index);
-      } else {
-        console.log("空っぽ");
-        this.isError = true;
-      }
+      } // if (this.child_steps[index].title) {
+      //   this.isError = false;
+      //   this.changeEditMode(index);
+      //   this.updateData(index);
+      // } else {
+      //   console.log("空っぽ");
+      //   this.isError = true;
+      // }
+
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
@@ -2230,6 +2234,30 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    //バリデーション
+    varidate: function varidate(title, desc) {
+      this.isError_title_require = false;
+      this.isError_title_max = false;
+      this.isError_desc_max = false;
+
+      if (title.length == 0) {
+        this.isError_title_require = true;
+      }
+
+      if (title.length > 191) {
+        this.isError_title_max = true;
+      }
+
+      if (desc.length > 191) {
+        this.isError_desc_max = true;
+      }
+
+      if (!this.isError_title_require && !this.isError_title_max && !this.isError_desc_max) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 });
@@ -14145,13 +14173,29 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.isError,
-                              expression: "isError"
+                              value: _vm.isError_title_require,
+                              expression: "isError_title_require"
                             }
                           ],
                           staticClass: "error"
                         },
-                        [_vm._v("タイトルが未入力です")]
+                        [_vm._v("タイトル未入力です")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.isError_title_max,
+                              expression: "isError_title_max"
+                            }
+                          ],
+                          staticClass: "error"
+                        },
+                        [_vm._v("191文字以下にしてください。")]
                       ),
                       _vm._v(" "),
                       _c("textarea", {
@@ -14176,6 +14220,22 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("h4", [_vm._v("説明文")]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.isError_desc_max,
+                              expression: "isError_desc_max"
+                            }
+                          ],
+                          staticClass: "error"
+                        },
+                        [_vm._v("191文字以下にしてください。")]
+                      ),
                       _vm._v(" "),
                       _c("textarea", {
                         directives: [
@@ -14295,13 +14355,29 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.isError,
-                        expression: "isError"
+                        value: _vm.isError_title_require,
+                        expression: "isError_title_require"
                       }
                     ],
                     staticClass: "error"
                   },
-                  [_vm._v("タイトルが未入力です")]
+                  [_vm._v("タイトル未入力です")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isError_title_max,
+                        expression: "isError_title_max"
+                      }
+                    ],
+                    staticClass: "error"
+                  },
+                  [_vm._v("191文字以下にしてください。")]
                 ),
                 _vm._v(" "),
                 _c("textarea", {
@@ -14326,6 +14402,22 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("h4", [_vm._v("説明文")]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.isError_desc_max,
+                        expression: "isError_desc_max"
+                      }
+                    ],
+                    staticClass: "error"
+                  },
+                  [_vm._v("191文字以下にしてください。")]
+                ),
                 _vm._v(" "),
                 _c("textarea", {
                   directives: [
