@@ -2199,15 +2199,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       if (this.varidate(this.child_steps[index].title, this.child_steps[index].description)) {
         this.changeEditMode(index);
         this.updateData(index);
-      } // if (this.child_steps[index].title) {
-      //   this.isError = false;
-      //   this.changeEditMode(index);
-      //   this.updateData(index);
-      // } else {
-      //   console.log("空っぽ");
-      //   this.isError = true;
-      // }
-
+      }
     },
     //新規のchild_stepのDB登録
     createData: function createData() {

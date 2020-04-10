@@ -106,6 +106,7 @@ export default {
         this.child_steps = response.data;
       });
     },
+
     //子STEP編集モードの切り替え
     changeEditMode: function(index) {
       this.modal = !this.modal;
@@ -115,6 +116,7 @@ export default {
         this.child_steps[index].editMode = !this.child_steps[index].editMode;
       }
     },
+
     //子STEP追加モードの切り替え
     changeAddMode: function() {
       this.modal = !this.modal;
@@ -142,14 +144,6 @@ export default {
         this.changeEditMode(index);
         this.updateData(index);
       }
-      // if (this.child_steps[index].title) {
-      //   this.isError = false;
-      //   this.changeEditMode(index);
-      //   this.updateData(index);
-      // } else {
-      //   console.log("空っぽ");
-      //   this.isError = true;
-      // }
     },
     //新規のchild_stepのDB登録
     createData() {
