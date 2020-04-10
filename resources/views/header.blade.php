@@ -24,6 +24,11 @@
       @guest
         <li class="nav-item">
           <div>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.top') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              トップページ <span class="caret"></span>
+            </a>
+          </div>
+          <div>
             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
           </div>
         @if (Route::has('register'))
