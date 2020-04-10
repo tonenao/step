@@ -1060,6 +1060,11 @@ footer p a {
   padding-bottom: 20px;
 }
 
+.c-step-child.isModal p {
+  height: auto;
+  min-height: 80px;
+}
+
 .c-modal {
   width: 100vw;
   height: 100vh;

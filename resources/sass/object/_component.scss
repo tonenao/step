@@ -684,6 +684,11 @@
         border-radius: 150px;
         padding-bottom: 20px;
 
+        p {
+            height: auto;
+            min-height: 80px;
+        }
+
     }
 }
 
