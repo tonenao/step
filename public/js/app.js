@@ -2011,6 +2011,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       });
     },
     createData: function createData($child_step_id) {
+      console.log("createData実行");
       axios.post("/step/do_child", {
         child_step_id: $child_step_id
       }).then(function (response) {
@@ -2023,6 +2024,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       this.$emit("click-inc-count");
     },
     removeData: function removeData($child_step_id) {
+      console.log("removeData実行");
       axios["delete"]("/step/do_child", {
         data: {
           child_step_id: $child_step_id
