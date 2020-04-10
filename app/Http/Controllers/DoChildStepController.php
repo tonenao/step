@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Step;
 use App\ChildStep;
-use App\DoChildstep;
+use App\DoChildStep;
 use Log;
 
 class DoChildStepController extends Controller
