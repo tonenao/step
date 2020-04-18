@@ -16,7 +16,7 @@
   <!-- <div class="c-container" style="min-height:1000px;"> -->
   <div class="c-container p-container-main">
     <div class="c-container-title-wrap p-top">
-          <h2 class="c-container-title">『STEP』概要</h2>
+          <h2 class="c-container-title">★『STEP』概要</h2>
     </div>
     <div class="c-container-body">
       <p>プログラミングや英語など、</p>
