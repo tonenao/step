@@ -16,6 +16,10 @@ class StepsController extends Controller
 {
     //TOP一覧画面への遷移
     public function top(){
+        //ログイン済みでればマイページへ遷移
+        if(Auth::check()){
+            return view('mypage');
+        }
         return view('top');
     }
 
@@ -186,7 +190,7 @@ class StepsController extends Controller
             // 二重送信対策
             $request->session()->regenerateToken();
 
-            return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', '登録しました。続いて子STEPを編集してください。<br>【※注】一度登録した子STEPは編集は可能ですが削除できません');
+            return redirect()->route('steps.edit',['id'=>$id])->with('flash_message', '登録しました。続いて子STEPを編集してください。');
 
         //キャンセルボタンを押した場合
         }elseif(isset($request['cancel'])){
