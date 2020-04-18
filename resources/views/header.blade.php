@@ -56,11 +56,11 @@
             </a>
           </div>
 
-          <div>
+          <!-- <div>
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.top') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               トップページ <span class="caret"></span>
             </a>
-          </div>
+          </div> -->
 
           <div>
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.index') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
