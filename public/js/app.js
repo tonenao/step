@@ -2212,9 +2212,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       if (this.varidate(this.add_title, this.add_description)) {
         this.changeAddMode();
         this.createData();
-      }
+      } // this.getData();
 
-      this.getData();
     },
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep: function updateChildStep(index) {
@@ -2228,8 +2227,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     deleteChildStep: function deleteChildStep(index) {
       window.confirm("削除しますか？");
       this.removeData(index);
-      this.changeEditMode(index);
-      this.getData();
+      this.changeEditMode(index); // this.getData();
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
