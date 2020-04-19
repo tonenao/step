@@ -152,8 +152,9 @@ export default {
     //削除確認画面表示+ChildStepの削除
     deleteChildStep(index) {
       window.confirm("削除しますか？");
-      this.changeEditMode(index);
       this.removeData(index);
+      this.changeEditMode(index);
+      this.getData();
     },
     //新規のchild_stepのDB登録
     createData() {
@@ -186,7 +187,6 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.getData();
     },
     //child_stepのDB内容更新
     updateData(index) {

@@ -2207,8 +2207,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     //削除確認画面表示+ChildStepの削除
     deleteChildStep: function deleteChildStep(index) {
       window.confirm("削除しますか？");
-      this.changeEditMode(index);
       this.removeData(index);
+      this.changeEditMode(index);
+      this.getData();
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
@@ -2237,7 +2238,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       })["catch"](function (error) {
         console.log(error);
       });
-      this.getData();
     },
     //child_stepのDB内容更新
     updateData: function updateData(index) {
