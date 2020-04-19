@@ -10,7 +10,7 @@
         {!! session('flash_message_alert') !!}
     </div>
   @elseif (session('status'))
-    <div class="c-flash-message" id="js-show-msg" role="alert">
+    <div class="c-flash-message" id="js-show-msg" role="alert" style="background-color:#333;">
         {!! session('status') !!}
     </div>
   @elseif (session('flash_message'))

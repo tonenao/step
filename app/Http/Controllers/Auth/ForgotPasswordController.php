@@ -20,6 +20,20 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+    //パスワードリセット メール送信時処理
+    protected function sendResetLinkResponse(Request $request, $response)
+    {
+        return back()->with('flash_message', trans($response));
+    }
+
+    //パスワードリセット メール送信エラー時処理
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return back()
+                ->withInput($request->only('email'))
+                ->withErrors(['email' => trans($response)]);
+    }
+
     /**
      * Create a new controller instance.
      *
