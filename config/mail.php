@@ -91,7 +91,7 @@ return [
 
     // 'username' => env('MAIL_USERNAME',null),
     // 'password' => env('MAIL_PASSWORD',null),
-    'username' => env('MAIL_USERNAME','tonenaogmail.com'),
+    'username' => env('MAIL_USERNAME','tonenao@gmail.com'),
     'password' => env('MAIL_PASSWORD','yrtrgvqrlgqcvois'),
 
     /*
