@@ -2229,6 +2229,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       window.confirm("削除しますか？");
       this.removeData(index);
       this.changeEditMode(index);
+      this.getData();
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
@@ -2277,8 +2278,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log(_this3.child_steps[index].id);
-                _context2.next = 3;
+                _context2.next = 2;
                 return axios["delete"]("/step/child_step", {
                   data: {
                     child_step_id: _this3.child_steps[index].id
@@ -2289,7 +2289,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
                   console.log(error);
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context2.stop();
             }

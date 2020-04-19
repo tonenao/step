@@ -154,6 +154,7 @@ export default {
       window.confirm("削除しますか？");
       this.removeData(index);
       this.changeEditMode(index);
+      this.getData();
     },
     //新規のchild_stepのDB登録
     async createData() {
@@ -175,7 +176,6 @@ export default {
     },
     //child_stepのDB削除
     async removeData(index) {
-      console.log(this.child_steps[index].id);
       await axios
         .delete("/step/child_step", {
           data: { child_step_id: this.child_steps[index].id }
