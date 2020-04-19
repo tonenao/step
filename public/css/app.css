@@ -834,7 +834,7 @@ footer p a {
 }
 
 .c-button-challenge {
-  bottom: 50px;
+  bottom: 20px;
 }
 
 .c-button-step-child {
@@ -1039,7 +1039,6 @@ footer p a {
   display: block;
   font-size: 16px;
   font-weight: bold;
-  width: 30%;
   margin: 10px auto;
   border-radius: 20px;
   letter-spacing: 1px;

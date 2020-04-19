@@ -133,7 +133,6 @@ export default {
         this.changeAddMode();
         this.createData();
       }
-      // this.getData();
     },
 
     //タイトルのバリデーション＋ChildStepの更新
@@ -154,7 +153,6 @@ export default {
       window.confirm("削除しますか？");
       this.removeData(index);
       this.changeEditMode(index);
-      // this.getData();
     },
     //新規のchild_stepのDB登録
     async createData() {
