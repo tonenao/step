@@ -11,9 +11,9 @@
     </div>
 
 
-    @if (session('status'))
+    @if (session('flash_message'))
         <div class="alert alert-success" role="alert">
-            <!-- {{ session('status') }} -->
+            <!-- {{ session('flash_message') }} -->
         </div>
     @else
         <div class="alert alert-success" role="alert">
