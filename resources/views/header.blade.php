@@ -9,15 +9,12 @@
     <div class="c-flash-message alert" id="js-show-msg" role="alert">
         {!! session('flash_message_alert') !!}
     </div>
-  <!-- @elseif (session('status'))
-    <div class="c-flash-message" id="js-show-msg" role="alert" style="background-color:#333;">
-        {!! session('status') !!}
-    </div> -->
   @elseif (session('flash_message'))
     <div class="c-flash-message" id="js-show-msg" role="alert">
         {!! session('flash_message') !!}
     </div>
   @endif
+  
   <div class="c-menu-trigger js-toggle-sp-menu">
     <div class="border"></div>
     <div class="inner"></div>
