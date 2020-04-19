@@ -53,8 +53,9 @@ class ForgotPasswordController extends Controller
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         return back()
+                ->with('flash_message_alert','エラーだべ。')
                 ->withInput($request->only('email'))
-                ->withErrors(['email' => trans($response),'flash_message','エラーだべ。']);
+                ->withErrors(['email' => trans($response)]);
     }
 
     /**

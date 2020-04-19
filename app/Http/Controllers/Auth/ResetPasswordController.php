@@ -56,8 +56,9 @@ class ResetPasswordController extends Controller
     protected function sendResetFailedResponse(Request $request, $response)
     {
         return redirect()->back()
+                    ->with('flash_message_alert','エラーだべ。')
                     ->withInput($request->only('email'))
-                    ->withErrors(['email' => trans($response),'flash_message','エラーだべ。']);
+                    ->withErrors(['email' => trans($response)]);
     }
 
 
