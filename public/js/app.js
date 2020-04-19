@@ -2129,6 +2129,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2194,12 +2198,17 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep: function updateChildStep(index) {
-      console.log(index);
-
+      // console.log(index);
       if (this.varidate(this.child_steps[index].title, this.child_steps[index].description)) {
         this.changeEditMode(index);
         this.updateData(index);
       }
+    },
+    //削除確認画面表示+ChildStepの削除
+    deleteChildStep: function deleteChildStep(index) {
+      window.confirm("削除しますか？");
+      this.changeEditMode(index);
+      this.removeData(index);
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
@@ -2214,6 +2223,20 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       });
       this.add_title = "";
       this.add_description = "";
+      this.getData();
+    },
+    //child_stepのDB削除
+    removeData: function removeData(index) {
+      console.log(this.child_steps[index].id);
+      axios["delete"]("/step/child_step", {
+        data: {
+          child_step_id: this.child_steps[index].id
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
       this.getData();
     },
     //child_stepのDB内容更新
@@ -14258,7 +14281,7 @@ var render = function() {
                         "button",
                         {
                           staticClass:
-                            "c-button c-button-step-child p-button-accent3",
+                            "c-button c-button-step-child p-button-accent1",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -14267,6 +14290,21 @@ var render = function() {
                           }
                         },
                         [_vm._v("更新")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "c-button c-button-step-child p-button-accent3",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.deleteChildStep(index)
+                            }
+                          }
+                        },
+                        [_vm._v("削除")]
                       )
                     ]
                   )

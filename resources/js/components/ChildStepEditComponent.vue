@@ -16,9 +16,13 @@
           <span class="error" v-show="isError_desc_max">191文字以下にしてください。</span>
           <textarea type="text" rows="8" v-model="child_step.description" />
           <button
-            class="c-button c-button-step-child p-button-accent3"
+            class="c-button c-button-step-child p-button-accent1"
             v-on:click.prevent="updateChildStep(index)"
           >更新</button>
+          <button
+            class="c-button c-button-step-child p-button-accent3"
+            v-on:click.prevent="deleteChildStep(index)"
+          >削除</button>
         </div>
 
         <div v-else class="c-step-child" key="save">
@@ -134,7 +138,7 @@ export default {
 
     //タイトルのバリデーション＋ChildStepの更新
     updateChildStep(index) {
-      console.log(index);
+      // console.log(index);
       if (
         this.varidate(
           this.child_steps[index].title,
@@ -144,6 +148,12 @@ export default {
         this.changeEditMode(index);
         this.updateData(index);
       }
+    },
+    //削除確認画面表示+ChildStepの削除
+    deleteChildStep(index) {
+      window.confirm("削除しますか？");
+      this.changeEditMode(index);
+      this.removeData(index);
     },
     //新規のchild_stepのDB登録
     createData() {
@@ -161,6 +171,21 @@ export default {
         });
       this.add_title = "";
       this.add_description = "";
+      this.getData();
+    },
+    //child_stepのDB削除
+    removeData(index) {
+      console.log(this.child_steps[index].id);
+      axios
+        .delete("/step/child_step", {
+          data: { child_step_id: this.child_steps[index].id }
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
       this.getData();
     },
     //child_stepのDB内容更新

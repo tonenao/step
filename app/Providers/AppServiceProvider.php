@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         Schema::defaultStringLength(191);
-        $url->forceScheme('https');//本番環境では↓これを有効化する。
+        // $url->forceScheme('https');//本番環境では↓これを有効化する。
     
     }
 }

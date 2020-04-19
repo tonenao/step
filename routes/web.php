@@ -81,6 +81,8 @@ Route::post('/do_step/giveup', 'DoStepController@giveup');
 
 Route::post('/step/child_step','ChildStepController@create');
 
+Route::delete('/step/child_step','ChildStepController@delete');
+
 Route::post('/step/{id}/child_step','ChildStepController@update');
 
 
