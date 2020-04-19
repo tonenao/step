@@ -172,7 +172,7 @@ export default {
         });
       this.add_title = "";
       this.add_description = "";
-      this.getData();
+      await this.getData();
     },
     //child_stepのDB削除
     async removeData(index) {
@@ -186,6 +186,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+      await this.getData();
     },
     //child_stepのDB内容更新
     updateData(index) {

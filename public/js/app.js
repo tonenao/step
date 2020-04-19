@@ -2256,10 +2256,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
               case 2:
                 _this2.add_title = "";
                 _this2.add_description = "";
+                _context.next = 6;
+                return _this2.getData();
 
-                _this2.getData();
-
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2290,6 +2290,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
                 });
 
               case 2:
+                _context2.next = 4;
+                return _this3.getData();
+
+              case 4:
               case "end":
                 return _context2.stop();
             }
