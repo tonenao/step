@@ -56,7 +56,7 @@ class ResetPasswordController extends Controller
     {
         return redirect()->back()
                     ->withInput($request->only('email'))
-                    ->withErrors(['email' => trans($response)]);
+                    ->withErrors(['email' => trans($response),'flash_message','エラーだべ。']);
     }
 
 
