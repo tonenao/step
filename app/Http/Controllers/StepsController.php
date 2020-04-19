@@ -16,7 +16,7 @@ class StepsController extends Controller
 {
     //TOP一覧画面への遷移
     public function top(){
-        //ログイン済みでればマイページへ遷移
+        //ログイン済みであればマイページへ遷移
         if(Auth::check()){
             return view('mypage');
         }
@@ -34,7 +34,11 @@ class StepsController extends Controller
 
     //マイページへの画面遷移
     public function mypage(){
-        return view('mypage');
+        //ログイン済みであればマイページへ遷移
+        if(Auth::check()){
+            return view('mypage');
+        }
+        return view('home');
     }
 
 
