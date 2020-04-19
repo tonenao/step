@@ -20,7 +20,7 @@ class StepsController extends Controller
         if(Auth::check()){
             return view('mypage');
         }
-        return view('top');
+        return redirect('/');
     }
 
 
@@ -38,7 +38,7 @@ class StepsController extends Controller
         if(Auth::check()){
             return view('mypage');
         }
-        return view('home');
+        return redirect('/step');
     }
 
 
