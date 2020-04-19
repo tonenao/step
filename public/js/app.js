@@ -2290,9 +2290,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
                 });
 
               case 3:
-                _this3.getData();
-
-              case 4:
               case "end":
                 return _context2.stop();
             }

@@ -186,7 +186,6 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.getData();
     },
     //child_stepのDB内容更新
     updateData(index) {
