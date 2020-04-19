@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&family=Orbitron&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/673dcd33bb.js" crossorigin="anonymous"></script>
-    <!-- <script src = "https://cdn.jsdelivr.net/npm/exif-js"> </ script> -->
+    <script src="https://www.promisejs.org/polyfills/promise-6.1.0.min.js"></script>
+
 </head>
 <body>
     
