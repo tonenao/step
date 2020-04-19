@@ -154,11 +154,10 @@ export default {
       window.confirm("削除しますか？");
       this.removeData(index);
       this.changeEditMode(index);
-      this.getData();
     },
     //新規のchild_stepのDB登録
-    createData() {
-      axios
+    async createData() {
+      await axios
         .post("/step/child_step", {
           title: this.add_title,
           description: this.add_description,
@@ -175,9 +174,9 @@ export default {
       this.getData();
     },
     //child_stepのDB削除
-    removeData(index) {
+    async removeData(index) {
       console.log(this.child_steps[index].id);
-      axios
+      await axios
         .delete("/step/child_step", {
           data: { child_step_id: this.child_steps[index].id }
         })
@@ -187,6 +186,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+      this.getData();
     },
     //child_stepのDB内容更新
     updateData(index) {
