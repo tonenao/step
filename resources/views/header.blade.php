@@ -5,11 +5,19 @@
       <p class="title-step-sub">Share your experience as STEP</p>
     </a>
   </div>
-  @if (session('flash_message'))
+  @if (session('flash_message_alert'))
+    <div class="c-flash-message alert" id="js-show-msg" role="alert">
+        {!! session('flash_message_alert') !!}
+    </div>
+  @elseif (session('status'))
+    <div class="c-flash-message" id="js-show-msg" role="alert">
+        {!! session('status') !!}
+    </div>
+  @elseif (session('flash_message'))
     <div class="c-flash-message" id="js-show-msg" role="alert">
         {!! session('flash_message') !!}
     </div>
-@endif
+  @endif
   <div class="c-menu-trigger js-toggle-sp-menu">
     <div class="border"></div>
     <div class="inner"></div>

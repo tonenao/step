@@ -18,13 +18,13 @@ class UserController extends Controller
       header("Pragma: no-cache");
       
       if(!ctype_digit($id)){
-        return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
+        return redirect('/step')->with('flash_message_alert', '無効な操作が実行されました.');
       };
 
       $user=User::find($id);//ユーザー情報
       
       if($user===null){
-        return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
+        return redirect('/step')->with('flash_message_alert', '無効な操作が実行されました.');
       };
 
       $count_steps=$user->count_steps();//公開中STEP数
@@ -79,7 +79,7 @@ class UserController extends Controller
         return view('profedit',compact('user'));
 
       }else{
-        return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
+        return redirect('/step')->with('flash_message_alert', '無効な操作が実行されました.');
       }
     }     
 

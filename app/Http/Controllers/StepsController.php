@@ -206,7 +206,7 @@ class StepsController extends Controller
         header("Pragma: no-cache");
 
         if(!ctype_digit($id)){
-            return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/step')->with('flash_message_alert', '無効な操作が実行されました.');
         };
 
         //パラメータidからデータ取得
@@ -214,7 +214,7 @@ class StepsController extends Controller
         
         //データが存在しなければリダイレクト
         if($step===null){
-            return redirect('/step')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/step')->with('flash_message_alert', '無効な操作が実行されました.');
         };
         
         $step['count_challenge']=$step->count_challenge();//チャレンジ中ユーザー数をカウント
@@ -265,7 +265,7 @@ class StepsController extends Controller
         header("Pragma: no-cache");
 
         if(!ctype_digit($id)){
-            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/mypage')->with('flash_message_alert', '無効な操作が実行されました.');
         };
 
         //ログインユーザーの登録STEPかを判定
@@ -275,7 +275,7 @@ class StepsController extends Controller
             $categories=Category::all();
             return view('stepedit',compact('id','step','categories'));
         }else{
-            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました');
+            return redirect('/mypage')->with('flash_message_alert', '無効な操作が実行されました');
         }
        
     }
@@ -287,7 +287,7 @@ class StepsController extends Controller
         // Log::debug($request);
 
         if(!ctype_digit($id)){
-            return redirect('/mypage')->with('flash_message', '無効な操作が実行されました.');
+            return redirect('/mypage')->with('flash_message_alert', '無効な操作が実行されました.');
         };
         
         $step=Step::find($id);

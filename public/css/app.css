@@ -1083,13 +1083,17 @@ footer p a {
   left: 50%;
   transform: translate(-50%, 0);
   margin: 0 auto;
-  background-color: rgba(245, 102, 8, 0.8);
+  background-color: rgba(22, 168, 94, 0.8);
   display: none;
   text-align: center;
   color: #FEFEFE;
   font-size: 16px;
   font-weight: bold;
   z-index: 5;
+}
+
+.c-flash-message.alert {
+  background-color: rgba(245, 44, 22, 0.8);
 }
 
 .modal-enter-active,
