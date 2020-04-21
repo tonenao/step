@@ -1978,7 +1978,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2078,6 +2077,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -2413,6 +2416,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2442,6 +2453,14 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2712,6 +2731,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -14806,8 +14827,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "c-step-child p-step-detail p-step-detail-done",
-                      staticStyle: { position: "relative" },
+                        "p-step-child p-step-detail p-step-detail-done",
                       on: {
                         click: function($event) {
                           return _vm.changeEditMode(index)
@@ -14815,20 +14835,24 @@ var render = function() {
                       }
                     },
                     [
-                      _c("span", { staticClass: "c-panel-badge" }, [
+                      _c("span", { staticClass: "p-panel__badge" }, [
                         _c("i", { staticClass: "fas fa-check" })
                       ]),
                       _vm._v(" "),
-                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _c("h3", { staticClass: "p-step-child__step" }, [
+                        _vm._v("STEP" + _vm._s(index + 1))
+                      ]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(child_step.title))]),
+                      _c("p", { staticClass: "p-step-child__description" }, [
+                        _vm._v(_vm._s(child_step.title))
+                      ]),
                       _vm._v(" "),
                       _vm.count === index + 1 && _vm.auth_challenge
                         ? _c(
                             "button",
                             {
                               staticClass:
-                                "c-button c-button-step-child p-button-accent3",
+                                "c-button c-button__child-step c-button--accent3",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -14849,7 +14873,7 @@ var render = function() {
                 ? _c(
                     "div",
                     {
-                      staticClass: "c-step-child p-step-detail",
+                      staticClass: "p-step-child p-step-detail",
                       on: {
                         click: function($event) {
                           return _vm.changeEditMode(index)
@@ -14857,16 +14881,20 @@ var render = function() {
                       }
                     },
                     [
-                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _c("h3", { staticClass: "p-step-child__step" }, [
+                        _vm._v("STEP" + _vm._s(index + 1))
+                      ]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(child_step.title))]),
+                      _c("p", { staticClass: "p-step-child__description" }, [
+                        _vm._v(_vm._s(child_step.title))
+                      ]),
                       _vm._v(" "),
                       _vm.count === index && _vm.auth_challenge
                         ? _c(
                             "button",
                             {
                               staticClass:
-                                "c-button c-button-step-child p-button-accent2",
+                                "c-button c-button__child-step c-button--accent2",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -14886,7 +14914,7 @@ var render = function() {
                 ? _c(
                     "div",
                     {
-                      staticClass: "c-step-child p-step-detail isModal",
+                      staticClass: "p-step-child p-step-detail isModal",
                       on: {
                         click: function($event) {
                           return _vm.changeEditMode(index)
@@ -14894,21 +14922,34 @@ var render = function() {
                       }
                     },
                     [
-                      _c("h3", { staticStyle: { color: "#555" } }, [
-                        _vm._v("STEP" + _vm._s(index + 1))
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "p-step-child__step",
+                          staticStyle: { color: "#555" }
+                        },
+                        [_vm._v("STEP" + _vm._s(index + 1))]
+                      ),
+                      _vm._v(" "),
+                      _c("h4", { staticClass: "p-step-child__title" }, [
+                        _vm._v("タイトル")
                       ]),
                       _vm._v(" "),
-                      _c("h4", [_vm._v("タイトル")]),
+                      _c(
+                        "p",
+                        { staticClass: "p-step-child__description detail" },
+                        [_vm._v(_vm._s(child_step.title))]
+                      ),
                       _vm._v(" "),
-                      _c("p", { staticClass: "detail" }, [
-                        _vm._v(_vm._s(child_step.title))
+                      _c("h4", { staticClass: "p-step-child__title" }, [
+                        _vm._v("説明文")
                       ]),
                       _vm._v(" "),
-                      _c("h4", [_vm._v("説明文")]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "detail" }, [
-                        _vm._v(_vm._s(child_step.description))
-                      ]),
+                      _c(
+                        "p",
+                        { staticClass: "p-step-child__description detail" },
+                        [_vm._v(_vm._s(child_step.description))]
+                      ),
                       _vm._v(" "),
                       _c("div", { staticStyle: { height: "50px" } })
                     ]
@@ -14971,11 +15012,15 @@ var render = function() {
               child_step.editMode
                 ? _c(
                     "div",
-                    { key: "edit", staticClass: "c-step-child isModal" },
+                    { key: "edit", staticClass: "p-step-child isModal" },
                     [
-                      _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                      _c("h3", { staticClass: "p-step-child__step" }, [
+                        _vm._v("STEP" + _vm._s(index + 1))
+                      ]),
                       _vm._v(" "),
-                      _c("h4", [_vm._v("タイトル")]),
+                      _c("h4", { staticClass: "p-step-child__title" }, [
+                        _vm._v("タイトル")
+                      ]),
                       _vm._v(" "),
                       _c(
                         "span",
@@ -15018,6 +15063,7 @@ var render = function() {
                             expression: "child_step.title"
                           }
                         ],
+                        staticClass: "p-step-child__textarea",
                         attrs: { type: "text", rows: "3" },
                         domProps: { value: child_step.title },
                         on: {
@@ -15030,7 +15076,9 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("h4", [_vm._v("説明文")]),
+                      _c("h4", { staticClass: "p-step-child__title" }, [
+                        _vm._v("説明文")
+                      ]),
                       _vm._v(" "),
                       _c(
                         "span",
@@ -15057,6 +15105,7 @@ var render = function() {
                             expression: "child_step.description"
                           }
                         ],
+                        staticClass: "p-step-child__textarea",
                         attrs: { type: "text", rows: "8" },
                         domProps: { value: child_step.description },
                         on: {
@@ -15077,7 +15126,7 @@ var render = function() {
                         "button",
                         {
                           staticClass:
-                            "c-button c-button-step-child p-button-accent1",
+                            "c-button c-button__child-step c-button--accent1",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -15092,7 +15141,7 @@ var render = function() {
                         "button",
                         {
                           staticClass:
-                            "c-button c-button-step-child p-button-accent3",
+                            "c-button c-button__child-step c-button--accent3",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -15104,16 +15153,20 @@ var render = function() {
                       )
                     ]
                   )
-                : _c("div", { key: "save", staticClass: "c-step-child" }, [
-                    _c("h3", [_vm._v("STEP" + _vm._s(index + 1))]),
+                : _c("div", { key: "save", staticClass: "p-step-child" }, [
+                    _c("h3", { staticClass: "p-step-child__step" }, [
+                      _vm._v("STEP" + _vm._s(index + 1))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(child_step.title))]),
+                    _c("p", { staticClass: "p-step-child__description" }, [
+                      _vm._v(_vm._s(child_step.title))
+                    ]),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
                         staticClass:
-                          "c-button c-button-step-child p-button-accent3",
+                          "c-button c-button__child-step c-button--accent3",
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -15135,21 +15188,26 @@ var render = function() {
           ? _c(
               "div",
               {
-                staticClass: "c-step-child p-step-detail",
+                staticClass: "p-step-child p-step-detail",
                 class: { isModal: _vm.add_modal }
               },
               [
-                _c("h3", { staticStyle: { color: "#555" } }, [
-                  _vm._v("STEP" + _vm._s(this.child_steps.length + 1))
-                ]),
+                _c(
+                  "h3",
+                  {
+                    staticClass: "p-step-child__step",
+                    staticStyle: { color: "#555" }
+                  },
+                  [_vm._v("STEP" + _vm._s(this.child_steps.length + 1))]
+                ),
                 _vm._v(" "),
-                _c("p"),
+                _c("p", { staticClass: "p-step-child__description" }),
                 _vm._v(" "),
                 _c(
                   "button",
                   {
                     staticClass:
-                      "c-button c-button-step-child p-button-accent2",
+                      "c-button c-button__child-step c-button--accent2",
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -15164,15 +15222,22 @@ var render = function() {
           : _c(
               "div",
               {
-                staticClass: "c-step-child p-step-detail",
+                staticClass: "p-step-child p-step-detail",
                 class: { isModal: _vm.add_modal }
               },
               [
-                _c("h3", { staticStyle: { color: "#555" } }, [
-                  _vm._v("STEP" + _vm._s(this.add_steps_number))
-                ]),
+                _c(
+                  "h3",
+                  {
+                    staticClass: "p-step-child__step",
+                    staticStyle: { color: "#555" }
+                  },
+                  [_vm._v("STEP" + _vm._s(this.add_steps_number))]
+                ),
                 _vm._v(" "),
-                _c("h4", [_vm._v("タイトル")]),
+                _c("h4", { staticClass: "p-step-child__title" }, [
+                  _vm._v("タイトル")
+                ]),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -15215,6 +15280,7 @@ var render = function() {
                       expression: "add_title"
                     }
                   ],
+                  staticClass: "p-step-child__textarea",
                   attrs: { type: "text", rows: "3" },
                   domProps: { value: _vm.add_title },
                   on: {
@@ -15227,7 +15293,9 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("h4", [_vm._v("説明文")]),
+                _c("h4", { staticClass: "p-step-child__title" }, [
+                  _vm._v("説明文")
+                ]),
                 _vm._v(" "),
                 _c(
                   "span",
@@ -15254,6 +15322,7 @@ var render = function() {
                       expression: "add_description"
                     }
                   ],
+                  staticClass: "p-step-child__textarea",
                   attrs: { type: "text", rows: "8" },
                   domProps: { value: _vm.add_description },
                   on: {
@@ -15270,8 +15339,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "c-button c-button-step-child p-button-accent3",
-                    staticStyle: { width: "40%" },
+                      "c-button c-button__child-step c-button--accent3",
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -15286,7 +15354,7 @@ var render = function() {
                   "button",
                   {
                     staticClass:
-                      "c-button c-button-step-child p-button-accent2",
+                      "c-button c-button__child-step c-button--accent2",
                     on: {
                       click: function($event) {
                         $event.preventDefault()
@@ -15377,65 +15445,91 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "c-panel p-panel-step",
-            class: { "p-panel-step-done": step.auth_user_challenge_done }
+            staticClass: "p-panel p-panel__step",
+            class: { "p-panel__step--done": step.auth_user_challenge_done }
           },
           [
-            _c("a", { attrs: { href: "/step/" + step.id } }, [
-              step.auth_user_challenge_done
-                ? _c("span", { staticClass: "c-panel-badge" }, [
-                    _c("i", { staticClass: "fas fa-check" })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("h3", { staticClass: "c-panel-title" }, [
-                _vm._v(_vm._s(step.title))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-category" }, [
-                _vm._v(_vm._s(step.category.category))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                !step.user.pic
-                  ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
-                  : _c("img", {
-                      attrs: { src: "data:image/png;base64," + step.user.pic }
-                    })
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-panel-name" }, [
-                _vm._v(_vm._s(step.user.name))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Challenging!!")
+            _c(
+              "a",
+              {
+                staticClass: "p-panel__link",
+                attrs: { href: "/step/" + step.id }
+              },
+              [
+                step.auth_user_challenge_done
+                  ? _c("span", { staticClass: "p-panel__badge" }, [
+                      _c("i", { staticClass: "fas fa-check" })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("h3", { staticClass: "p-panel__title" }, [
+                  _vm._v(_vm._s(step.title))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
+                _c("span", { staticClass: "c-category" }, [
+                  _vm._v(_vm._s(step.category.category))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_challenge))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Done!!")
+                _c(
+                  "div",
+                  { staticClass: "c-prof-avatar p-prof-avatar--list" },
+                  [
+                    !step.user.pic
+                      ? _c("img", {
+                          staticClass:
+                            "p-prof-avatar__img p-prof-avatar__img--list",
+                          attrs: { src: "/img/no-profile-image.png" }
+                        })
+                      : _c("img", {
+                          staticClass: "p-prof-avatar__img",
+                          attrs: {
+                            src: "data:image/png;base64," + step.user.pic
+                          }
+                        })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "p-panel__name" }, [
+                  _vm._v(_vm._s(step.user.name))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                  [
+                    _c("span", { staticClass: "p-panel__bar--info" }, [
+                      _vm._v("Challenging!!")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                      _vm._v("人")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val" }, [
+                      _vm._v(_vm._s(step.count_challenge))
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_done))
-                ])
-              ])
-            ])
+                _c(
+                  "div",
+                  { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                  [
+                    _c("span", { staticClass: "p-panel__bar--info" }, [
+                      _vm._v("Done!!")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                      _vm._v("人")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val" }, [
+                      _vm._v(_vm._s(step.count_done))
+                    ])
+                  ]
+                )
+              ]
+            )
           ]
         )
       ])
@@ -15473,65 +15567,91 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "c-panel p-panel-step",
-              class: { "p-panel-step-done": step.auth_user_challenge_done }
+              staticClass: "p-panel p-panel__step",
+              class: { "p-panel__step--done": step.auth_user_challenge_done }
             },
             [
-              _c("a", { attrs: { href: "/step/" + step.id } }, [
-                step.auth_user_challenge_done
-                  ? _c("span", { staticClass: "c-panel-badge" }, [
-                      _c("i", { staticClass: "fas fa-check" })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("h3", { staticClass: "c-panel-title" }, [
-                  _vm._v(_vm._s(step.title))
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-category" }, [
-                  _vm._v(_vm._s(step.category.category))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-img-prof p-prof-list" }, [
-                  !step.user.pic
-                    ? _c("img", { attrs: { src: "/img/no-profile-image.png" } })
-                    : _c("img", {
-                        attrs: { src: "data:image/png;base64," + step.user.pic }
-                      })
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-panel-name" }, [
-                  _vm._v(_vm._s(step.user.name))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                  _c("span", { staticClass: "c-panel-bar-info" }, [
-                    _vm._v("Challenging!!")
+              _c(
+                "a",
+                {
+                  staticClass: "p-panel__link",
+                  attrs: { href: "/step/" + step.id }
+                },
+                [
+                  step.auth_user_challenge_done
+                    ? _c("span", { staticClass: "p-panel__badge" }, [
+                        _c("i", { staticClass: "fas fa-check" })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "p-panel__title" }, [
+                    _vm._v(_vm._s(step.title))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                    _vm._v("人")
+                  _c("span", { staticClass: "c-category" }, [
+                    _vm._v(_vm._s(step.category.category))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val" }, [
-                    _vm._v(_vm._s(step.count_challenge))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                  _c("span", { staticClass: "c-panel-bar-info" }, [
-                    _vm._v("Done!!")
+                  _c(
+                    "div",
+                    { staticClass: "c-prof-avatar p-prof-avatar--list" },
+                    [
+                      !step.user.pic
+                        ? _c("img", {
+                            staticClass:
+                              "p-prof-avatar__img p-prof-avatar__img--list",
+                            attrs: { src: "/img/no-profile-image.png" }
+                          })
+                        : _c("img", {
+                            staticClass: "p-prof-avatar__img",
+                            attrs: {
+                              src: "data:image/png;base64," + step.user.pic
+                            }
+                          })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "p-panel__name" }, [
+                    _vm._v(_vm._s(step.user.name))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                    _vm._v("人")
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                    [
+                      _c("span", { staticClass: "p-panel__bar--info" }, [
+                        _vm._v("Challenging!!")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                        _vm._v("人")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val" }, [
+                        _vm._v(_vm._s(step.count_challenge))
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val" }, [
-                    _vm._v(_vm._s(step.count_done))
-                  ])
-                ])
-              ])
+                  _c(
+                    "div",
+                    { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                    [
+                      _c("span", { staticClass: "p-panel__bar--info" }, [
+                        _vm._v("Done!!")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                        _vm._v("人")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val" }, [
+                        _vm._v(_vm._s(step.count_done))
+                      ])
+                    ]
+                  )
+                ]
+              )
             ]
           )
         ])
@@ -15545,7 +15665,7 @@ var render = function() {
           "click-handler": _vm.clickCallback,
           "prev-text": "«",
           "next-text": "»",
-          "container-class": "pagination",
+          "container-class": "p-pagination",
           "page-class": "page-item"
         }
       })
@@ -15582,21 +15702,24 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "c-panel p-panel-step",
-            class: { "p-panel-step-done": step.check_done }
+            staticClass: "p-panel p-panel__step",
+            class: { "p-panel__step--done": step.check_done }
           },
           [
             _c(
               "a",
-              { attrs: { href: "/step/" + step.id } },
+              {
+                staticClass: "p-panel__link",
+                attrs: { href: "/step/" + step.id }
+              },
               [
                 step.check_done
-                  ? _c("span", { staticClass: "c-panel-badge" }, [
+                  ? _c("span", { staticClass: "p-panel__badge" }, [
                       _c("i", { staticClass: "fas fa-check" })
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("h3", { staticClass: "c-panel-title" }, [
+                _c("h3", { staticClass: "p-panel__title" }, [
                   _vm._v(_vm._s(step.title))
                 ]),
                 _vm._v(" "),
@@ -15604,7 +15727,7 @@ var render = function() {
                   _vm._v(_vm._s(step.category.category))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-name" }, [
+                _c("span", { staticClass: "p-panel__name" }, [
                   _vm._v(_vm._s(step.name))
                 ]),
                 _vm._v(" "),
@@ -15653,45 +15776,60 @@ var render = function() {
         return _c("li", { key: step.id }, [
           _c(
             "div",
-            { staticClass: "c-panel p-panel-step p-panel-step-mystep" },
+            { staticClass: "p-panel p-panel__step p-panel__step--mystep" },
             [
-              _c("a", { attrs: { href: "/step/" + step.id + "/edit" } }, [
-                _c("h3", { staticClass: "c-panel-title" }, [
-                  _vm._v(_vm._s(step.title))
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-category" }, [
-                  _vm._v(_vm._s(step.category.category))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                  _c("span", { staticClass: "c-panel-bar-info" }, [
-                    _vm._v("Challenging!!")
+              _c(
+                "a",
+                {
+                  staticClass: "p-panel__link",
+                  attrs: { href: "/step/" + step.id + "/edit" }
+                },
+                [
+                  _c("h3", { staticClass: "p-panel__title" }, [
+                    _vm._v(_vm._s(step.title))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                    _vm._v("人")
+                  _c("span", { staticClass: "c-category" }, [
+                    _vm._v(_vm._s(step.category.category))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val" }, [
-                    _vm._v(_vm._s(step.count_challenge))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                  _c("span", { staticClass: "c-panel-bar-info" }, [
-                    _vm._v("Done!!")
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                    [
+                      _c("span", { staticClass: "p-panel__bar--info" }, [
+                        _vm._v("Challenging!!")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                        _vm._v("人")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val" }, [
+                        _vm._v(_vm._s(step.count_challenge))
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                    _vm._v("人")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "c-panel-bar-val" }, [
-                    _vm._v(_vm._s(step.count_done))
-                  ])
-                ])
-              ])
+                  _c(
+                    "div",
+                    { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                    [
+                      _c("span", { staticClass: "p-panel__bar--info" }, [
+                        _vm._v("Done!!")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                        _vm._v("人")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "p-panel__bar--val" }, [
+                        _vm._v(_vm._s(step.count_done))
+                      ])
+                    ]
+                  )
+                ]
+              )
             ]
           )
         ])
@@ -15705,7 +15843,7 @@ var render = function() {
           "click-handler": _vm.clickCallback,
           "prev-text": "«",
           "next-text": "»",
-          "container-class": "pagination",
+          "container-class": "p-pagination",
           "page-class": "page-item"
         }
       })
@@ -15735,19 +15873,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "c-panel-bar" }, [
-    _c("span", { staticClass: "c-panel-bar-info" }, [_vm._v("進捗…")]),
+  return _c("div", { staticClass: "p-panel__bar" }, [
+    _c("span", { staticClass: "p-panel__bar--info" }, [_vm._v("進捗…")]),
     _vm._v(" "),
-    _c("span", { staticClass: "c-panel-bar-val-sm" }, [
+    _c("span", { staticClass: "p-panel__bar--val-sm" }, [
       _vm._v(_vm._s(this.count_child))
     ]),
     _vm._v(" "),
-    _c("span", { staticClass: "c-panel-bar-val" }, [
+    _c("span", { staticClass: "p-panel__bar--val" }, [
       _vm._v(_vm._s(this.count_do_child) + "/")
     ]),
     _vm._v(" "),
     _c("div", {
-      staticClass: "c-panel-bar-progress",
+      staticClass: "p-panel__bar--progress",
       style: this.progressWidth
     })
   ])
@@ -15776,7 +15914,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { width: "100%" } },
+    { staticClass: "p-step__detail" },
     [
       _c("progress-bar-component", {
         directives: [
@@ -15797,36 +15935,48 @@ var render = function() {
         _c("p", [_vm._v(_vm._s(_vm.step.description))])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-        _c("span", { staticClass: "c-panel-bar-info" }, [
+      _c("div", { staticClass: "p-panel__bar p-panel__bar--mystep" }, [
+        _c("span", { staticClass: "p-panel__bar--info" }, [
           _vm._v("Challenging!!")
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "c-panel-bar-val-sm" }, [_vm._v("人")]),
+        _c("span", { staticClass: "p-panel__bar--val-sm" }, [_vm._v("人")]),
         _vm._v(" "),
-        _c("span", { staticClass: "c-panel-bar-val" }, [
+        _c("span", { staticClass: "p-panel__bar--val" }, [
           _vm._v(_vm._s(_vm.count_challenge))
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-        _c("span", { staticClass: "c-panel-bar-info" }, [_vm._v("Done!!")]),
+      _c("div", { staticClass: "p-panel__bar p-panel__bar--mystep" }, [
+        _c("span", { staticClass: "p-panel__bar--info" }, [_vm._v("Done!!")]),
         _vm._v(" "),
-        _c("span", { staticClass: "c-panel-bar-val-sm" }, [_vm._v("人")]),
+        _c("span", { staticClass: "p-panel__bar--val-sm" }, [_vm._v("人")]),
         _vm._v(" "),
-        _c("span", { staticClass: "c-panel-bar-val" }, [
+        _c("span", { staticClass: "p-panel__bar--val" }, [
           _vm._v(_vm._s(_vm.count_done))
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-achievement-time" }, [
+      _c("div", { staticClass: "p-achievement-time" }, [
         _c("p", [_vm._v("目安達成時間")]),
         _vm._v(" "),
-        _c("span", { staticStyle: { "font-size": "60px" } }, [
-          _vm._v(_vm._s(_vm.step.achievement_time))
-        ]),
+        _c(
+          "span",
+          {
+            staticClass: "p-achievement-time--count",
+            staticStyle: { "font-size": "60px" }
+          },
+          [_vm._v(_vm._s(_vm.step.achievement_time))]
+        ),
         _vm._v(" "),
-        _c("span", { staticStyle: { "font-size": "20px" } }, [_vm._v("時間")])
+        _c(
+          "span",
+          {
+            staticClass: "p-achievement-time--unit",
+            staticStyle: { "font-size": "20px" }
+          },
+          [_vm._v("時間")]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "c-form-group" }, [
@@ -15851,17 +16001,20 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm.auth && _vm.count_child
-        ? _c(
-            "button",
-            {
-              staticClass: "c-button c-button-form p-button-accent3",
-              attrs: { type: "button" },
-              on: { click: _vm.change_challenge_handler }
-            },
-            [_vm._v(_vm._s(_vm.button_word))]
-          )
-        : _vm._e()
+      _c("div", { staticClass: "c-form-group--submit" }, [
+        _vm.auth && _vm.count_child
+          ? _c(
+              "button",
+              {
+                staticClass:
+                  "c-button__submit c-button__form c-button--accent3",
+                attrs: { type: "button" },
+                on: { click: _vm.change_challenge_handler }
+              },
+              [_vm._v(_vm._s(_vm.button_word))]
+            )
+          : _vm._e()
+      ])
     ],
     1
   )
@@ -15895,53 +16048,68 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "c-panel p-panel-step",
-            class: { "p-panel-step-done": step.auth_user_challenge_done }
+            staticClass: "p-panel p-panel__step",
+            class: { "p-panel__step--done": step.auth_user_challenge_done }
           },
           [
-            _c("a", { attrs: { href: "/step/" + step.id } }, [
-              step.auth_user_challenge_done
-                ? _c("span", { staticClass: "c-panel-badge" }, [
-                    _c("i", { staticClass: "fas fa-check" })
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("h3", { staticClass: "c-panel-title" }, [
-                _vm._v(_vm._s(step.title))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "c-category" }, [
-                _vm._v(_vm._s(step.category.category))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Challenging!!")
+            _c(
+              "a",
+              {
+                staticClass: "p-panel__link",
+                attrs: { href: "/step/" + step.id }
+              },
+              [
+                step.auth_user_challenge_done
+                  ? _c("span", { staticClass: "p-panel__badge" }, [
+                      _c("i", { staticClass: "fas fa-check" })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("h3", { staticClass: "p-panel__title" }, [
+                  _vm._v(_vm._s(step.title))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
+                _c("span", { staticClass: "c-category" }, [
+                  _vm._v(_vm._s(step.category.category))
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_challenge))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "c-panel-bar p-panel-bar-mystep" }, [
-                _c("span", { staticClass: "c-panel-bar-info" }, [
-                  _vm._v("Done!!")
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                  [
+                    _c("span", { staticClass: "p-panel__bar--info" }, [
+                      _vm._v("Challenging!!")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                      _vm._v("人")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val" }, [
+                      _vm._v(_vm._s(step.count_challenge))
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val-sm" }, [
-                  _vm._v("人")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "c-panel-bar-val" }, [
-                  _vm._v(_vm._s(step.count_done))
-                ])
-              ])
-            ])
+                _c(
+                  "div",
+                  { staticClass: "p-panel__bar p-panel__bar--mystep" },
+                  [
+                    _c("span", { staticClass: "p-panel__bar--info" }, [
+                      _vm._v("Done!!")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val-sm" }, [
+                      _vm._v("人")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "p-panel__bar--val" }, [
+                      _vm._v(_vm._s(step.count_done))
+                    ])
+                  ]
+                )
+              ]
+            )
           ]
         )
       ])
@@ -28841,8 +29009,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var $dropArea = $('.area-drop');
-  var $fileInput = $('.input-file');
+  var $dropArea = $('#area-drop');
+  var $fileInput = $('#input-file');
   $dropArea.on('dragover', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -28856,7 +29024,7 @@ __webpack_require__.r(__webpack_exports__);
   $fileInput.on('change', function (e) {
     $dropArea.css('box-shadow', 'none');
     var file = this.files[0],
-        $img = $(this).siblings('.prev-img'),
+        $img = $(this).siblings('#js-prev-img'),
         fileReader = new FileReader(); //アップロードファイルのサイズと形式をチェック
 
     if (file.type != 'image/jpeg' && file.type != 'image/gif' && file.type != 'image/png') {
@@ -28884,7 +29052,7 @@ __webpack_require__.r(__webpack_exports__);
   } // 画面スクロールによるヘッダータイトルの変形
 
 
-  var $title = $('.js-title');
+  var $title = $('#js-title');
   $(window).on('scroll', function () {
     var scr_count = $(document).scrollTop();
 
@@ -28895,7 +29063,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }); //ハンバーガーメニュー表示切り替え
 
-  $('.js-toggle-sp-menu').on('click', function () {
+  $('#js-toggle-sp-menu').on('click', function () {
     $(this).toggleClass('active');
     $('.js-toggle-sp-menu-target').toggleClass('active');
   });

@@ -1,19 +1,19 @@
 <template>
   <div>
     <li v-for="step in getSteps" :key="step.id">
-      <div class="c-panel p-panel-step p-panel-step-mystep">
-        <a v-bind:href="'/step/'+step.id+'/edit'">
-          <h3 class="c-panel-title">{{step.title}}</h3>
+      <div class="p-panel p-panel__step p-panel__step--mystep">
+        <a class="p-panel__link" v-bind:href="'/step/'+step.id+'/edit'">
+          <h3 class="p-panel__title">{{step.title}}</h3>
           <span class="c-category">{{step.category.category}}</span>
-          <div class="c-panel-bar p-panel-bar-mystep">
-            <span class="c-panel-bar-info">Challenging!!</span>
-            <span class="c-panel-bar-val-sm">人</span>
-            <span class="c-panel-bar-val">{{step.count_challenge}}</span>
+          <div class="p-panel__bar p-panel__bar--mystep">
+            <span class="p-panel__bar--info">Challenging!!</span>
+            <span class="p-panel__bar--val-sm">人</span>
+            <span class="p-panel__bar--val">{{step.count_challenge}}</span>
           </div>
-          <div class="c-panel-bar p-panel-bar-mystep">
-            <span class="c-panel-bar-info">Done!!</span>
-            <span class="c-panel-bar-val-sm">人</span>
-            <span class="c-panel-bar-val">{{step.count_done}}</span>
+          <div class="p-panel__bar p-panel__bar--mystep">
+            <span class="p-panel__bar--info">Done!!</span>
+            <span class="p-panel__bar--val-sm">人</span>
+            <span class="p-panel__bar--val">{{step.count_done}}</span>
           </div>
         </a>
       </div>
@@ -25,7 +25,7 @@
       :click-handler="clickCallback"
       :prev-text="'«'"
       :next-text="'»'"
-      :container-class="'pagination'"
+      :container-class="'p-pagination'"
       :page-class="'page-item'"
     ></paginate>
   </div>

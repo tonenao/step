@@ -1,24 +1,20 @@
-footer {
+.l-footer {
     display: flex;
-    align-items: center;
     justify-content: center;
-    // height: 200px;
     margin: 0 15px;
-    padding-bottom: 10px;
     background: $color-accent1;
     color: $color-base;
 
     @include mq() {
-        // height: 150px;
-        font-size: 12px;
         margin: 0 10px;
     }
 
-    p {
+    &__copyright {
         font-size: $font-size_s;
+        margin: 10px;
+    }
 
-        a {
-            color: $color-base;
-        }
+    &__button {
+        margin: 5px;
     }
 }

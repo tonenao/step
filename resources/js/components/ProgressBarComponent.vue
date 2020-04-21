@@ -1,9 +1,9 @@
 <template>
-  <div class="c-panel-bar">
-    <span class="c-panel-bar-info">進捗…</span>
-    <span class="c-panel-bar-val-sm">{{this.count_child}}</span>
-    <span class="c-panel-bar-val">{{this.count_do_child}}/</span>
-    <div class="c-panel-bar-progress" :style="this.progressWidth"></div>
+  <div class="p-panel__bar">
+    <span class="p-panel__bar--info">進捗…</span>
+    <span class="p-panel__bar--val-sm">{{this.count_child}}</span>
+    <span class="p-panel__bar--val">{{this.count_do_child}}/</span>
+    <div class="p-panel__bar--progress" :style="this.progressWidth"></div>
   </div>
 </template>
 

@@ -5,12 +5,12 @@
 @section('content')
 
 <div class="l-main-top">
-<div class="c-container p-container-top">
+<div class="p-container p-container__top">
 
-    <div class="c-container-title-wrap">
-        <h2 class="c-container-title">プロフィール編集</h2>
+    <div class="c-title">
+        <h2 class="c-title__word">プロフィール編集</h2>
     </div>
-    <div class="c-container-body">
+    <div class="p-container p-container__body">
 
       <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
             @csrf
@@ -18,14 +18,14 @@
             <div class="c-form-group">
                 <label for="img" class="">プロフィール画像</label>
 
-                <div class="c-img-prof p-prof-edit area-drop">
+                <div class="c-prof-avatar p-prof-avatar--edit" id="area-drop">
 
-                <input type="file" name="pic" multiple="multiple" class="input-file">
+                <input type="file" name="pic" multiple="multiple" id="input-file" class="input-file-area">
                    
                     @if(empty($user->pic))
-                        <img src="{{asset('img/no-profile-image.png')}}" class="prev-img">
+                        <img src="{{asset('img/no-profile-image.png')}}" class="p-prof-avatar__img" id="js-prev-img">
                     @else
-                        <img src="data:image/png;base64,{{ $user->pic}}" alt="pic" class="prev-img">
+                        <img src="data:image/png;base64,{{ $user->pic}}" alt="pic" class="p-prof-avatar__img" id="js-prev-img">
                     @endif
 
                     @error('pic')
@@ -78,8 +78,8 @@
                 </div>
             </div>
             
-            <div class="c-form-group-submit">
-                    <button type="submit" class="c-button   c-button-form p-button-accent2">
+            <div class="c-form-group--submit">
+                    <button type="submit" class="c-button__submit c-button__form    c-button--accent2">
                         更新する
                     </button>
             </div>

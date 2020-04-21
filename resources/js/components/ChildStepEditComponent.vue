@@ -6,30 +6,35 @@
 
     <li v-for="(child_step,index) in child_steps" :key="child_step.index">
       <transition name="modal">
-        <div v-if="child_step.editMode" class="c-step-child isModal" key="edit">
-          <h3>STEP{{index+1}}</h3>
-          <h4>タイトル</h4>
+        <div v-if="child_step.editMode" class="p-step-child isModal" key="edit">
+          <h3 class="p-step-child__step">STEP{{index+1}}</h3>
+          <h4 class="p-step-child__title">タイトル</h4>
           <span class="error" v-show="isError_title_require">タイトル未入力です</span>
           <span class="error" v-show="isError_title_max">191文字以下にしてください。</span>
-          <textarea type="text" rows="3" v-model="child_step.title" />
-          <h4>説明文</h4>
+          <textarea class="p-step-child__textarea" type="text" rows="3" v-model="child_step.title" />
+          <h4 class="p-step-child__title">説明文</h4>
           <span class="error" v-show="isError_desc_max">191文字以下にしてください。</span>
-          <textarea type="text" rows="8" v-model="child_step.description" />
+          <textarea
+            class="p-step-child__textarea"
+            type="text"
+            rows="8"
+            v-model="child_step.description"
+          />
           <button
-            class="c-button c-button-step-child p-button-accent1"
+            class="c-button c-button__child-step c-button--accent1"
             v-on:click.prevent="updateChildStep(index)"
           >更新</button>
           <button
-            class="c-button c-button-step-child p-button-accent3"
+            class="c-button c-button__child-step c-button--accent3"
             v-on:click.prevent="deleteChildStep(index)"
           >削除</button>
         </div>
 
-        <div v-else class="c-step-child" key="save">
-          <h3>STEP{{index+1}}</h3>
-          <p>{{child_step.title}}</p>
+        <div v-else class="p-step-child" key="save">
+          <h3 class="p-step-child__step">STEP{{index+1}}</h3>
+          <p class="p-step-child__description">{{child_step.title}}</p>
           <button
-            class="c-button c-button-step-child p-button-accent3"
+            class="c-button c-button__child-step c-button--accent3"
             v-on:click.prevent="changeEditMode(index)"
           >編集</button>
         </div>
@@ -39,33 +44,32 @@
     <transition name="modal">
       <div
         v-if="!this.add_modal"
-        class="c-step-child p-step-detail"
+        class="p-step-child p-step-detail"
         v-bind:class="{isModal:add_modal}"
       >
-        <h3 style="color:#555;">STEP{{this.child_steps.length+1}}</h3>
-        <p></p>
+        <h3 class="p-step-child__step" style="color:#555;">STEP{{this.child_steps.length+1}}</h3>
+        <p class="p-step-child__description"></p>
         <button
-          class="c-button c-button-step-child p-button-accent2"
+          class="c-button c-button__child-step c-button--accent2"
           v-on:click.prevent="changeAddMode"
         >追加</button>
       </div>
 
-      <div v-else class="c-step-child p-step-detail" v-bind:class="{isModal:add_modal}">
-        <h3 style="color:#555;">STEP{{this.add_steps_number}}</h3>
-        <h4>タイトル</h4>
+      <div v-else class="p-step-child p-step-detail" v-bind:class="{isModal:add_modal}">
+        <h3 class="p-step-child__step" style="color:#555;">STEP{{this.add_steps_number}}</h3>
+        <h4 class="p-step-child__title">タイトル</h4>
         <span class="error" v-show="isError_title_require">タイトル未入力です</span>
         <span class="error" v-show="isError_title_max">191文字以下にしてください。</span>
-        <textarea type="text" rows="3" v-model="add_title" />
-        <h4>説明文</h4>
+        <textarea class="p-step-child__textarea" type="text" rows="3" v-model="add_title" />
+        <h4 class="p-step-child__title">説明文</h4>
         <span class="error" v-show="isError_desc_max">191文字以下にしてください。</span>
-        <textarea type="text" rows="8" v-model="add_description" />
+        <textarea class="p-step-child__textarea" type="text" rows="8" v-model="add_description" />
         <button
-          class="c-button c-button-step-child p-button-accent3"
-          style="width:40%;"
+          class="c-button c-button__child-step c-button--accent3"
           v-on:click.prevent="changeAddMode"
         >キャンセル</button>
         <button
-          class="c-button c-button-step-child p-button-accent2"
+          class="c-button c-button__child-step c-button--accent2"
           v-on:click.prevent="addChildStep"
         >追加</button>
       </div>

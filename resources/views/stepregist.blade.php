@@ -4,15 +4,15 @@
 
 @section('content')
 <div class="l-main-top">
-    <div class="c-container  p-container-top">
+    <div class="p-container  p-container__top">
 
-        <div class="c-container-title-wrap">
-            <h2 class="c-container-title">STEP登録</h2>
+        <div class="c-title">
+            <h2 class="c-title__word">STEP登録</h2>
         </div>
 
-        <div class="c-container-body">
+        <div class="p-container p-container__body">
 
-            <div class="c-panel p-panel-edit">
+            <div class="p-panel p-panel__edit">
             <form method="POST" action="{{ route('steps.create') }}">
                 @csrf
 
@@ -69,15 +69,15 @@
                 
 
 
-                <div class="c-form-group-submit">
-                    <button type="submit" name="create" class="c-button c-button-form p-button-accent1">
+                <div class="c-form-group--submit">
+                    <button type="submit" name="create" class="c-button__submit c-button__form  c-button--accent1">
                         登録（子STEP登録へ）
                     </button>
                 </div>
 
-                <div class="c-form-group-submit">
+                <div class="c-form-group--submit">
                     <a href="{{route('steps.mypage')}}" style="width:100%; height:100%; padding:0;">
-                        <button type="button" name="cancel" class="c-button c-button-form p-button-accent3">
+                        <button type="button" name="cancel" class="c-button__submit c-button__form  c-button--accent3">
                             キャンセルする
                         </button>
                     </a>

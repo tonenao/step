@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="l-main-top">
-    <div class="c-container p-container-top">
+    <div class="p-container p-container__top">
 
-        <div class="c-container-title-wrap">
-            <h2 class="c-container-title">お問い合わせ送信完了</h2>
+        <div class="c-title">
+            <h2 class="c-title__word">お問い合わせ送信完了</h2>
         </div>
 
         <div class="">

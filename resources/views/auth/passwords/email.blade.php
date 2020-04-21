@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="l-main-top">
-<div class="c-container p-container-top">
+<div class="p-container p-container__top">
 
-    <div class="c-container-title-wrap">
-    <h2 class="c-container-title">パスワード リセット</h2>
+    <div class="c-title">
+    <h2 class="c-title__word">パスワード リセット</h2>
     </div>
 
 
@@ -38,8 +38,8 @@
             </div>
         </div>
 
-        <div class="c-form-group-submit">
-                <button type="submit" class="c-button   c-button-form p-button-accent2">
+        <div class="c-form-group--submit">
+                <button type="submit" class="c-button__submit c-button__form    c-button--accent2">
                     リセット → メール送信
                 </button>
         </div>

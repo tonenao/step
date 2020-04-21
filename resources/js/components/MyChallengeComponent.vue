@@ -1,14 +1,14 @@
 <template>
   <div>
     <li v-for="step in steps" :key="step.id">
-      <div class="c-panel p-panel-step" v-bind:class="{'p-panel-step-done':step.check_done}">
-        <a v-bind:href="'/step/'+step.id">
-          <span class="c-panel-badge" v-if="step.check_done">
+      <div class="p-panel p-panel__step" v-bind:class="{'p-panel__step--done':step.check_done}">
+        <a class="p-panel__link" v-bind:href="'/step/'+step.id">
+          <span class="p-panel__badge" v-if="step.check_done">
             <i class="fas fa-check"></i>
           </span>
-          <h3 class="c-panel-title">{{ step.title }}</h3>
+          <h3 class="p-panel__title">{{ step.title }}</h3>
           <span class="c-category">{{ step.category.category }}</span>
-          <span class="c-panel-name">{{ step.name }}</span>
+          <span class="p-panel__name">{{ step.name }}</span>
 
           <progress-bar-component
             :count_child="step.count_child_steps"

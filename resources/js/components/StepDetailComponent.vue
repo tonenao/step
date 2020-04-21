@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%">
+  <div class="p-step__detail">
     <progress-bar-component
       :count_child="this.count_child"
       :count_do_child="this.count_do_child"
@@ -9,21 +9,21 @@
     <div class="p-description">
       <p>{{step.description}}</p>
     </div>
-    <div class="c-panel-bar p-panel-bar-mystep">
-      <span class="c-panel-bar-info">Challenging!!</span>
-      <span class="c-panel-bar-val-sm">人</span>
-      <span class="c-panel-bar-val">{{count_challenge}}</span>
+    <div class="p-panel__bar p-panel__bar--mystep">
+      <span class="p-panel__bar--info">Challenging!!</span>
+      <span class="p-panel__bar--val-sm">人</span>
+      <span class="p-panel__bar--val">{{count_challenge}}</span>
     </div>
-    <div class="c-panel-bar p-panel-bar-mystep">
-      <span class="c-panel-bar-info">Done!!</span>
-      <span class="c-panel-bar-val-sm">人</span>
-      <span class="c-panel-bar-val">{{count_done}}</span>
+    <div class="p-panel__bar p-panel__bar--mystep">
+      <span class="p-panel__bar--info">Done!!</span>
+      <span class="p-panel__bar--val-sm">人</span>
+      <span class="p-panel__bar--val">{{count_done}}</span>
     </div>
 
-    <div class="c-achievement-time">
+    <div class="p-achievement-time">
       <p>目安達成時間</p>
-      <span style="font-size:60px;">{{step.achievement_time}}</span>
-      <span style="font-size:20px;">時間</span>
+      <span class="p-achievement-time--count" style="font-size:60px;">{{step.achievement_time}}</span>
+      <span class="p-achievement-time--unit" style="font-size:20px;">時間</span>
     </div>
 
     <div class="c-form-group">
@@ -39,12 +39,14 @@
       </div>
     </div>
 
-    <button
-      type="button"
-      class="c-button c-button-form p-button-accent3"
-      v-if="auth && count_child"
-      v-on:click="change_challenge_handler"
-    >{{button_word}}</button>
+    <div class="c-form-group--submit">
+      <button
+        type="button"
+        class="c-button__submit c-button__form c-button--accent3"
+        v-if="auth && count_child"
+        v-on:click="change_challenge_handler"
+      >{{button_word}}</button>
+    </div>
   </div>
 </template>
 

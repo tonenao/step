@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="l-main-top">
-<div class="c-container p-container-top">
+<div class="p-container p-container__top">
 
-        <div class="c-container-title-wrap">
-            <h2 class="c-container-title">問合わせ内容確認</h2>
+        <div class="c-title">
+            <h2 class="c-title__word">問合わせ内容確認</h2>
         </div>
 
         
@@ -16,19 +16,19 @@
             <div class="c-form-group confirm">
                 <label class="">email</label>
 
-                <p>{{$email}}</p>
+                <p class="c-form-group--email">{{$email}}</p>
             </div>
 
             <div class="c-form-group confirm">
                 <label class="">件名</label>
 
-                <p>{{$subject}}</p>
+                <p class="c-form-group--email">{{$subject}}</p>
             </div>
 
             <div class="c-form-group confirm">
                 <label class="col-form-label text-md-right">問合わせ内容</label>
 
-                <p>{!! nl2br(e($comment)) !!}</p>
+                <p class="c-form-group--email">{!! nl2br(e($comment)) !!}</p>
             </div>
 
         
@@ -41,14 +41,14 @@
             <input type="hidden" name="comment" class="form-control" id="InputComment" value="{{ $comment }}">
             @csrf
             
-            <div class="c-form-group-submit">
-                    <button type="submit" name="action" value="sent" class="c-button c-button-form p-button-accent3">
+            <div class="c-form-group--submit">
+                    <button type="submit" name="action" value="sent" class="c-button__submit c-button__form  c-button--accent3">
                         送信
                     </button>
             </div>
 
-            <div class="c-form-group-submit">
-                    <button type="submit" name="action" value="back" class="c-button c-button-form p-button-accent1">
+            <div class="c-form-group--submit">
+                    <button type="submit" name="action" value="back" class="c-button__submit c-button__form  c-button--accent1">
                         戻る
                     </button>
             </div>

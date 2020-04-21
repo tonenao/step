@@ -1,35 +1,36 @@
-<header id="header" class="c-header">
-  <div class="title js-title">
-    <a href="{{ route('steps.index')}}">
-      <h1 class="title-step">STEP</h1>
-      <p class="title-step-sub">Share your experience as STEP</p>
+<header  class="l-header">
+  <div class="l-header__title" id="js-title">
+    <a class="l-header__title--link" href="{{ route('steps.index')}}">
+      <h1 class="l-header__title--logo">STEP</h1>
+      <p class="l-header__title--desc">Share your experience as STEP</p>
     </a>
   </div>
+
   @if (session('flash_message_alert'))
-    <div class="c-flash-message alert" id="js-show-msg" role="alert">
+    <div class="c-flash__message alert" id="js-show-msg" role="alert">
         {!! session('flash_message_alert') !!}
     </div>
   @elseif (session('flash_message'))
-    <div class="c-flash-message" id="js-show-msg" role="alert">
+    <div class="c-flash__message" id="js-show-msg" role="alert">
         {!! session('flash_message') !!}
     </div>
   @endif
   
-  <div class="c-menu-trigger js-toggle-sp-menu">
-    <div class="border"></div>
-    <div class="inner"></div>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <p>MENU</p>
+  <div class="p-menu-trigger" id="js-toggle-sp-menu">
+    <div class="p-menu-trigger__border"></div>
+    <div class="p-menu-trigger__inner"></div>
+    <span class="p-menu-trigger__bar"></span>
+    <span class="p-menu-trigger__bar"></span>
+    <span class="p-menu-trigger__bar"></span>
+    <span class="p-menu-trigger__bar"></span>
+    <p class="p-menu-trigger__menu">MENU</p>
   </div>
-  <nav id="nav-menu" class="js-toggle-sp-menu-target">
-    <ul id="menu" class="p-menu ff1">
+  <nav class="p-nav-menu js-toggle-sp-menu-target">
+    <ul class="p-menu p-menu ff1">
       @guest
-        <li class="nav-item">
+        <li class="p-nav-item">
           <div>
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.top') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a href="{{ route('steps.top') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               トップページ <span class="caret"></span>
             </a>
           </div>
@@ -43,44 +44,36 @@
         @endif
         </li>
       @else
-        <li class="nav-item dropdown">
+        <li class="p-nav-item ">
           <div style="padding-bottom:40px; font-size:16px">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('users.edit') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a href="{{ route('users.edit') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             
-            <div class="c-img-prof p-prof-nav">
+            <div class="c-prof-avatar p-prof-avatar--nav">
 
               @if(empty(Auth::user()->pic))
-                <img src="{{asset('img/no-profile-image.png')}}">
+                <img class="p-prof-avatar__img p-prof-avatar__img--nav" src="{{asset('img/no-profile-image.png')}}">
               @else
-                <img src="data:image/png;base64,{{ Auth::user()->pic}}" alt="pic">
+                <img class="p-prof-avatar__img p-prof-avatar__img--nav" src="data:image/png;base64,{{ Auth::user()->pic}}" alt="pic">
               @endif
             </div>
-
-              {{ Auth::user()->name }}
-
+            <p class="p-prof-avatar__name">{{ Auth::user()->name }}</p>
             </a>
           </div>
 
-          <!-- <div>
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.top') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              トップページ <span class="caret"></span>
-            </a>
-          </div> -->
-
           <div>
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.index') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a href="{{ route('steps.index') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               STEP一覧ページ <span class="caret"></span>
             </a>
           </div>
 
           <div>
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('steps.mypage') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a href="{{ route('steps.mypage') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               マイページ <span class="caret"></span>
             </a>
           </div>
             
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
+          <div aria-labelledby="navbarDropdown">
+            <a  href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
                 ログアウト

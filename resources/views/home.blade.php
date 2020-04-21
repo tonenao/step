@@ -5,13 +5,13 @@
 @section('content')
 <div id="app">
   <div class="l-main-top">
-    <div class="c-container  p-container-top">
+    <div class="p-container  p-container__top">
 
-      <div class="c-container-title-wrap">
-          <h2 class="c-container-title">人気STEP一覧</h2>
+      <div class="c-title">
+          <h2 class="c-title__word">人気STEP一覧</h2>
       </div>
-      <div class="c-container-body">
-        <div class="c-panel-wrap">
+      <div class="p-container p-container__body">
+        <div class="p-panel__wrap">
 
           <favorite-step-component></favorite-step-component>
           
@@ -21,16 +21,16 @@
   </div>
 
   <div class="l-main">
-    <div class="c-container">
+    <div class="p-container">
 
-      <div class="c-container-title-wrap">
-          <h2 class="c-container-title">STEP一覧</h2>
+      <div class="c-title">
+          <h2 class="c-title__word">STEP一覧</h2>
       </div>
       
-      <div class="c-container-body">
+      <div class="p-container p-container__body">
           
 
-        <div class="c-panel-wrap">
+        <div class="p-panel__wrap">
 
 
           <home-step-component></home-step-component>

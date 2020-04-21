@@ -7,49 +7,48 @@
     <li v-for="(child_step,index) in child_steps" :key="child_step.index">
       <transition name="modal">
         <div
-          class="c-step-child p-step-detail p-step-detail-done"
-          style="position:relative;"
+          class="p-step-child p-step-detail p-step-detail-done"
           v-if="!child_step.editMode && count>=index+1 && auth_challenge"
           v-on:click="changeEditMode(index)"
         >
-          <span class="c-panel-badge">
+          <span class="p-panel__badge">
             <i class="fas fa-check"></i>
           </span>
-          <h3>STEP{{index+1}}</h3>
-          <p>{{child_step.title}}</p>
+          <h3 class="p-step-child__step">STEP{{index+1}}</h3>
+          <p class="p-step-child__description">{{child_step.title}}</p>
           <button
             type="button"
-            class="c-button c-button-step-child p-button-accent3"
+            class="c-button c-button__child-step c-button--accent3"
             v-if="count===index+1 && auth_challenge"
             v-on:click.stop="removeData(child_step.id)"
           >戻す</button>
         </div>
 
         <div
-          class="c-step-child p-step-detail"
+          class="p-step-child p-step-detail"
           v-if="count<(!child_step.editMode && index+1) ||(!child_step.editMode && !auth_challenge)"
           v-on:click="changeEditMode(index)"
         >
-          <h3>STEP{{index+1}}</h3>
-          <p>{{child_step.title}}</p>
+          <h3 class="p-step-child__step">STEP{{index+1}}</h3>
+          <p class="p-step-child__description">{{child_step.title}}</p>
           <button
             type="button"
-            class="c-button c-button-step-child p-button-accent2"
+            class="c-button c-button__child-step c-button--accent2"
             v-if="count===index && auth_challenge"
             v-on:click.stop="createData(child_step.id)"
           >Clear</button>
         </div>
 
         <div
-          class="c-step-child p-step-detail isModal"
+          class="p-step-child p-step-detail isModal"
           v-if="child_step.editMode"
           v-on:click="changeEditMode(index)"
         >
-          <h3 style="color:#555;">STEP{{index+1}}</h3>
-          <h4>タイトル</h4>
-          <p class="detail">{{child_step.title}}</p>
-          <h4>説明文</h4>
-          <p class="detail">{{child_step.description}}</p>
+          <h3 class="p-step-child__step" style="color:#555;">STEP{{index+1}}</h3>
+          <h4 class="p-step-child__title">タイトル</h4>
+          <p class="p-step-child__description detail">{{child_step.title}}</p>
+          <h4 class="p-step-child__title">説明文</h4>
+          <p class="p-step-child__description detail">{{child_step.description}}</p>
           <div style="height:50px;"></div>
         </div>
       </transition>

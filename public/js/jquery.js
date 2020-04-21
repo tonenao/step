@@ -10704,8 +10704,8 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(function () {
-  var $dropArea = $('.area-drop');
-  var $fileInput = $('.input-file');
+  var $dropArea = $('#area-drop');
+  var $fileInput = $('#input-file');
   $dropArea.on('dragover', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -10719,7 +10719,7 @@ return jQuery;
   $fileInput.on('change', function (e) {
     $dropArea.css('box-shadow', 'none');
     var file = this.files[0],
-        $img = $(this).siblings('.prev-img'),
+        $img = $(this).siblings('#js-prev-img'),
         fileReader = new FileReader(); //アップロードファイルのサイズと形式をチェック
 
     if (file.type != 'image/jpeg' && file.type != 'image/gif' && file.type != 'image/png') {
@@ -10747,7 +10747,7 @@ return jQuery;
   } // 画面スクロールによるヘッダータイトルの変形
 
 
-  var $title = $('.js-title');
+  var $title = $('#js-title');
   $(window).on('scroll', function () {
     var scr_count = $(document).scrollTop();
 
@@ -10758,7 +10758,7 @@ return jQuery;
     }
   }); //ハンバーガーメニュー表示切り替え
 
-  $('.js-toggle-sp-menu').on('click', function () {
+  $('#js-toggle-sp-menu').on('click', function () {
     $(this).toggleClass('active');
     $('.js-toggle-sp-menu-target').toggleClass('active');
   });

@@ -1,6 +1,5 @@
 .l-main {
     margin: 15px 15px 0;
-    padding-bottom: 15px;
     background-color: $color-base;
 
     @include mq() {
@@ -10,7 +9,6 @@
 
 .l-main-top {
     margin: 0 15px;
-    // padding-bottom: 15px;
     background-color: $color-base;
 
     @include mq() {

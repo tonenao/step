@@ -50,16 +50,6 @@ $breakpoints: ('sm': 'screen and (max-width: 414px)',
 ) !default;
 
 
-
-
-
-$font-color_date: #F56608; // TODO:リファクタ必要
-$color_corp: #F9A603;
-$font-color_sub1: #4B6683;
-$font-color_default: #555;
-$font-color_sub1: #fefefe;
-$color_aa:#F7EFE2;
-
 // ==============================
 // mixin
 // ==============================
@@ -76,7 +66,6 @@ $color_aa:#F7EFE2;
 
 * {
     -webkit-font-smoothing: antialiased;
-
 }
 
 html,
@@ -91,22 +80,19 @@ body {
     letter-spacing: 0.1em;
 }
 
-
-
 a,
 button {
     text-decoration: none;
     transition: .3s;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
-// a:hover {
-//     color: $color-accent2;
-//     transition: .3s;
-// }
-
 a {
     color: inherit;
+    display: block;
 }
 
 
@@ -130,7 +116,6 @@ form {
 
 input,
 textarea {
-    // width: 100%;
     box-sizing: border-box;
     transition: all 0.5s;
     background-color: #FDF7EB;
@@ -143,67 +128,16 @@ textarea {
 }
 
 
+// ===============================
+// Vueトランジション
+// ===============================
 
-.form-control {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #FDF7EB;
-    background-image: none;
-    border: 2px solid #EAD9B8;
-    border-radius: 0;
-    color: inherit;
-    font-family: inherit;
-    font-size: 1em;
-    padding: 0.4em 0.8em;
-    width: 100%;
-
-
+.modal-enter-active,
+.model-leave-active {
+    transition: opacity .5s
 }
 
-
-
-.pagination {
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    li {
-        width: 40px;
-        height: 40px;
-        margin: 4px;
-        line-height: 40px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        text-decoration: none;
-        background: $color-base;
-        color: $color-accent3;
-        border: 2px solid $color-accent3;
-        transition: .3s;
-
-        &.active,
-        :hover {
-            background-color: $color-accent3;
-            color: $color-base;
-        }
-
-        a {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    // .disabled {
-    //     font-size: 5px;
-    // }
+.modal-enter,
+.model-leave-to {
+    opacity: 0
 }
-
-// input:-webkit-autofill,
-// input:-webkit-autofill:hover,
-// input:-webkit-autofill:focus,
-// input:-webkit-autofill:active {
-//     -webkit-box-shadow: 0 0 0 30px #FDF7EB inset !important;
-// }

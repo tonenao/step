@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="l-main-top">
-<div class="c-container p-container-top">
+<div class="p-container p-container__top">
 
-        <div class="c-container-title-wrap">
-            <h2 class="c-container-title">お問い合わせ</h2>
+        <div class="c-title">
+            <h2 class="c-title__word">お問い合わせ</h2>
         </div>
 
 
@@ -61,8 +61,8 @@
             </div>
 
         
-            <div class="c-form-group-submit">
-                    <button type="submit" name="action" value="sent" class="c-button c-button-form p-button-accent2">
+            <div class="c-form-group--submit">
+                    <button type="submit" name="action" value="sent" class="c-button__submit c-button__form  c-button--accent2">
                         内容確認画面へ
                     </button>
             </div>
