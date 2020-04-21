@@ -384,7 +384,14 @@
     @include mq() {
         width: 90%;
     }
+
+    .detail {
+        word-break: break-all;
+        white-space: normal;
+        text-align: center;
+    }
 }
+
 
 .p-achievement-time {
     width: 90%;

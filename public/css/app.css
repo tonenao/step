@@ -1014,6 +1014,12 @@ textarea:focus {
   }
 }
 
+.p-description .detail {
+  word-break: break-all;
+  white-space: normal;
+  text-align: center;
+}
+
 .p-achievement-time {
   width: 90%;
   padding-top: 15px;

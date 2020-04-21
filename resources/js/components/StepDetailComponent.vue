@@ -7,7 +7,7 @@
     ></progress-bar-component>
 
     <div class="p-description">
-      <p>{{step.description}}</p>
+      <p class="p-description detail">{{step.description}}</p>
     </div>
     <div class="p-panel__bar p-panel__bar--mystep">
       <span class="p-panel__bar--info">Challenging!!</span>

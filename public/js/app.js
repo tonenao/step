@@ -15932,7 +15932,9 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "p-description" }, [
-        _c("p", [_vm._v(_vm._s(_vm.step.description))])
+        _c("p", { staticClass: "p-description detail" }, [
+          _vm._v(_vm._s(_vm.step.description))
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "p-panel__bar p-panel__bar--mystep" }, [
