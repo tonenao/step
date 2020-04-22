@@ -806,6 +806,19 @@ textarea:focus {
   height: 100%;
 }
 
+.twitter-share-button {
+  height: 28px;
+  border-radius: 4px;
+  padding: 1px 10px 1px 9px;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #1b95e0;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .p-menu-trigger {
   float: right;
   right: 50px;
