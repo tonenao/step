@@ -2230,6 +2230,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       window.confirm("削除しますか？");
       this.removeData(index);
       this.changeEditMode(index);
+      this.isError_title_require = false;
+      this.isError_title_max = false;
+      this.isError_desc_max = false;
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
