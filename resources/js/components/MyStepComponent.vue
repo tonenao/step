@@ -24,7 +24,9 @@
       :margin-pages="2"
       :click-handler="clickCallback"
       :prev-text="'«'"
+      :prev-class="'page-item'"
       :next-text="'»'"
+      :next-class="'page-item'"
       :container-class="'p-pagination'"
       :page-class="'page-item'"
     ></paginate>
@@ -44,7 +46,7 @@ export default {
   data: function() {
     return {
       steps: [],
-      parPage: 8,
+      parPage: 6,
       currentPage: 1
     };
   },

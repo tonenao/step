@@ -2209,12 +2209,17 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     changeAddMode: function changeAddMode() {
       this.modal = !this.modal;
       this.add_modal = !this.add_modal;
+      this.add_title = "";
+      this.add_description = "";
+      this.isError_title_require = false;
+      this.isError_title_max = false;
+      this.isError_desc_max = false;
     },
     //タイトルのバリデーション＋ChildStepの追加
     addChildStep: function addChildStep() {
       if (this.varidate(this.add_title, this.add_description)) {
-        this.changeAddMode();
         this.createData();
+        this.changeAddMode();
       }
     },
     //タイトルのバリデーション＋ChildStepの更新
@@ -2227,12 +2232,13 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     //削除確認画面表示+ChildStepの削除
     deleteChildStep: function deleteChildStep(index) {
-      window.confirm("削除しますか？");
-      this.removeData(index);
-      this.changeEditMode(index);
-      this.isError_title_require = false;
-      this.isError_title_max = false;
-      this.isError_desc_max = false;
+      if (window.confirm("削除しますか？")) {
+        this.removeData(index);
+        this.changeEditMode(index);
+        this.isError_title_require = false;
+        this.isError_title_max = false;
+        this.isError_desc_max = false;
+      }
     },
     //新規のchild_stepのDB登録
     createData: function createData() {
@@ -2509,6 +2515,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2639,6 +2647,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2653,7 +2663,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   data: function data() {
     return {
       steps: [],
-      parPage: 8,
+      parPage: 6,
       currentPage: 1
     };
   },
@@ -15667,7 +15677,9 @@ var render = function() {
           "margin-pages": 2,
           "click-handler": _vm.clickCallback,
           "prev-text": "«",
+          "prev-class": "page-item",
           "next-text": "»",
+          "next-class": "page-item",
           "container-class": "p-pagination",
           "page-class": "page-item"
         }
@@ -15845,7 +15857,9 @@ var render = function() {
           "margin-pages": 2,
           "click-handler": _vm.clickCallback,
           "prev-text": "«",
+          "prev-class": "page-item",
           "next-text": "»",
+          "next-class": "page-item",
           "container-class": "p-pagination",
           "page-class": "page-item"
         }

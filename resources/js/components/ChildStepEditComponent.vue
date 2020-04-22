@@ -129,13 +129,18 @@ export default {
     changeAddMode: function() {
       this.modal = !this.modal;
       this.add_modal = !this.add_modal;
+      this.add_title = "";
+      this.add_description = "";
+      this.isError_title_require = false;
+      this.isError_title_max = false;
+      this.isError_desc_max = false;
     },
 
     //タイトルのバリデーション＋ChildStepの追加
     addChildStep() {
       if (this.varidate(this.add_title, this.add_description)) {
-        this.changeAddMode();
         this.createData();
+        this.changeAddMode();
       }
     },
 
@@ -154,12 +159,13 @@ export default {
     },
     //削除確認画面表示+ChildStepの削除
     deleteChildStep(index) {
-      window.confirm("削除しますか？");
-      this.removeData(index);
-      this.changeEditMode(index);
-      this.isError_title_require = false;
-      this.isError_title_max = false;
-      this.isError_desc_max = false;
+      if (window.confirm("削除しますか？")) {
+        this.removeData(index);
+        this.changeEditMode(index);
+        this.isError_title_require = false;
+        this.isError_title_max = false;
+        this.isError_desc_max = false;
+      }
     },
     //新規のchild_stepのDB登録
     async createData() {

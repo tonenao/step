@@ -29,7 +29,7 @@
             @endif
 
             </div>
-              <span class="p-panel__name">{{ $step->user->name }}</span>
+              <span class="p-panel__name p-panel__name--edit">{{ $step->user->name }}</span>
             </a>
 
             

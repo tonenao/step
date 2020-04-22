@@ -13,7 +13,7 @@
         <div class="p-container p-container__body">
 
             <div class="p-panel p-panel__edit">
-            <form method="POST" action="{{ route('steps.create') }}">
+            <form class="p-panel__detail--form" method="POST" action="{{ route('steps.create') }}">
                 @csrf
 
                 

@@ -43,7 +43,9 @@
       :margin-pages="2"
       :click-handler="clickCallback"
       :prev-text="'«'"
+      :prev-class="'page-item'"
       :next-text="'»'"
+      :next-class="'page-item'"
       :container-class="'p-pagination'"
       :page-class="'page-item'"
     ></paginate>

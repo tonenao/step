@@ -562,6 +562,10 @@
         @include mq() {
             max-width: 110px;
         }
+
+        &--edit {
+            max-width: 250px;
+        }
     }
 
     &__bar {
