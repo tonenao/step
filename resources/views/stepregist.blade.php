@@ -21,7 +21,7 @@
                 <div class="c-form-group">
                     <label for="name" class="">STEP名</label>
                     <div class="">
-                        <input id="title" type="text" class="fp-panel__edit--input orm-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                        <input id="title" type="text" class="p-panel__edit--input form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
                         @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('title') }}</strong>
