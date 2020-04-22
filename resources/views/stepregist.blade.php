@@ -43,9 +43,9 @@
                 </div>
 
                 <div class="c-form-group">
-                    <label for="achievement_time" class="p-panel__edit--input col-form-label text-md-right">目安時間</label>
+                    <label for="achievement_time" class="col-form-label text-md-right">目安時間</label>
                     <div class="">
-                    <input id="title" type="number" min="1" max="10000" class="form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time') }}" required autocomplete="achievement_time" autofocus>
+                    <input id="title" type="number" min="1" max="10000" class="p-panel__edit--input form-control @error('achievement_time') is-invalid @enderror" name="achievement_time" value="{{ old('achievement_time') }}" required autocomplete="achievement_time" autofocus>
                         @error('achievement_time')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('achievement_time') }}</strong>
