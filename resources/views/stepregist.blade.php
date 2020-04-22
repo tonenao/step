@@ -70,18 +70,17 @@
 
 
                 <div class="c-form-group--submit">
-                    <button type="submit" name="create" class="
-                    <label for="description" class="p-panel__edit--input c-button__submit c-button__form  c-button--accent1">
+                    <button type="submit" name="create" class="c-button__submit c-button__form  c-button--accent1">
                         登録（子STEP登録へ）
                     </button>
                 </div>
 
                 <div class="c-form-group--submit">
-                    <a href="{{route('steps.mypage')}}" style="width:100%; height:100%; padding:0;">
-                        <button type="button" name="cancel" class="c-button__submit c-button__form  c-button--accent3">
+                    <button type="button" name="cancel" class="c-button__submit c-button__form  c-button--accent3">
+                        <a href="{{route('steps.mypage')}}">
                             キャンセルする
-                        </button>
-                    </a>
+                        </a>
+                    </button>
                 </div>
             </form>
 
