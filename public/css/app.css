@@ -322,8 +322,6 @@ textarea:focus {
 }
 
 .l-footer {
-  display: flex;
-  justify-content: center;
   margin: 0 15px;
   background: #F9A603;
   color: #FEFEFE;
