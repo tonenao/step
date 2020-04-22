@@ -55,9 +55,9 @@
                 </div>
 
                 <div class="c-form-group">
-                    <label for="description" class="p-panel__edit--input col-form-label text-md-right">説明文</label>
+                    <label for="description" class="col-form-label text-md-right">説明文</label>
                     <div class="">
-                        <textarea id="dexcription" class="form-control" name="description" rows="5" required autocomplete="description">{{ old('description') }}</textarea>
+                        <textarea id="dexcription" class="p-panel__edit--input form-control" name="description" rows="5" required autocomplete="description">{{ old('description') }}</textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('description') }}</strong>
