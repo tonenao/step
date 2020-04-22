@@ -1078,6 +1078,7 @@ textarea:focus {
   background-color: #4B6683;
   font-size: 12px;
   padding: 5px 15px;
+  color: #FEFEFE;
 }
 
 .p-step-child.isModal {
