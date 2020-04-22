@@ -76,10 +76,10 @@
                 </div>
 
                 <div class="c-form-group--submit">
-                    <button type="button" name="cancel" class="c-button__submit c-button__form  c-button--accent3">
-                        <a href="{{route('steps.mypage')}}">
+                    <button type="button" name="cancel" class="c-button__submit c-button__form  c-button--accent3" onclick="location.href='{{route('steps.mypage')}}'">
+                        <!-- <a href="{{route('steps.mypage')}}"> -->
                             キャンセルする
-                        </a>
+                        <!-- </a> -->
                     </button>
                 </div>
             </form>

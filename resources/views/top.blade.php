@@ -6,10 +6,10 @@
 <div class="l-main-top p-page-top">
 
   <div class="c-hero" style="background-image: url('{{asset('img/hero.jpg')}}');">
-    <button class="c-button__submit c-button__top c-button__top--hero c-button--accent2">
-      <a class="c-button__link--top" href="{{ route('register') }}">
+    <button class="c-button__submit c-button__top c-button__top--hero c-button--accent2" onclick="location.href='{{ route('register') }}'">
+      <!-- <a class="c-button__link--top" href="{{ route('register') }}"> -->
         新規登録
-      </a>
+      <!-- </a> -->
     </button>
   </div>
 
@@ -117,10 +117,10 @@
       <br>
     </div>
 
-    <button class="c-button__submit  c-button__top c-button__top--challenge c-button--accent2">
-      <a class="c-button__link--top" href="{{ route('register') }}">
+    <button class="c-button__submit  c-button__top c-button__top--challenge c-button--accent2"  onclick="location.href='{{ route('register') }}'">
+      <!-- <a class="c-button__link--top" href="{{ route('register') }}"> -->
         新規登録
-      </a>
+      <!-- </a> -->
     </button>
 
   </div>
