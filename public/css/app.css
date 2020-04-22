@@ -1085,6 +1085,7 @@ textarea:focus {
   width: 270px;
   border-radius: 150px;
   padding-bottom: 20px;
+  color: #555;
 }
 
 .p-step-child.isModal .p-step-child__description {
