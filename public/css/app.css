@@ -1062,6 +1062,7 @@ textarea:focus {
   border-top: 1px solid #FEFEFE;
   width: 50%;
   margin: 0 auto;
+  color: #555;
 }
 
 .p-step-child__textarea {
